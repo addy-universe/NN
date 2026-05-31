@@ -24,33 +24,19 @@ export default function HomePage() {
     <>
       <HeroSection />
       <PosterSlider />
-      <CategoriesSection />
-      <ProductsSection
-        title="Bestsellers"
-        subtitle="Most loved"
-        products={bestsellers}
-        viewAllLink="/shop?tag=bestseller"
-        bgClass="bg-white"
-      />
-      <BrandMission />
       <ProductsSection
         title="All Products"
         subtitle="Premium range"
-        products={products.slice(0, 4)}
+        products={products}
         viewAllLink="/shop"
-        bgClass="bg-gray-50"
+        bgClass="bg-white"
       />
+      <CategoriesSection />
+      <BrandMission />
       <ProcessSection />
       <ClinicSection />
       <DoctorsSection doctors={doctors} />
       <TestimonialsSection testimonials={testimonials} />
-      <ProductsSection
-        title="New Arrivals"
-        subtitle="Just launched"
-        products={products.slice(4, 8)}
-        viewAllLink="/shop"
-        bgClass="bg-white"
-      />
       <BlogSection blogs={blogs} />
       <FAQSection faqs={faqs} />
       <CTASection />
