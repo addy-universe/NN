@@ -1,0 +1,7 @@
+[
+  { "id": "wellness", "name": "Wellness", "slug": "wellness", "icon": "Heart", "description": "Holistic wellness supplements for stress, energy & vitality", "image": "/images/categories/wellness.jpg", "productCount": 12 },
+  { "id": "daily-nutrition", "name": "Daily Nutrition", "slug": "daily-nutrition", "icon": "Apple", "description": "Essential vitamins, minerals & daily health supplements", "image": "/images/categories/nutrition.jpg", "productCount": 8 },
+  { "id": "fitness", "name": "Fitness", "slug": "fitness", "icon": "Dumbbell", "description": "Performance, muscle support & fitness supplements", "image": "/images/categories/fitness.jpg", "productCount": 6 },
+  { "id": "skin-care", "name": "Skin Care", "slug": "skin-care", "icon": "Sparkles", "description": "Glow-boosting skin health & beauty supplements", "image": "/images/categories/skincare.jpg", "productCount": 5 },
+  { "id": "hair-care", "name": "Hair Care", "slug": "hair-care", "icon": "Scissors", "description": "Hair growth, strength & anti-hairfall supplements", "image": "/images/categories/haircare.jpg", "productCount": 4 }
+]
