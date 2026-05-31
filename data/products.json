@@ -5,14 +5,21 @@
     "slug": "premium-himalayan-cordyceps",
     "shortDesc": "Ultra-rare wild Cordyceps Sinensis hand-harvested from high altitudes, renowned for extreme oxygenation, stamina, and longevity.",
     "description": "Experience the legend of high-altitude medicine. NirogNature Premium Himalayan Cordyceps (Keeda Jadi) is wild-crafted and hand-harvested from the pristine snowlines of the Himalayas above 14,000 feet. Regarded as the ultimate imperial rejuvenator, this certified pure herb maximizes ATP production, boosts VO2 max, enhances cardiorespiratory stamina, and acts as a powerful anti-aging shield.",
-    "price": 3499,
-    "comparePrice": 5999,
+    "price": 7699,
+    "comparePrice": 9699,
     "category": "wellness",
     "subcategory": "energy",
-    "tags": ["exclusive", "stamina", "keeda-jadi", "longevity"],
+    "tags": [
+      "exclusive",
+      "stamina",
+      "keeda-jadi",
+      "longevity"
+    ],
     "badge": "Rare Botanical",
-    "images": ["/images/himalayan-cordyceps-herb.jpeg"],
-    "rating": 5.0,
+    "images": [
+      "/images/himalayan-cordyceps-herb.jpeg"
+    ],
+    "rating": 5,
     "reviewCount": 64,
     "benefits": [
       "Maximizes ATP cellular energy and daily stamina",
@@ -21,7 +28,14 @@
     ],
     "ingredients": "100% Wild Authentic Cordyceps Sinensis Whole Dried Herb (Grade A).",
     "howToUse": "Infuse 1 piece in warm water or milk for 10 minutes and consume daily in the morning.",
-    "variants": [{ "id": "v1", "name": "5 Grams Pure", "price": 3499, "comparePrice": 5999 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "5 Grams Pure",
+        "price": 7699,
+        "comparePrice": 9699
+      }
+    ],
     "inStock": true,
     "sku": "NN-CRD-05",
     "weight": "15g"
@@ -32,13 +46,20 @@
     "slug": "premium-kashmiri-saffron",
     "shortDesc": "A++ Grade Kashmiri Saffron stigmas with high concentration of Crocin for skin radiance, mood elevation, and daily warmth.",
     "description": "Elevate your lifestyle with the world's finest spice. NirogNature Premium Kashmiri Mongra Saffron is selected from the dark red stigmas of organic Crocus sativus grown in Pampore, Kashmir. Rich in active compounds like Crocin and Safranal, our Kashmiri Kesar enhances natural skin radiance, elevates mood, and boosts overall warmth and physical vigor.",
-    "price": 1499,
-    "comparePrice": 2499,
+    "price": 5499,
+    "comparePrice": 7199,
     "category": "wellness",
     "subcategory": "daily-nutrition",
-    "tags": ["saffron", "kesar", "beauty", "mood"],
+    "tags": [
+      "saffron",
+      "kesar",
+      "beauty",
+      "mood"
+    ],
     "badge": "A++ Grade",
-    "images": ["/images/kashmiri-mongra-saffron-herb.jpeg"],
+    "images": [
+      "/images/kashmiri-mongra-saffron-herb.jpeg"
+    ],
     "rating": 4.9,
     "reviewCount": 112,
     "benefits": [
@@ -48,7 +69,14 @@
     ],
     "ingredients": "100% Pure Organic Kashmiri Mongra Saffron Stigmas (Grade 1).",
     "howToUse": "Steep 3-4 threads of Saffron in warm milk or tea for 15 minutes before drinking.",
-    "variants": [{ "id": "v1", "name": "2 Grams Jar", "price": 1499, "comparePrice": 2499 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "2 Grams Jar",
+        "price": 5499,
+        "comparePrice": 7199
+      }
+    ],
     "inStock": true,
     "sku": "NN-SAF-02",
     "weight": "10g"
@@ -59,13 +87,20 @@
     "slug": "premium-safed-musli-roots",
     "shortDesc": "Pure organic Safed Musli (Chlorophytum Borivilianum) root fibres to support robust muscle growth, tissue repair, and vigor.",
     "description": "Build robust physical mass and baseline health naturally. NirogNature Premium Safed Musli Roots are shade-dried organic root fibres loaded with active saponins. Acting as a natural anabolic catalyst, Safed Musli is prized in classical Ayurveda to strengthen connective tissues, accelerate post-workout muscle repair, and enhance overall vigor.",
-    "price": 1199,
-    "comparePrice": 1999,
+    "price": 5999,
+    "comparePrice": 7899,
     "category": "fitness",
     "subcategory": "muscle",
-    "tags": ["ayurvedic", "muscle", "vigor", "strength"],
+    "tags": [
+      "ayurvedic",
+      "muscle",
+      "vigor",
+      "strength"
+    ],
     "badge": "100% Organic",
-    "images": ["/images/safed-musli-roots-herb.jpeg"],
+    "images": [
+      "/images/safed-musli-roots-herb.jpeg"
+    ],
     "rating": 4.8,
     "reviewCount": 86,
     "benefits": [
@@ -75,7 +110,14 @@
     ],
     "ingredients": "100% Pure Organic Dried Safed Musli Roots.",
     "howToUse": "Grind into powder and mix 1 teaspoon (approx. 3-5g) with warm milk daily after dinner.",
-    "variants": [{ "id": "v1", "name": "100g Root Fiber", "price": 1199, "comparePrice": 1999 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "100g Root Fiber",
+        "price": 5999,
+        "comparePrice": 7899
+      }
+    ],
     "inStock": true,
     "sku": "NN-SMR-100",
     "weight": "120g"
@@ -86,13 +128,20 @@
     "slug": "organic-kaunch-beej-pods",
     "shortDesc": "Certified organic Kaunch Beej (Mucuna Pruriens) seed pods, a rich natural source of L-Dopa for nerve health and hormonal balance.",
     "description": "Fortify your nervous system and restore hormonal equilibrium. NirogNature Organic Kaunch Beej Pods (Velvet Bean) are direct harvested and certified organic. High in natural L-Dopa (a precursor to dopamine), Kaunch Beej boosts dopamine pathways, elevates mood, reduces stress, and supports optimal reproductive hormones and muscle tone.",
-    "price": 999,
-    "comparePrice": 1699,
+    "price": 6399,
+    "comparePrice": 7899,
     "category": "wellness",
     "subcategory": "stress-relief",
-    "tags": ["organic", "nervous-system", "hormones", "ayurvedic"],
+    "tags": [
+      "organic",
+      "nervous-system",
+      "hormones",
+      "ayurvedic"
+    ],
     "badge": "Pure Herbs",
-    "images": ["/images/kaunch-beej-pods-herb.jpeg"],
+    "images": [
+      "/images/kaunch-beej-pods-herb.jpeg"
+    ],
     "rating": 4.7,
     "reviewCount": 74,
     "benefits": [
@@ -102,7 +151,14 @@
     ],
     "ingredients": "100% Pure Organic Raw Kaunch Beej (Mucuna Pruriens) Seeds.",
     "howToUse": "Soak 5g seeds overnight, peel off the skin, boil in milk, and consume as advised.",
-    "variants": [{ "id": "v1", "name": "150g Whole Seeds", "price": 999, "comparePrice": 1699 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "150g Whole Seeds",
+        "price": 6399,
+        "comparePrice": 7899
+      }
+    ],
     "inStock": true,
     "sku": "NN-KBP-150",
     "weight": "170g"
@@ -113,13 +169,20 @@
     "slug": "nirognature-ashwagandha-capsules",
     "shortDesc": "Highly potent Ayurvedic Ashwagandha capsules to relieve stress, improve sleep quality, and enhance daily energy.",
     "description": "NirogNature Premium Ashwagandha Capsules are formulated from gold-standard organic roots. Featuring active withanolides, this high-potency Ayurvedic supplement helps naturally lower cortisol, fight stress, and replenish vitality. Packaged in our premium matte black jar, it provides pristine clinical-grade wellness support.",
-    "price": 1299,
-    "comparePrice": 2199,
+    "price": 7399,
+    "comparePrice": 8699,
     "category": "wellness",
     "subcategory": "stress-relief",
-    "tags": ["bestseller", "ayurvedic", "stress", "vitality"],
+    "tags": [
+      "bestseller",
+      "ayurvedic",
+      "stress",
+      "vitality"
+    ],
     "badge": "Pure Extract",
-    "images": ["/images/ashwagandha-premium-capsules.jpeg"],
+    "images": [
+      "/images/ashwagandha-premium-capsules.jpeg"
+    ],
     "rating": 4.8,
     "reviewCount": 118,
     "benefits": [
@@ -129,7 +192,14 @@
     ],
     "ingredients": "100% Organic Ashwagandha Root Extract (500mg per capsule).",
     "howToUse": "Take 1 capsule twice daily with warm milk or water after meals.",
-    "variants": [{ "id": "v1", "name": "60 Veg Capsules", "price": 1299, "comparePrice": 2199 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Veg Capsules",
+        "price": 7399,
+        "comparePrice": 8699
+      }
+    ],
     "inStock": true,
     "sku": "NN-ASH-60",
     "weight": "110g"
@@ -140,13 +210,20 @@
     "slug": "nirognature-neem-moringa-capsules",
     "shortDesc": "Advanced blood purifier and antioxidant capsules containing organic Neem and Moringa extracts for skin health and body detox.",
     "description": "Reclaim your natural inner health with NirogNature Neem & Moringa Detox Capsules. Combining the powerful blood-purifying properties of Neem with the dense micronutrient profile of Moringa, this blend removes toxins, supports crystal-clear skin, boosts immune responses, and enhances overall digestive gut health.",
-    "price": 1199,
-    "comparePrice": 1999,
+    "price": 6299,
+    "comparePrice": 7699,
     "category": "wellness",
     "subcategory": "daily-nutrition",
-    "tags": ["detox", "skin", "antioxidant", "immunity"],
+    "tags": [
+      "detox",
+      "skin",
+      "antioxidant",
+      "immunity"
+    ],
     "badge": "Organic Detox",
-    "images": ["/images/neem-moringa-capsules.jpeg"],
+    "images": [
+      "/images/neem-moringa-capsules.jpeg"
+    ],
     "rating": 4.7,
     "reviewCount": 86,
     "benefits": [
@@ -156,7 +233,14 @@
     ],
     "ingredients": "Organic Neem Extract (250mg), Organic Moringa Leaf Extract (250mg).",
     "howToUse": "Take 1 capsule in the morning on an empty stomach with warm water.",
-    "variants": [{ "id": "v1", "name": "60 Veg Capsules", "price": 1199, "comparePrice": 1999 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Veg Capsules",
+        "price": 6299,
+        "comparePrice": 7699
+      }
+    ],
     "inStock": true,
     "sku": "NN-NMD-60",
     "weight": "115g"
@@ -167,13 +251,20 @@
     "slug": "nirognature-swarna-urja-capsules",
     "shortDesc": "Our signature energetic catalyst enriched with pure Swarna Bhasma (Gold) and Safed Musli for maximum strength and vigor.",
     "description": "NirogNature Swarna Urja Gold Capsules represent a luxurious Ayurvedic masterwork. Blending rare Swarna Bhasma (Gold nanoparticles) with high-potency Safed Musli and Mucuna Pruriens, this premium golden capsule formulation ignites cellular energy, elevates absolute physical stamina, and supports robust performance.",
-    "price": 1899,
-    "comparePrice": 3199,
+    "price": 7199,
+    "comparePrice": 8199,
     "category": "fitness",
     "subcategory": "energy",
-    "tags": ["premium", "gold", "vigor", "stamina"],
+    "tags": [
+      "premium",
+      "gold",
+      "vigor",
+      "stamina"
+    ],
     "badge": "Ultra Premium",
-    "images": ["/images/swarna-urja-capsules.jpeg"],
+    "images": [
+      "/images/swarna-urja-capsules.jpeg"
+    ],
     "rating": 4.9,
     "reviewCount": 154,
     "benefits": [
@@ -183,7 +274,14 @@
     ],
     "ingredients": "Swarna Bhasma (3mg), Safed Musli Extract (250mg), Kaunch Beej (150mg), Gokshura (100mg).",
     "howToUse": "Take 1 capsule at night before bedtime with warm milk.",
-    "variants": [{ "id": "v1", "name": "60 Gold Capsules", "price": 1899, "comparePrice": 3199 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Gold Capsules",
+        "price": 7199,
+        "comparePrice": 8199
+      }
+    ],
     "inStock": true,
     "sku": "NN-SUG-60",
     "weight": "120g"
@@ -194,13 +292,20 @@
     "slug": "nirognature-nidaan-sleep-capsules",
     "shortDesc": "Soothing blue Ayurvedic capsules blending Brahmi and Shankhpushpi to promote mental peace, calm nerves, and deep sleep.",
     "description": "Unwind your mind and restore harmony with NirogNature Nidaan Stress & Sleep Capsules. Crafted with brain-calming botanicals like Brahmi, Jatamansi, and Shankhpushpi, these unique blue veggie capsules help reduce hyper-activity, soothe nervous tension, manage anxiety, and support consistent deep REM sleep.",
-    "price": 1399,
-    "comparePrice": 2399,
+    "price": 5599,
+    "comparePrice": 7099,
     "category": "wellness",
     "subcategory": "stress-relief",
-    "tags": ["sleep", "calm", "brain", "peace"],
+    "tags": [
+      "sleep",
+      "calm",
+      "brain",
+      "peace"
+    ],
     "badge": "Deep Sleep",
-    "images": ["/images/nidaan-sleep-capsules.jpeg"],
+    "images": [
+      "/images/nidaan-sleep-capsules.jpeg"
+    ],
     "rating": 4.8,
     "reviewCount": 92,
     "benefits": [
@@ -210,7 +315,14 @@
     ],
     "ingredients": "Brahmi (150mg), Shankhpushpi (150mg), Jatamansi (100mg), Tagar (100mg).",
     "howToUse": "Take 1 or 2 capsules 30 minutes before sleep with warm milk or water.",
-    "variants": [{ "id": "v1", "name": "60 Sleep Capsules", "price": 1399, "comparePrice": 2399 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Sleep Capsules",
+        "price": 5599,
+        "comparePrice": 7099
+      }
+    ],
     "inStock": true,
     "sku": "NN-NSS-60",
     "weight": "110g"
@@ -221,14 +333,21 @@
     "slug": "swarna-prashan-gold-gel",
     "shortDesc": "Luxurious Ayurvedic gold-infused nectar combining purified Shilajit, forest honey, and organic ghee for supreme immunity.",
     "description": "Experience the ultimate level of Ayurvedic clinical nutrition. NirogNature Swarna Prashan Honey Gel is a premium, shimmering gold-infused formulation containing purified organic forest honey, authentic cow's ghee, Swarna Bhasma, and active extracts of revitalizing herbs. It stimulates cognitive growth, strengthens natural immunity, and serves as an exceptional daily health rejuvenator.",
-    "price": 2499,
-    "comparePrice": 4199,
+    "price": 6499,
+    "comparePrice": 8199,
     "category": "wellness",
     "subcategory": "daily-nutrition",
-    "tags": ["luxury", "immunity", "gold", "rejuvenator"],
+    "tags": [
+      "luxury",
+      "immunity",
+      "gold",
+      "rejuvenator"
+    ],
     "badge": "Signature Gold",
-    "images": ["/images/swarna-prashan-gold-gel.jpeg"],
-    "rating": 5.0,
+    "images": [
+      "/images/swarna-prashan-gold-gel.jpeg"
+    ],
+    "rating": 5,
     "reviewCount": 176,
     "benefits": [
       "Signature gold-infused forest honey gel for peak immunity",
@@ -237,7 +356,14 @@
     ],
     "ingredients": "Swarna Bhasma (Gold) (5mg), Purified Himalayan Shilajit (200mg), Wild Forest Honey (3g), Organic A2 Gir Cow Ghee (1g).",
     "howToUse": "Take 1 spoonful daily on an empty stomach in the morning.",
-    "variants": [{ "id": "v1", "name": "100g Premium Jar", "price": 2499, "comparePrice": 4199 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "100g Premium Jar",
+        "price": 6499,
+        "comparePrice": 8199
+      }
+    ],
     "inStock": true,
     "sku": "NN-SPG-100",
     "weight": "220g"
@@ -248,13 +374,20 @@
     "slug": "nirognature-moringa-powder",
     "shortDesc": "Superfood powder sourced from organic Moringa leaves, rich in amino acids, calcium, iron, and green nutrients.",
     "description": "NirogNature Premium Moringa Leaf Powder is nature's ultimate green multivitamin. Ground from pure, shade-dried organic Moringa leaves, this emerald-green powder is loaded with 90+ essential nutrients, 46 antioxidants, and all 18 essential amino acids. It cleanses your digestive system, boosts cellular metabolism, and improves daily stamina.",
-    "price": 999,
-    "comparePrice": 1699,
+    "price": 5999,
+    "comparePrice": 7499,
     "category": "wellness",
     "subcategory": "daily-nutrition",
-    "tags": ["superfood", "moringa", "organic", "powder"],
+    "tags": [
+      "superfood",
+      "moringa",
+      "organic",
+      "powder"
+    ],
     "badge": "100% Organic",
-    "images": ["/images/moringa-premium-powder.jpeg"],
+    "images": [
+      "/images/moringa-premium-powder.jpeg"
+    ],
     "rating": 4.8,
     "reviewCount": 104,
     "benefits": [
@@ -264,7 +397,14 @@
     ],
     "ingredients": "100% Organic Pure Moringa (Moringa Oleifera) Leaf Powder.",
     "howToUse": "Mix 1 teaspoon (approx. 5g) in a glass of warm water, green juice, or smoothies daily.",
-    "variants": [{ "id": "v1", "name": "200g Powder Jar", "price": 999, "comparePrice": 1699 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "200g Powder Jar",
+        "price": 5999,
+        "comparePrice": 7499
+      }
+    ],
     "inStock": true,
     "sku": "NN-MOP-200",
     "weight": "250g"
@@ -275,14 +415,22 @@
     "slug": "power-bhasam-gold",
     "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
     "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 2999,
-    "comparePrice": 4999,
+    "price": 5599,
+    "comparePrice": 6599,
     "category": "fitness",
     "subcategory": "energy",
-    "tags": ["bestseller", "premium", "power", "vitality", "men"],
+    "tags": [
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
+    ],
     "badge": "Top Seller",
-    "images": ["/images/power bhasam.jpeg"],
-    "rating": 5.0,
+    "images": [
+      "/images/power bhasam.jpeg"
+    ],
+    "rating": 5,
     "reviewCount": 312,
     "benefits": [
       "Maximizes male sexual power, stamina, and natural vigor",
@@ -292,7 +440,14 @@
     ],
     "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
     "howToUse": "Take 1 capsule daily at night with warm milk.",
-    "variants": [{ "id": "v1", "name": "60 Premium Gold Capsules", "price": 2999, "comparePrice": 4999 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
+      }
+    ],
     "inStock": true,
     "sku": "NN-PBG-60",
     "weight": "150g"
@@ -303,13 +458,20 @@
     "slug": "raw-shankhpushpi-herb",
     "shortDesc": "Organic Shankhpushpi flowers and leaves to naturally enhance memory and reduce mental fatigue.",
     "description": "Boost your cognitive health naturally. NirogNature Pure Shankhpushpi consists of shade-dried organic Convolvulus prostratus. Known in Ayurveda as a premier Medhya Rasayana (brain tonic), it effectively sharpens memory, improves concentration, and naturally soothes mental stress.",
-    "price": 599,
-    "comparePrice": 899,
+    "price": 6299,
+    "comparePrice": 7999,
     "category": "wellness",
     "subcategory": "stress-relief",
-    "tags": ["brain", "memory", "organic", "herb"],
+    "tags": [
+      "brain",
+      "memory",
+      "organic",
+      "herb"
+    ],
     "badge": "Pure Herb",
-    "images": ["/images/Shankhpushpi.jpeg"],
+    "images": [
+      "/images/Shankhpushpi.jpeg"
+    ],
     "rating": 4.7,
     "reviewCount": 64,
     "benefits": [
@@ -319,7 +481,14 @@
     ],
     "ingredients": "100% Pure Organic Shankhpushpi Leaves and Flowers.",
     "howToUse": "Boil 1 teaspoon in water to make a herbal tea, consume twice daily.",
-    "variants": [{ "id": "v1", "name": "200g Dried Herb", "price": 599, "comparePrice": 899 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "200g Dried Herb",
+        "price": 6299,
+        "comparePrice": 7999
+      }
+    ],
     "inStock": true,
     "sku": "NN-SHN-200",
     "weight": "250g"
@@ -330,13 +499,20 @@
     "slug": "raw-kabab-chini",
     "shortDesc": "Premium grade Kabab Chini berries to support respiratory health and clear digestion.",
     "description": "NirogNature Organic Kabab Chini (Cubeb) berries are hand-picked for their powerful aromatic and medicinal properties. Excellent for clearing respiratory congestion, improving digestion, and acting as a natural mouth freshener. This potent spice is an Ayurvedic staple for holistic well-being.",
-    "price": 499,
-    "comparePrice": 799,
+    "price": 5599,
+    "comparePrice": 6999,
     "category": "wellness",
     "subcategory": "daily-nutrition",
-    "tags": ["digestion", "respiratory", "spice", "organic"],
+    "tags": [
+      "digestion",
+      "respiratory",
+      "spice",
+      "organic"
+    ],
     "badge": "Premium Grade",
-    "images": ["/images/Kubeb (Kabab Chini).jpeg"],
+    "images": [
+      "/images/Kubeb (Kabab Chini).jpeg"
+    ],
     "rating": 4.6,
     "reviewCount": 42,
     "benefits": [
@@ -346,7 +522,14 @@
     ],
     "ingredients": "100% Pure Organic Kabab Chini (Piper cubeba) Berries.",
     "howToUse": "Chew 1-2 berries directly as a mouth freshener, or crush and add to herbal teas.",
-    "variants": [{ "id": "v1", "name": "100g Whole Berries", "price": 499, "comparePrice": 799 }],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "100g Whole Berries",
+        "price": 5599,
+        "comparePrice": 6999
+      }
+    ],
     "inStock": true,
     "sku": "NN-KBC-100",
     "weight": "120g"

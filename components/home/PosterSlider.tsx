@@ -6,7 +6,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const posters = [
   "/images/poster1.png",
-  "/images/poster2.png"
+  "/images/poster2.png",
+  "/images/poster3.png",
+  "/images/poster4.png"
 ];
 
 export default function PosterSlider() {
