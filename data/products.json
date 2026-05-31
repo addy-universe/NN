@@ -1,416 +1,6 @@
 [
   {
-    "id": "premium-himalayan-cordyceps",
-    "name": "Premium Himalayan Cordyceps (Keeda Jadi)",
-    "slug": "premium-himalayan-cordyceps",
-    "shortDesc": "Ultra-rare wild Cordyceps Sinensis hand-harvested from high altitudes, renowned for extreme oxygenation, stamina, and longevity.",
-    "description": "Experience the legend of high-altitude medicine. NirogNature Premium Himalayan Cordyceps (Keeda Jadi) is wild-crafted and hand-harvested from the pristine snowlines of the Himalayas above 14,000 feet. Regarded as the ultimate imperial rejuvenator, this certified pure herb maximizes ATP production, boosts VO2 max, enhances cardiorespiratory stamina, and acts as a powerful anti-aging shield.",
-    "price": 7699,
-    "comparePrice": 9699,
-    "category": "wellness",
-    "subcategory": "energy",
-    "tags": [
-      "exclusive",
-      "stamina",
-      "keeda-jadi",
-      "longevity"
-    ],
-    "badge": "Rare Botanical",
-    "images": [
-      "/images/himalayan-cordyceps-herb.jpeg"
-    ],
-    "rating": 5,
-    "reviewCount": 64,
-    "benefits": [
-      "Maximizes ATP cellular energy and daily stamina",
-      "Significantly improves respiratory oxygenation and VO2 max",
-      "Fortifies immune pathways and supports cellular longevity"
-    ],
-    "ingredients": "100% Wild Authentic Cordyceps Sinensis Whole Dried Herb (Grade A).",
-    "howToUse": "Infuse 1 piece in warm water or milk for 10 minutes and consume daily in the morning.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "5 Grams Pure",
-        "price": 7699,
-        "comparePrice": 9699
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-CRD-05",
-    "weight": "15g"
-  },
-  {
-    "id": "premium-kashmiri-saffron",
-    "name": "Premium Kashmiri Mongra Saffron (Kesar)",
-    "slug": "premium-kashmiri-saffron",
-    "shortDesc": "A++ Grade Kashmiri Saffron stigmas with high concentration of Crocin for skin radiance, mood elevation, and daily warmth.",
-    "description": "Elevate your lifestyle with the world's finest spice. NirogNature Premium Kashmiri Mongra Saffron is selected from the dark red stigmas of organic Crocus sativus grown in Pampore, Kashmir. Rich in active compounds like Crocin and Safranal, our Kashmiri Kesar enhances natural skin radiance, elevates mood, and boosts overall warmth and physical vigor.",
-    "price": 5499,
-    "comparePrice": 7199,
-    "category": "wellness",
-    "subcategory": "daily-nutrition",
-    "tags": [
-      "saffron",
-      "kesar",
-      "beauty",
-      "mood"
-    ],
-    "badge": "A++ Grade",
-    "images": [
-      "/images/kashmiri-mongra-saffron-herb.jpeg"
-    ],
-    "rating": 4.9,
-    "reviewCount": 112,
-    "benefits": [
-      "Promotes standard-setting natural skin glow and complexion",
-      "Natural mood-booster, fights stress and anxiety",
-      "Excellent warm antioxidant for daily therapeutic tea or milk"
-    ],
-    "ingredients": "100% Pure Organic Kashmiri Mongra Saffron Stigmas (Grade 1).",
-    "howToUse": "Steep 3-4 threads of Saffron in warm milk or tea for 15 minutes before drinking.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "2 Grams Jar",
-        "price": 5499,
-        "comparePrice": 7199
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-SAF-02",
-    "weight": "10g"
-  },
-  {
-    "id": "premium-safed-musli-roots",
-    "name": "Premium Ayurvedic Safed Musli Roots",
-    "slug": "premium-safed-musli-roots",
-    "shortDesc": "Pure organic Safed Musli (Chlorophytum Borivilianum) root fibres to support robust muscle growth, tissue repair, and vigor.",
-    "description": "Build robust physical mass and baseline health naturally. NirogNature Premium Safed Musli Roots are shade-dried organic root fibres loaded with active saponins. Acting as a natural anabolic catalyst, Safed Musli is prized in classical Ayurveda to strengthen connective tissues, accelerate post-workout muscle repair, and enhance overall vigor.",
-    "price": 5999,
-    "comparePrice": 7899,
-    "category": "fitness",
-    "subcategory": "muscle",
-    "tags": [
-      "ayurvedic",
-      "muscle",
-      "vigor",
-      "strength"
-    ],
-    "badge": "100% Organic",
-    "images": [
-      "/images/safed-musli-roots-herb.jpeg"
-    ],
-    "rating": 4.8,
-    "reviewCount": 86,
-    "benefits": [
-      "Aids in natural muscle gain and tissue recovery",
-      "Nourishes vital structural tissues and enhances energy levels",
-      "Standardized high saponin concentration for peak vigor"
-    ],
-    "ingredients": "100% Pure Organic Dried Safed Musli Roots.",
-    "howToUse": "Grind into powder and mix 1 teaspoon (approx. 3-5g) with warm milk daily after dinner.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "100g Root Fiber",
-        "price": 5999,
-        "comparePrice": 7899
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-SMR-100",
-    "weight": "120g"
-  },
-  {
-    "id": "organic-kaunch-beej-pods",
-    "name": "Natural Organic Kaunch Beej Pods",
-    "slug": "organic-kaunch-beej-pods",
-    "shortDesc": "Certified organic Kaunch Beej (Mucuna Pruriens) seed pods, a rich natural source of L-Dopa for nerve health and hormonal balance.",
-    "description": "Fortify your nervous system and restore hormonal equilibrium. NirogNature Organic Kaunch Beej Pods (Velvet Bean) are direct harvested and certified organic. High in natural L-Dopa (a precursor to dopamine), Kaunch Beej boosts dopamine pathways, elevates mood, reduces stress, and supports optimal reproductive hormones and muscle tone.",
-    "price": 6399,
-    "comparePrice": 7899,
-    "category": "wellness",
-    "subcategory": "stress-relief",
-    "tags": [
-      "organic",
-      "nervous-system",
-      "hormones",
-      "ayurvedic"
-    ],
-    "badge": "Pure Herbs",
-    "images": [
-      "/images/kaunch-beej-pods-herb.jpeg"
-    ],
-    "rating": 4.7,
-    "reviewCount": 74,
-    "benefits": [
-      "High concentration of natural L-Dopa for neurological peace",
-      "Supports standard hormonal balance and overall vitality",
-      "Fights stress levels and helps normalize cortisol"
-    ],
-    "ingredients": "100% Pure Organic Raw Kaunch Beej (Mucuna Pruriens) Seeds.",
-    "howToUse": "Soak 5g seeds overnight, peel off the skin, boil in milk, and consume as advised.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "150g Whole Seeds",
-        "price": 6399,
-        "comparePrice": 7899
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-KBP-150",
-    "weight": "170g"
-  },
-  {
-    "id": "nirognature-ashwagandha-capsules",
-    "name": "NirogNature Premium Ashwagandha Capsules",
-    "slug": "nirognature-ashwagandha-capsules",
-    "shortDesc": "Highly potent Ayurvedic Ashwagandha capsules to relieve stress, improve sleep quality, and enhance daily energy.",
-    "description": "NirogNature Premium Ashwagandha Capsules are formulated from gold-standard organic roots. Featuring active withanolides, this high-potency Ayurvedic supplement helps naturally lower cortisol, fight stress, and replenish vitality. Packaged in our premium matte black jar, it provides pristine clinical-grade wellness support.",
-    "price": 7399,
-    "comparePrice": 8699,
-    "category": "wellness",
-    "subcategory": "stress-relief",
-    "tags": [
-      "bestseller",
-      "ayurvedic",
-      "stress",
-      "vitality"
-    ],
-    "badge": "Pure Extract",
-    "images": [
-      "/images/ashwagandha-premium-capsules.jpeg"
-    ],
-    "rating": 4.8,
-    "reviewCount": 118,
-    "benefits": [
-      "Reduces cortisol levels and daily anxiety naturally",
-      "Promotes deep, restorative sleep cycles",
-      "Supports optimal hormonal balance and vitality"
-    ],
-    "ingredients": "100% Organic Ashwagandha Root Extract (500mg per capsule).",
-    "howToUse": "Take 1 capsule twice daily with warm milk or water after meals.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Veg Capsules",
-        "price": 7399,
-        "comparePrice": 8699
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-ASH-60",
-    "weight": "110g"
-  },
-  {
-    "id": "nirognature-neem-moringa-capsules",
-    "name": "NirogNature Neem & Moringa Detox Capsules",
-    "slug": "nirognature-neem-moringa-capsules",
-    "shortDesc": "Advanced blood purifier and antioxidant capsules containing organic Neem and Moringa extracts for skin health and body detox.",
-    "description": "Reclaim your natural inner health with NirogNature Neem & Moringa Detox Capsules. Combining the powerful blood-purifying properties of Neem with the dense micronutrient profile of Moringa, this blend removes toxins, supports crystal-clear skin, boosts immune responses, and enhances overall digestive gut health.",
-    "price": 6299,
-    "comparePrice": 7699,
-    "category": "wellness",
-    "subcategory": "daily-nutrition",
-    "tags": [
-      "detox",
-      "skin",
-      "antioxidant",
-      "immunity"
-    ],
-    "badge": "Organic Detox",
-    "images": [
-      "/images/neem-moringa-capsules.jpeg"
-    ],
-    "rating": 4.7,
-    "reviewCount": 86,
-    "benefits": [
-      "Deep cellular blood purification and toxin elimination",
-      "Improves skin clarity and fights acne naturally",
-      "Rich in natural antioxidants, iron, and multivitamins"
-    ],
-    "ingredients": "Organic Neem Extract (250mg), Organic Moringa Leaf Extract (250mg).",
-    "howToUse": "Take 1 capsule in the morning on an empty stomach with warm water.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Veg Capsules",
-        "price": 6299,
-        "comparePrice": 7699
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-NMD-60",
-    "weight": "115g"
-  },
-  {
-    "id": "nirognature-swarna-urja-capsules",
-    "name": "NirogNature Swarna Urja Gold Capsules",
-    "slug": "nirognature-swarna-urja-capsules",
-    "shortDesc": "Our signature energetic catalyst enriched with pure Swarna Bhasma (Gold) and Safed Musli for maximum strength and vigor.",
-    "description": "NirogNature Swarna Urja Gold Capsules represent a luxurious Ayurvedic masterwork. Blending rare Swarna Bhasma (Gold nanoparticles) with high-potency Safed Musli and Mucuna Pruriens, this premium golden capsule formulation ignites cellular energy, elevates absolute physical stamina, and supports robust performance.",
-    "price": 7199,
-    "comparePrice": 8199,
-    "category": "fitness",
-    "subcategory": "energy",
-    "tags": [
-      "premium",
-      "gold",
-      "vigor",
-      "stamina"
-    ],
-    "badge": "Ultra Premium",
-    "images": [
-      "/images/swarna-urja-capsules.jpeg"
-    ],
-    "rating": 4.9,
-    "reviewCount": 154,
-    "benefits": [
-      "Swarna Bhasma (Gold) formula for peak vitality and cellular energy",
-      "Significantly enhances athletic performance and stamina",
-      "Fights chronic fatigue and builds muscle endurance"
-    ],
-    "ingredients": "Swarna Bhasma (3mg), Safed Musli Extract (250mg), Kaunch Beej (150mg), Gokshura (100mg).",
-    "howToUse": "Take 1 capsule at night before bedtime with warm milk.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Gold Capsules",
-        "price": 7199,
-        "comparePrice": 8199
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-SUG-60",
-    "weight": "120g"
-  },
-  {
-    "id": "nirognature-nidaan-sleep-capsules",
-    "name": "NirogNature Nidaan Stress & Sleep Capsules",
-    "slug": "nirognature-nidaan-sleep-capsules",
-    "shortDesc": "Soothing blue Ayurvedic capsules blending Brahmi and Shankhpushpi to promote mental peace, calm nerves, and deep sleep.",
-    "description": "Unwind your mind and restore harmony with NirogNature Nidaan Stress & Sleep Capsules. Crafted with brain-calming botanicals like Brahmi, Jatamansi, and Shankhpushpi, these unique blue veggie capsules help reduce hyper-activity, soothe nervous tension, manage anxiety, and support consistent deep REM sleep.",
-    "price": 5599,
-    "comparePrice": 7099,
-    "category": "wellness",
-    "subcategory": "stress-relief",
-    "tags": [
-      "sleep",
-      "calm",
-      "brain",
-      "peace"
-    ],
-    "badge": "Deep Sleep",
-    "images": [
-      "/images/nidaan-sleep-capsules.jpeg"
-    ],
-    "rating": 4.8,
-    "reviewCount": 92,
-    "benefits": [
-      "Calms mind hyperactivity and reduces nocturnal awakenings",
-      "Soothes tension and regulates sleep-wake cycles",
-      "Non-drowsy formulation, feel refreshed next morning"
-    ],
-    "ingredients": "Brahmi (150mg), Shankhpushpi (150mg), Jatamansi (100mg), Tagar (100mg).",
-    "howToUse": "Take 1 or 2 capsules 30 minutes before sleep with warm milk or water.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Sleep Capsules",
-        "price": 5599,
-        "comparePrice": 7099
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-NSS-60",
-    "weight": "110g"
-  },
-  {
-    "id": "nirognature-swarna-prashan-gel",
-    "name": "NirogNature Swarna Prashan Honey Gel",
-    "slug": "swarna-prashan-gold-gel",
-    "shortDesc": "Luxurious Ayurvedic gold-infused nectar combining purified Shilajit, forest honey, and organic ghee for supreme immunity.",
-    "description": "Experience the ultimate level of Ayurvedic clinical nutrition. NirogNature Swarna Prashan Honey Gel is a premium, shimmering gold-infused formulation containing purified organic forest honey, authentic cow's ghee, Swarna Bhasma, and active extracts of revitalizing herbs. It stimulates cognitive growth, strengthens natural immunity, and serves as an exceptional daily health rejuvenator.",
-    "price": 6499,
-    "comparePrice": 8199,
-    "category": "wellness",
-    "subcategory": "daily-nutrition",
-    "tags": [
-      "luxury",
-      "immunity",
-      "gold",
-      "rejuvenator"
-    ],
-    "badge": "Signature Gold",
-    "images": [
-      "/images/swarna-prashan-gold-gel.jpeg"
-    ],
-    "rating": 5,
-    "reviewCount": 176,
-    "benefits": [
-      "Signature gold-infused forest honey gel for peak immunity",
-      "Boosts digestive absorption and metabolic vigor",
-      "Supports cognitive development and cellular rejuvenation"
-    ],
-    "ingredients": "Swarna Bhasma (Gold) (5mg), Purified Himalayan Shilajit (200mg), Wild Forest Honey (3g), Organic A2 Gir Cow Ghee (1g).",
-    "howToUse": "Take 1 spoonful daily on an empty stomach in the morning.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "100g Premium Jar",
-        "price": 6499,
-        "comparePrice": 8199
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-SPG-100",
-    "weight": "220g"
-  },
-  {
-    "id": "nirognature-moringa-powder",
-    "name": "NirogNature Premium Moringa Leaf Powder",
-    "slug": "nirognature-moringa-powder",
-    "shortDesc": "Superfood powder sourced from organic Moringa leaves, rich in amino acids, calcium, iron, and green nutrients.",
-    "description": "NirogNature Premium Moringa Leaf Powder is nature's ultimate green multivitamin. Ground from pure, shade-dried organic Moringa leaves, this emerald-green powder is loaded with 90+ essential nutrients, 46 antioxidants, and all 18 essential amino acids. It cleanses your digestive system, boosts cellular metabolism, and improves daily stamina.",
-    "price": 5999,
-    "comparePrice": 7499,
-    "category": "wellness",
-    "subcategory": "daily-nutrition",
-    "tags": [
-      "superfood",
-      "moringa",
-      "organic",
-      "powder"
-    ],
-    "badge": "100% Organic",
-    "images": [
-      "/images/moringa-premium-powder.jpeg"
-    ],
-    "rating": 4.8,
-    "reviewCount": 104,
-    "benefits": [
-      "Extremely rich in calcium, iron, vitamin A, and potassium",
-      "Boosts daily physical endurance and cellular energy",
-      "Supports gut health and natural colon detoxification"
-    ],
-    "ingredients": "100% Organic Pure Moringa (Moringa Oleifera) Leaf Powder.",
-    "howToUse": "Mix 1 teaspoon (approx. 5g) in a glass of warm water, green juice, or smoothies daily.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "200g Powder Jar",
-        "price": 5999,
-        "comparePrice": 7499
-      }
-    ],
-    "inStock": true,
-    "sku": "NN-MOP-200",
-    "weight": "250g"
-  },
-  {
-    "id": "power-bhasam-gold",
+    "id": "power-bhasam-gold-1",
     "name": "Power Bhasam Gold - Ultimate Vitality",
     "slug": "power-bhasam-gold",
     "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
@@ -453,85 +43,304 @@
     "weight": "150g"
   },
   {
-    "id": "raw-shankhpushpi-herb",
-    "name": "Pure Ayurvedic Shankhpushpi",
-    "slug": "raw-shankhpushpi-herb",
-    "shortDesc": "Organic Shankhpushpi flowers and leaves to naturally enhance memory and reduce mental fatigue.",
-    "description": "Boost your cognitive health naturally. NirogNature Pure Shankhpushpi consists of shade-dried organic Convolvulus prostratus. Known in Ayurveda as a premier Medhya Rasayana (brain tonic), it effectively sharpens memory, improves concentration, and naturally soothes mental stress.",
-    "price": 6299,
-    "comparePrice": 7999,
-    "category": "wellness",
-    "subcategory": "stress-relief",
+    "id": "power-bhasam-gold-2",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "price": 5599,
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
     "tags": [
-      "brain",
-      "memory",
-      "organic",
-      "herb"
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
     ],
-    "badge": "Pure Herb",
+    "badge": "Top Seller",
     "images": [
-      "/images/Shankhpushpi.jpeg"
+      "/images/power bhasam.jpeg"
     ],
-    "rating": 4.7,
-    "reviewCount": 64,
+    "rating": 5,
+    "reviewCount": 312,
     "benefits": [
-      "Significantly improves memory and cognitive function",
-      "Acts as a natural anti-depressant and stress reliever",
-      "Promotes deep, uninterrupted sleep"
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
     ],
-    "ingredients": "100% Pure Organic Shankhpushpi Leaves and Flowers.",
-    "howToUse": "Boil 1 teaspoon in water to make a herbal tea, consume twice daily.",
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
     "variants": [
       {
         "id": "v1",
-        "name": "200g Dried Herb",
-        "price": 6299,
-        "comparePrice": 7999
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
       }
     ],
     "inStock": true,
-    "sku": "NN-SHN-200",
-    "weight": "250g"
+    "sku": "NN-PBG-60",
+    "weight": "150g"
   },
   {
-    "id": "raw-kabab-chini",
-    "name": "Organic Kabab Chini (Cubeb Pepper)",
-    "slug": "raw-kabab-chini",
-    "shortDesc": "Premium grade Kabab Chini berries to support respiratory health and clear digestion.",
-    "description": "NirogNature Organic Kabab Chini (Cubeb) berries are hand-picked for their powerful aromatic and medicinal properties. Excellent for clearing respiratory congestion, improving digestion, and acting as a natural mouth freshener. This potent spice is an Ayurvedic staple for holistic well-being.",
+    "id": "power-bhasam-gold-3",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
     "price": 5599,
-    "comparePrice": 6999,
-    "category": "wellness",
-    "subcategory": "daily-nutrition",
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
     "tags": [
-      "digestion",
-      "respiratory",
-      "spice",
-      "organic"
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
     ],
-    "badge": "Premium Grade",
+    "badge": "Top Seller",
     "images": [
-      "/images/Kubeb (Kabab Chini).jpeg"
+      "/images/power bhasam.jpeg"
     ],
-    "rating": 4.6,
-    "reviewCount": 42,
+    "rating": 5,
+    "reviewCount": 312,
     "benefits": [
-      "Clears respiratory tracts and soothes throat irritations",
-      "Improves digestion and reduces gastric discomfort",
-      "Natural anti-inflammatory and antibacterial properties"
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
     ],
-    "ingredients": "100% Pure Organic Kabab Chini (Piper cubeba) Berries.",
-    "howToUse": "Chew 1-2 berries directly as a mouth freshener, or crush and add to herbal teas.",
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
     "variants": [
       {
         "id": "v1",
-        "name": "100g Whole Berries",
+        "name": "60 Premium Gold Capsules",
         "price": 5599,
-        "comparePrice": 6999
+        "comparePrice": 6599
       }
     ],
     "inStock": true,
-    "sku": "NN-KBC-100",
-    "weight": "120g"
+    "sku": "NN-PBG-60",
+    "weight": "150g"
+  },
+  {
+    "id": "power-bhasam-gold-4",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "price": 5599,
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": [
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
+    ],
+    "badge": "Top Seller",
+    "images": [
+      "/images/power bhasam.jpeg"
+    ],
+    "rating": 5,
+    "reviewCount": 312,
+    "benefits": [
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+    ],
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
+      }
+    ],
+    "inStock": true,
+    "sku": "NN-PBG-60",
+    "weight": "150g"
+  },
+  {
+    "id": "power-bhasam-gold-5",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "price": 5599,
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": [
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
+    ],
+    "badge": "Top Seller",
+    "images": [
+      "/images/power bhasam.jpeg"
+    ],
+    "rating": 5,
+    "reviewCount": 312,
+    "benefits": [
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+    ],
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
+      }
+    ],
+    "inStock": true,
+    "sku": "NN-PBG-60",
+    "weight": "150g"
+  },
+  {
+    "id": "power-bhasam-gold-6",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "price": 5599,
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": [
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
+    ],
+    "badge": "Top Seller",
+    "images": [
+      "/images/power bhasam.jpeg"
+    ],
+    "rating": 5,
+    "reviewCount": 312,
+    "benefits": [
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+    ],
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
+      }
+    ],
+    "inStock": true,
+    "sku": "NN-PBG-60",
+    "weight": "150g"
+  },
+  {
+    "id": "power-bhasam-gold-7",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "price": 5599,
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": [
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
+    ],
+    "badge": "Top Seller",
+    "images": [
+      "/images/power bhasam.jpeg"
+    ],
+    "rating": 5,
+    "reviewCount": 312,
+    "benefits": [
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+    ],
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
+      }
+    ],
+    "inStock": true,
+    "sku": "NN-PBG-60",
+    "weight": "150g"
+  },
+  {
+    "id": "power-bhasam-gold-8",
+    "name": "Power Bhasam Gold - Ultimate Vitality",
+    "slug": "power-bhasam-gold",
+    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "price": 5599,
+    "comparePrice": 6599,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": [
+      "bestseller",
+      "premium",
+      "power",
+      "vitality",
+      "men"
+    ],
+    "badge": "Top Seller",
+    "images": [
+      "/images/power bhasam.jpeg"
+    ],
+    "rating": 5,
+    "reviewCount": 312,
+    "benefits": [
+      "Maximizes male sexual power, stamina, and natural vigor",
+      "Boosts testosterone levels and physical endurance",
+      "Reduces performance anxiety and fights daily fatigue",
+      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+    ],
+    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "variants": [
+      {
+        "id": "v1",
+        "name": "60 Premium Gold Capsules",
+        "price": 5599,
+        "comparePrice": 6599
+      }
+    ],
+    "inStock": true,
+    "sku": "NN-PBG-60",
+    "weight": "150g"
   }
 ]
