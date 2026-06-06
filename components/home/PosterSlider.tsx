@@ -35,7 +35,13 @@ export default function PosterSlider() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative w-full max-w-6xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-black/50 border border-brand-800 group">
           
-          <AnimatePresence mode="wait">
+          {/* Invisible placeholder to maintain container height */}
+          <img
+            src={posters[0]}
+            alt="placeholder"
+            className="w-full h-auto object-contain invisible"
+          />
+          <AnimatePresence>
             <motion.img
               key={currentIndex}
               src={posters[currentIndex]}
@@ -44,7 +50,7 @@ export default function PosterSlider() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="w-full h-auto object-contain"
+              className="absolute inset-0 w-full h-full object-contain"
             />
           </AnimatePresence>
 
