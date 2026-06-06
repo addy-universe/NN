@@ -18,7 +18,7 @@ export default function PosterSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % posters.length);
-    }, 5000); // Slides every 5 seconds
+    }, 2500); // Slides every 2.5 seconds
     return () => clearInterval(timer);
   }, []);
 

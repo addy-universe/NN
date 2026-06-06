@@ -1,6 +1,6 @@
 [
   {
-    "id": "power-bhasam-gold-1",
+    "id": "power-bhasam-gold",
     "name": "Power Bhasam Gold - Ultimate Vitality",
     "slug": "power-bhasam-gold",
     "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
@@ -43,304 +43,281 @@
     "weight": "150g"
   },
   {
-    "id": "power-bhasam-gold-2",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
-    "category": "fitness",
-    "subcategory": "energy",
+    "id": "ashwagandha-premium",
+    "name": "Ashwagandha Premium Capsules",
+    "slug": "ashwagandha-premium",
+    "shortDesc": "Pure KSM-66 Ashwagandha for stress relief and natural energy.",
+    "description": "A powerful adaptogen that helps your body manage stress, boosts brain function, and lowers blood sugar and cortisol levels.",
+    "price": 1299,
+    "comparePrice": 1599,
+    "category": "wellness",
+    "subcategory": "stress-relief",
     "tags": [
       "bestseller",
-      "premium",
-      "power",
-      "vitality",
-      "men"
+      "wellness",
+      "stress"
     ],
-    "badge": "Top Seller",
+    "badge": "Hot",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/ashwagandha-premium-capsules.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 4.8,
+    "reviewCount": 245,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Relieves stress",
+      "Boosts energy",
+      "Improves sleep"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "KSM-66 Ashwagandha Root Extract",
+    "howToUse": "1 capsule twice daily",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "60 Capsules",
+        "price": 1299,
+        "comparePrice": 1599
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-ASH-60",
+    "weight": "100g"
   },
   {
-    "id": "power-bhasam-gold-3",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
+    "id": "swarna-urja",
+    "name": "Swarna Urja Capsules",
+    "slug": "swarna-urja",
+    "shortDesc": "Revitalize your body with our premium Swarna Urja blend.",
+    "description": "A unique formulation combining the benefits of gold and essential herbs to boost stamina and vitality.",
+    "price": 2499,
+    "comparePrice": 2999,
     "category": "fitness",
-    "subcategory": "energy",
+    "subcategory": "stamina",
     "tags": [
-      "bestseller",
       "premium",
-      "power",
-      "vitality",
-      "men"
+      "energy"
     ],
-    "badge": "Top Seller",
+    "badge": "Premium",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/swarna-urja-capsules.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 4.9,
+    "reviewCount": 180,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Enhances stamina",
+      "Boosts immunity",
+      "Promotes overall vitality"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "Swarna Bhasma, Essential Herbs",
+    "howToUse": "1 capsule daily with milk",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "30 Capsules",
+        "price": 2499,
+        "comparePrice": 2999
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-SUC-30",
+    "weight": "80g"
   },
   {
-    "id": "power-bhasam-gold-4",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
-    "category": "fitness",
-    "subcategory": "energy",
+    "id": "nidaan-sleep",
+    "name": "Nidaan Sleep Capsules",
+    "slug": "nidaan-sleep",
+    "shortDesc": "Natural sleep aid for a restful night.",
+    "description": "Formulated with calming herbs to help you relax and achieve deep, restorative sleep.",
+    "price": 1499,
+    "comparePrice": 1899,
+    "category": "wellness",
+    "subcategory": "sleep",
     "tags": [
-      "bestseller",
-      "premium",
-      "power",
-      "vitality",
-      "men"
+      "sleep",
+      "wellness"
     ],
-    "badge": "Top Seller",
+    "badge": "New",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/nidaan-sleep-capsules.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 4.7,
+    "reviewCount": 150,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Promotes deep sleep",
+      "Relaxes mind and body",
+      "Non-habit forming"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "Valerian Root, Chamomile, Melatonin",
+    "howToUse": "1 capsule 30 mins before bed",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "60 Capsules",
+        "price": 1499,
+        "comparePrice": 1899
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-NSC-60",
+    "weight": "100g"
   },
   {
-    "id": "power-bhasam-gold-5",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
-    "category": "fitness",
-    "subcategory": "energy",
+    "id": "neem-moringa",
+    "name": "Neem & Moringa Capsules",
+    "slug": "neem-moringa",
+    "shortDesc": "Detoxify and nourish with Neem and Moringa.",
+    "description": "A powerful combination of purifying Neem and nutrient-dense Moringa for skin health and immunity.",
+    "price": 999,
+    "comparePrice": 1299,
+    "category": "detox",
+    "subcategory": "skin",
     "tags": [
-      "bestseller",
-      "premium",
-      "power",
-      "vitality",
-      "men"
+      "detox",
+      "skin",
+      "immunity"
     ],
-    "badge": "Top Seller",
+    "badge": "Vegan",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/neem-moringa-capsules.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 4.6,
+    "reviewCount": 210,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Purifies blood",
+      "Supports healthy skin",
+      "Boosts immune system"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "Neem Extract, Moringa Leaf Powder",
+    "howToUse": "1 capsule daily after meal",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "60 Capsules",
+        "price": 999,
+        "comparePrice": 1299
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-NMC-60",
+    "weight": "100g"
   },
   {
-    "id": "power-bhasam-gold-6",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
+    "id": "himalayan-cordyceps",
+    "name": "Himalayan Cordyceps",
+    "slug": "himalayan-cordyceps",
+    "shortDesc": "Premium Cordyceps for peak endurance.",
+    "description": "Sourced from the Himalayas, this rare adaptogen enhances athletic performance and respiratory health.",
+    "price": 3999,
+    "comparePrice": 4599,
     "category": "fitness",
-    "subcategory": "energy",
+    "subcategory": "endurance",
     "tags": [
-      "bestseller",
       "premium",
-      "power",
-      "vitality",
-      "men"
+      "endurance",
+      "fitness"
     ],
     "badge": "Top Seller",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/himalayan-cordyceps-herb.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 4.9,
+    "reviewCount": 305,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Increases oxygen uptake",
+      "Boosts ATP production",
+      "Supports lung health"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "Pure Himalayan Cordyceps Sinensis",
+    "howToUse": "1 capsule pre-workout",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "30 Capsules",
+        "price": 3999,
+        "comparePrice": 4599
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-HCC-30",
+    "weight": "80g"
   },
   {
-    "id": "power-bhasam-gold-7",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
-    "category": "fitness",
-    "subcategory": "energy",
+    "id": "kashmiri-mongra-saffron",
+    "name": "Kashmiri Mongra Saffron",
+    "slug": "kashmiri-mongra-saffron",
+    "shortDesc": "Finest quality Saffron from Kashmir.",
+    "description": "100% pure, premium A-grade saffron threads for culinary and wellness use. Rich in antioxidants.",
+    "price": 4599,
+    "comparePrice": 5099,
+    "category": "premium",
+    "subcategory": "wellness",
     "tags": [
-      "bestseller",
       "premium",
-      "power",
-      "vitality",
-      "men"
+      "saffron",
+      "wellness"
     ],
-    "badge": "Top Seller",
+    "badge": "Premium",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/kashmiri-mongra-saffron-herb.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 5.0,
+    "reviewCount": 420,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Rich in antioxidants",
+      "Improves mood",
+      "Enhances skin radiance"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "100% Pure Kashmiri Saffron Threads",
+    "howToUse": "Soak a few threads in warm milk or water",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "5g Pack",
+        "price": 4599,
+        "comparePrice": 5099
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-KMS-05",
+    "weight": "5g"
   },
   {
-    "id": "power-bhasam-gold-8",
-    "name": "Power Bhasam Gold - Ultimate Vitality",
-    "slug": "power-bhasam-gold",
-    "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
-    "price": 5599,
-    "comparePrice": 6599,
-    "category": "fitness",
-    "subcategory": "energy",
+    "id": "swarna-prashan",
+    "name": "Swarna Prashan Gold Gel",
+    "slug": "swarna-prashan",
+    "shortDesc": "Ayurvedic immunity booster for kids.",
+    "description": "An ancient Ayurvedic formulation with pure gold, honey, and ghee to boost immunity and cognitive development in children.",
+    "price": 1999,
+    "comparePrice": 2499,
+    "category": "immunity",
+    "subcategory": "kids",
     "tags": [
-      "bestseller",
-      "premium",
-      "power",
-      "vitality",
-      "men"
+      "kids",
+      "immunity",
+      "bestseller"
     ],
-    "badge": "Top Seller",
+    "badge": "Best Seller",
     "images": [
-      "/images/power bhasam.jpeg"
+      "/images/swarna-prashan-gold-gel.jpeg"
     ],
-    "rating": 5,
-    "reviewCount": 312,
+    "rating": 4.8,
+    "reviewCount": 512,
     "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
+      "Boosts immunity",
+      "Enhances memory",
+      "Improves digestion"
     ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
-    "howToUse": "Take 1 capsule daily at night with warm milk.",
+    "ingredients": "Swarna Bhasma, Brahmi, Shankhpushpi, Honey, Ghee",
+    "howToUse": "1 drop daily morning",
     "variants": [
       {
         "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
+        "name": "15ml Bottle",
+        "price": 1999,
+        "comparePrice": 2499
       }
     ],
     "inStock": true,
-    "sku": "NN-PBG-60",
-    "weight": "150g"
+    "sku": "NN-SPG-15",
+    "weight": "50g"
   }
 ]
