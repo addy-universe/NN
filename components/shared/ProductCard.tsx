@@ -37,7 +37,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Image */}
           <div className="relative aspect-square bg-gradient-to-br from-brand-50 to-cream overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center p-4">
-              {product.images && product.images.length > 0 && !product.images[0].includes('products/') && !imgError ? (
+              {product.images && product.images.length > 0 && !imgError ? (
                 <img
                   src={product.images[0]}
                   alt={product.name}

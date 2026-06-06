@@ -4,40 +4,20 @@
     "name": "Power Bhasam Gold - Ultimate Vitality",
     "slug": "power-bhasam-gold",
     "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
-    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor, this uncompromising master blend fuses pure Swarna Bhasma (Gold), high-potency Himalayan Shilajit, Safed Musli, and Ashwagandha. Experience unprecedented endurance, robust energy levels, and a revitalized passion for life. 100% natural, lab-tested, and completely chemical-free.",
+    "description": "Power Bhasam Gold is the undisputed king of Ayurvedic male vitality. Formulated specifically to elevate sexual power, stamina, and overall vigor.",
     "price": 5599,
     "comparePrice": 6599,
     "category": "fitness",
     "subcategory": "energy",
-    "tags": [
-      "bestseller",
-      "premium",
-      "power",
-      "vitality",
-      "men"
-    ],
+    "tags": ["bestseller", "premium", "power"],
     "badge": "Top Seller",
-    "images": [
-      "/images/power bhasam.jpeg"
-    ],
+    "images": ["/images/power bhasam.jpeg"],
     "rating": 5,
     "reviewCount": 312,
-    "benefits": [
-      "Maximizes male sexual power, stamina, and natural vigor",
-      "Boosts testosterone levels and physical endurance",
-      "Reduces performance anxiety and fights daily fatigue",
-      "Contains pure Swarna Bhasma (Gold) for cellular strength"
-    ],
-    "ingredients": "Swarna Bhasma (Gold) (3mg), Himalayan Shilajit (250mg), KSM-66 Ashwagandha (200mg), Safed Musli (150mg), Kaunch Beej (100mg).",
+    "benefits": ["Maximizes male sexual power", "Boosts testosterone levels", "Reduces performance anxiety"],
+    "ingredients": "Swarna Bhasma, Himalayan Shilajit, KSM-66 Ashwagandha",
     "howToUse": "Take 1 capsule daily at night with warm milk.",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Premium Gold Capsules",
-        "price": 5599,
-        "comparePrice": 6599
-      }
-    ],
+    "variants": [{"id": "v1", "name": "60 Premium Gold Capsules", "price": 5599, "comparePrice": 6599}],
     "inStock": true,
     "sku": "NN-PBG-60",
     "weight": "150g"
@@ -52,32 +32,15 @@
     "comparePrice": 1599,
     "category": "wellness",
     "subcategory": "stress-relief",
-    "tags": [
-      "bestseller",
-      "wellness",
-      "stress"
-    ],
+    "tags": ["bestseller", "wellness", "stress"],
     "badge": "Hot",
-    "images": [
-      "/images/ashwagandha-premium-capsules.jpeg"
-    ],
+    "images": ["/images/ashwagandha-premium-capsules.jpeg"],
     "rating": 4.8,
     "reviewCount": 245,
-    "benefits": [
-      "Relieves stress",
-      "Boosts energy",
-      "Improves sleep"
-    ],
+    "benefits": ["Relieves stress", "Boosts energy", "Improves sleep"],
     "ingredients": "KSM-66 Ashwagandha Root Extract",
     "howToUse": "1 capsule twice daily",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Capsules",
-        "price": 1299,
-        "comparePrice": 1599
-      }
-    ],
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 1299, "comparePrice": 1599}],
     "inStock": true,
     "sku": "NN-ASH-60",
     "weight": "100g"
@@ -92,31 +55,15 @@
     "comparePrice": 2999,
     "category": "fitness",
     "subcategory": "stamina",
-    "tags": [
-      "premium",
-      "energy"
-    ],
+    "tags": ["premium", "energy"],
     "badge": "Premium",
-    "images": [
-      "/images/swarna-urja-capsules.jpeg"
-    ],
+    "images": ["/images/swarna-urja-capsules.jpeg"],
     "rating": 4.9,
     "reviewCount": 180,
-    "benefits": [
-      "Enhances stamina",
-      "Boosts immunity",
-      "Promotes overall vitality"
-    ],
+    "benefits": ["Enhances stamina", "Boosts immunity", "Promotes overall vitality"],
     "ingredients": "Swarna Bhasma, Essential Herbs",
     "howToUse": "1 capsule daily with milk",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "30 Capsules",
-        "price": 2499,
-        "comparePrice": 2999
-      }
-    ],
+    "variants": [{"id": "v1", "name": "30 Capsules", "price": 2499, "comparePrice": 2999}],
     "inStock": true,
     "sku": "NN-SUC-30",
     "weight": "80g"
@@ -131,31 +78,15 @@
     "comparePrice": 1899,
     "category": "wellness",
     "subcategory": "sleep",
-    "tags": [
-      "sleep",
-      "wellness"
-    ],
+    "tags": ["sleep", "wellness"],
     "badge": "New",
-    "images": [
-      "/images/nidaan-sleep-capsules.jpeg"
-    ],
+    "images": ["/images/nidaan-sleep-capsules.jpeg"],
     "rating": 4.7,
     "reviewCount": 150,
-    "benefits": [
-      "Promotes deep sleep",
-      "Relaxes mind and body",
-      "Non-habit forming"
-    ],
+    "benefits": ["Promotes deep sleep", "Relaxes mind and body"],
     "ingredients": "Valerian Root, Chamomile, Melatonin",
     "howToUse": "1 capsule 30 mins before bed",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Capsules",
-        "price": 1499,
-        "comparePrice": 1899
-      }
-    ],
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 1499, "comparePrice": 1899}],
     "inStock": true,
     "sku": "NN-NSC-60",
     "weight": "100g"
@@ -170,32 +101,15 @@
     "comparePrice": 1299,
     "category": "detox",
     "subcategory": "skin",
-    "tags": [
-      "detox",
-      "skin",
-      "immunity"
-    ],
+    "tags": ["detox", "skin", "immunity"],
     "badge": "Vegan",
-    "images": [
-      "/images/neem-moringa-capsules.jpeg"
-    ],
+    "images": ["/images/neem-moringa-capsules.jpeg"],
     "rating": 4.6,
     "reviewCount": 210,
-    "benefits": [
-      "Purifies blood",
-      "Supports healthy skin",
-      "Boosts immune system"
-    ],
+    "benefits": ["Purifies blood", "Supports healthy skin", "Boosts immune system"],
     "ingredients": "Neem Extract, Moringa Leaf Powder",
     "howToUse": "1 capsule daily after meal",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "60 Capsules",
-        "price": 999,
-        "comparePrice": 1299
-      }
-    ],
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 999, "comparePrice": 1299}],
     "inStock": true,
     "sku": "NN-NMC-60",
     "weight": "100g"
@@ -210,32 +124,15 @@
     "comparePrice": 4599,
     "category": "fitness",
     "subcategory": "endurance",
-    "tags": [
-      "premium",
-      "endurance",
-      "fitness"
-    ],
+    "tags": ["premium", "endurance", "fitness"],
     "badge": "Top Seller",
-    "images": [
-      "/images/himalayan-cordyceps-herb.jpeg"
-    ],
+    "images": ["/images/himalayan-cordyceps-herb.jpeg"],
     "rating": 4.9,
     "reviewCount": 305,
-    "benefits": [
-      "Increases oxygen uptake",
-      "Boosts ATP production",
-      "Supports lung health"
-    ],
+    "benefits": ["Increases oxygen uptake", "Boosts ATP production", "Supports lung health"],
     "ingredients": "Pure Himalayan Cordyceps Sinensis",
     "howToUse": "1 capsule pre-workout",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "30 Capsules",
-        "price": 3999,
-        "comparePrice": 4599
-      }
-    ],
+    "variants": [{"id": "v1", "name": "30 Capsules", "price": 3999, "comparePrice": 4599}],
     "inStock": true,
     "sku": "NN-HCC-30",
     "weight": "80g"
@@ -250,32 +147,15 @@
     "comparePrice": 5099,
     "category": "premium",
     "subcategory": "wellness",
-    "tags": [
-      "premium",
-      "saffron",
-      "wellness"
-    ],
+    "tags": ["premium", "saffron", "wellness"],
     "badge": "Premium",
-    "images": [
-      "/images/kashmiri-mongra-saffron-herb.jpeg"
-    ],
+    "images": ["/images/kashmiri-mongra-saffron-herb.jpeg"],
     "rating": 5.0,
     "reviewCount": 420,
-    "benefits": [
-      "Rich in antioxidants",
-      "Improves mood",
-      "Enhances skin radiance"
-    ],
+    "benefits": ["Rich in antioxidants", "Improves mood", "Enhances skin radiance"],
     "ingredients": "100% Pure Kashmiri Saffron Threads",
     "howToUse": "Soak a few threads in warm milk or water",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "5g Pack",
-        "price": 4599,
-        "comparePrice": 5099
-      }
-    ],
+    "variants": [{"id": "v1", "name": "5g Pack", "price": 4599, "comparePrice": 5099}],
     "inStock": true,
     "sku": "NN-KMS-05",
     "weight": "5g"
@@ -290,34 +170,316 @@
     "comparePrice": 2499,
     "category": "immunity",
     "subcategory": "kids",
-    "tags": [
-      "kids",
-      "immunity",
-      "bestseller"
-    ],
+    "tags": ["kids", "immunity"],
     "badge": "Best Seller",
-    "images": [
-      "/images/swarna-prashan-gold-gel.jpeg"
-    ],
+    "images": ["/images/swarna-prashan-gold-gel.jpeg"],
     "rating": 4.8,
     "reviewCount": 512,
-    "benefits": [
-      "Boosts immunity",
-      "Enhances memory",
-      "Improves digestion"
-    ],
+    "benefits": ["Boosts immunity", "Enhances memory", "Improves digestion"],
     "ingredients": "Swarna Bhasma, Brahmi, Shankhpushpi, Honey, Ghee",
     "howToUse": "1 drop daily morning",
-    "variants": [
-      {
-        "id": "v1",
-        "name": "15ml Bottle",
-        "price": 1999,
-        "comparePrice": 2499
-      }
-    ],
+    "variants": [{"id": "v1", "name": "15ml Bottle", "price": 1999, "comparePrice": 2499}],
     "inStock": true,
     "sku": "NN-SPG-15",
     "weight": "50g"
+  },
+  {
+    "id": "alpha-energy",
+    "name": "Alpha Energy Capsules",
+    "slug": "alpha-energy-capsules",
+    "shortDesc": "Fuel your active lifestyle with ultimate energy.",
+    "description": "A powerful blend of adaptogens to sustain physical endurance and mental focus throughout the day.",
+    "price": 1599,
+    "comparePrice": 1999,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": ["energy", "endurance", "fitness"],
+    "badge": "Hot",
+    "images": ["/images/Alpha Energy Capsules.jpeg"],
+    "rating": 4.7,
+    "reviewCount": 188,
+    "benefits": ["Sustains energy levels", "Enhances mental focus", "Reduces fatigue"],
+    "ingredients": "Ginseng, Maca Root, Rhodiola",
+    "howToUse": "Take 2 capsules with breakfast.",
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 1599, "comparePrice": 1999}],
+    "inStock": true,
+    "sku": "NN-AEC-60",
+    "weight": "120g"
+  },
+  {
+    "id": "gold-shilajit-formula",
+    "name": "Gold Shilajit Formula",
+    "slug": "gold-shilajit-formula",
+    "shortDesc": "Pure Shilajit infused with Gold for enhanced absorption.",
+    "description": "Experience the combined power of Himalayan Shilajit and Gold Bhasma. Rejuvenates tissues, balances hormones, and boosts stamina.",
+    "price": 2999,
+    "comparePrice": 3499,
+    "category": "wellness",
+    "subcategory": "vitality",
+    "tags": ["shilajit", "gold", "premium"],
+    "badge": "Premium",
+    "images": ["/images/Gold Shilajit Formula.jpeg"],
+    "rating": 4.9,
+    "reviewCount": 432,
+    "benefits": ["Potent antioxidant", "Balances hormones", "Improves stamina"],
+    "ingredients": "Purified Shilajit, Swarna Bhasma",
+    "howToUse": "Take a pea-sized amount with warm milk.",
+    "variants": [{"id": "v1", "name": "20g Resin", "price": 2999, "comparePrice": 3499}],
+    "inStock": true,
+    "sku": "NN-GSF-20",
+    "weight": "100g"
+  },
+  {
+    "id": "herbal-vitality",
+    "name": "Herbal Vitality Capsules",
+    "slug": "herbal-vitality-capsules",
+    "shortDesc": "Comprehensive vitality support for men and women.",
+    "description": "A daily vitality supplement enriched with traditional herbs to nourish the body, build resilience, and improve overall health.",
+    "price": 1199,
+    "comparePrice": 1499,
+    "category": "wellness",
+    "subcategory": "daily-health",
+    "tags": ["vitality", "daily"],
+    "badge": "Bestseller",
+    "images": ["/images/Herbal Vitality Capsules.jpeg"],
+    "rating": 4.6,
+    "reviewCount": 145,
+    "benefits": ["Builds physical resilience", "Nourishes body tissues", "Supports daily health"],
+    "ingredients": "Ashwagandha, Shatavari, Safed Musli",
+    "howToUse": "Take 1 capsule twice a day.",
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 1199, "comparePrice": 1499}],
+    "inStock": true,
+    "sku": "NN-HVC-60",
+    "weight": "100g"
+  },
+  {
+    "id": "huang-hua-cai",
+    "name": "Huang Hua Cai",
+    "slug": "huang-hua-cai",
+    "shortDesc": "Traditional Chinese Daylily buds for wellness.",
+    "description": "Premium dried daylily buds known for their cooling properties and ability to soothe the nerves and aid sleep.",
+    "price": 899,
+    "comparePrice": 1099,
+    "category": "wellness",
+    "subcategory": "herbs",
+    "tags": ["herbs", "sleep"],
+    "badge": "Vegan",
+    "images": ["/images/Huang Hua Cai.jpeg"],
+    "rating": 4.5,
+    "reviewCount": 89,
+    "benefits": ["Soothes nerves", "Promotes restful sleep", "Cooling properties"],
+    "ingredients": "Dried Daylily Buds",
+    "howToUse": "Steep in hot water as tea or use in soups.",
+    "variants": [{"id": "v1", "name": "100g Pack", "price": 899, "comparePrice": 1099}],
+    "inStock": true,
+    "sku": "NN-HHC-100",
+    "weight": "100g"
+  },
+  {
+    "id": "kaunch-beej",
+    "name": "Kaunch Beej Capsules",
+    "slug": "kaunch-beej-capsules",
+    "shortDesc": "Natural L-Dopa source for mood and stamina.",
+    "description": "Kaunch Beej (Mucuna Pruriens) is known to support a healthy nervous system, improve mood, and boost reproductive health.",
+    "price": 1099,
+    "comparePrice": 1399,
+    "category": "wellness",
+    "subcategory": "nervous-system",
+    "tags": ["mood", "stamina", "bestseller"],
+    "badge": "Best Seller",
+    "images": ["/images/Kaunch Beej Capsules.jpeg"],
+    "rating": 4.8,
+    "reviewCount": 276,
+    "benefits": ["Rich source of L-Dopa", "Supports mood and focus", "Boosts reproductive health"],
+    "ingredients": "Mucuna Pruriens Seed Extract",
+    "howToUse": "Take 1 capsule daily.",
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 1099, "comparePrice": 1399}],
+    "inStock": true,
+    "sku": "NN-KBC-60",
+    "weight": "100g"
+  },
+  {
+    "id": "keeda-jadi",
+    "name": "Keeda Jadi (Cordyceps Sinensis)",
+    "slug": "keeda-jadi",
+    "shortDesc": "The prized 'Himalayan Viagra' for ultimate strength.",
+    "description": "Wild-harvested Keeda Jadi, a highly sought-after fungus known to exponentially increase stamina, vitality, and cellular energy.",
+    "price": 8999,
+    "comparePrice": 9999,
+    "category": "premium",
+    "subcategory": "rare-herbs",
+    "tags": ["premium", "rare", "stamina"],
+    "badge": "Premium",
+    "images": ["/images/Keeda Jadi.jpeg"],
+    "rating": 5.0,
+    "reviewCount": 56,
+    "benefits": ["Exponentially boosts stamina", "Increases cellular energy", "Improves lung capacity"],
+    "ingredients": "100% Wild Keeda Jadi",
+    "howToUse": "Consume as advised by an Ayurvedic practitioner.",
+    "variants": [{"id": "v1", "name": "5g Pack", "price": 8999, "comparePrice": 9999}],
+    "inStock": true,
+    "sku": "NN-KDJ-05",
+    "weight": "5g"
+  },
+  {
+    "id": "kabab-chini",
+    "name": "Kabab Chini (Cubeb)",
+    "slug": "kabab-chini",
+    "shortDesc": "Aromatic spice for respiratory and digestive health.",
+    "description": "Cubeb pepper is valued in Ayurveda for clearing the respiratory tract and improving digestion while adding a unique flavor.",
+    "price": 499,
+    "comparePrice": 699,
+    "category": "wellness",
+    "subcategory": "spices",
+    "tags": ["spices", "digestion", "respiratory"],
+    "badge": "New",
+    "images": ["/images/Kubeb (Kabab Chini).jpeg"],
+    "rating": 4.4,
+    "reviewCount": 112,
+    "benefits": ["Clears respiratory tract", "Improves digestion", "Aromatic spice"],
+    "ingredients": "Pure Cubeb Pepper",
+    "howToUse": "Use in cooking or as an herbal infusion.",
+    "variants": [{"id": "v1", "name": "100g Pack", "price": 499, "comparePrice": 699}],
+    "inStock": true,
+    "sku": "NN-KBC-100",
+    "weight": "100g"
+  },
+  {
+    "id": "kusum-beej",
+    "name": "Kusum Beej",
+    "slug": "kusum-beej",
+    "shortDesc": "Safflower seeds for heart and skin health.",
+    "description": "Rich in linoleic acid, Kusum Beej supports cardiovascular health, regulates cholesterol, and promotes healthy, glowing skin.",
+    "price": 599,
+    "comparePrice": 799,
+    "category": "wellness",
+    "subcategory": "seeds",
+    "tags": ["heart-health", "skin", "seeds"],
+    "badge": "Vegan",
+    "images": ["/images/Kusum) ke beej.jpeg"],
+    "rating": 4.5,
+    "reviewCount": 98,
+    "benefits": ["Supports heart health", "Regulates cholesterol", "Promotes glowing skin"],
+    "ingredients": "Pure Safflower Seeds",
+    "howToUse": "Consume roasted or extract oil.",
+    "variants": [{"id": "v1", "name": "250g Pack", "price": 599, "comparePrice": 799}],
+    "inStock": true,
+    "sku": "NN-KSB-250",
+    "weight": "250g"
+  },
+  {
+    "id": "kusumbh",
+    "name": "Kusumbh (Safflower Petals)",
+    "slug": "kusumbh",
+    "shortDesc": "A natural alternative to saffron for wellness.",
+    "description": "Safflower petals used traditionally to improve blood circulation, ease menstrual discomfort, and as a natural food colorant.",
+    "price": 799,
+    "comparePrice": 999,
+    "category": "wellness",
+    "subcategory": "herbs",
+    "tags": ["circulation", "herbs"],
+    "badge": "New",
+    "images": ["/images/Kusumbh.jpeg"],
+    "rating": 4.6,
+    "reviewCount": 134,
+    "benefits": ["Improves blood circulation", "Eases menstrual discomfort", "Natural colorant"],
+    "ingredients": "Dried Safflower Petals",
+    "howToUse": "Steep in hot water as a tea.",
+    "variants": [{"id": "v1", "name": "50g Pack", "price": 799, "comparePrice": 999}],
+    "inStock": true,
+    "sku": "NN-KSH-50",
+    "weight": "50g"
+  },
+  {
+    "id": "moringa-capsules",
+    "name": "Moringa Capsules",
+    "slug": "moringa-capsules",
+    "shortDesc": "The ultimate superfood for daily nutrition.",
+    "description": "Packed with vitamins, minerals, and antioxidants, Moringa boosts energy levels, supports immunity, and promotes joint health.",
+    "price": 899,
+    "comparePrice": 1199,
+    "category": "wellness",
+    "subcategory": "superfoods",
+    "tags": ["superfood", "immunity", "energy"],
+    "badge": "Top Seller",
+    "images": ["/images/Moringa Capsules.jpeg"],
+    "rating": 4.8,
+    "reviewCount": 389,
+    "benefits": ["Rich in vitamins and minerals", "Boosts daily energy", "Supports joint health"],
+    "ingredients": "Organic Moringa Oleifera Leaf Powder",
+    "howToUse": "Take 2 capsules daily with meals.",
+    "variants": [{"id": "v1", "name": "90 Capsules", "price": 899, "comparePrice": 1199}],
+    "inStock": true,
+    "sku": "NN-MRC-90",
+    "weight": "150g"
+  },
+  {
+    "id": "narangi",
+    "name": "Narangi Extract",
+    "slug": "narangi-extract",
+    "shortDesc": "Vitamin C rich bitter orange extract.",
+    "description": "Known for its digestive benefits and high Vitamin C content, Narangi extract aids weight management and boosts metabolism.",
+    "price": 699,
+    "comparePrice": 899,
+    "category": "wellness",
+    "subcategory": "metabolism",
+    "tags": ["metabolism", "weight-management"],
+    "badge": "Vegan",
+    "images": ["/images/Narangi.jpeg"],
+    "rating": 4.5,
+    "reviewCount": 167,
+    "benefits": ["Boosts metabolism", "Aids weight management", "High in Vitamin C"],
+    "ingredients": "Bitter Orange (Citrus Aurantium) Extract",
+    "howToUse": "Take 1 capsule before meals.",
+    "variants": [{"id": "v1", "name": "60 Capsules", "price": 699, "comparePrice": 899}],
+    "inStock": true,
+    "sku": "NN-NRG-60",
+    "weight": "100g"
+  },
+  {
+    "id": "safed-musli-powder",
+    "name": "Safed Musli Powder",
+    "slug": "safed-musli-powder",
+    "shortDesc": "Premium adaptogen for strength and vitality.",
+    "description": "Pure Safed Musli root powder, a renowned Ayurvedic herb used to increase muscle mass, strength, and overall vitality.",
+    "price": 1299,
+    "comparePrice": 1599,
+    "category": "fitness",
+    "subcategory": "strength",
+    "tags": ["strength", "vitality", "muscle"],
+    "badge": "Bestseller",
+    "images": ["/images/Safed Musli Powder.jpeg"],
+    "rating": 4.7,
+    "reviewCount": 254,
+    "benefits": ["Increases muscle mass", "Boosts strength and vitality", "Supports reproductive health"],
+    "ingredients": "100% Pure Safed Musli Root Powder",
+    "howToUse": "Mix 1 tsp in warm milk daily.",
+    "variants": [{"id": "v1", "name": "100g Pack", "price": 1299, "comparePrice": 1599}],
+    "inStock": true,
+    "sku": "NN-SMP-100",
+    "weight": "100g"
+  },
+  {
+    "id": "shankhpushpi",
+    "name": "Shankhpushpi",
+    "slug": "shankhpushpi",
+    "shortDesc": "Brain tonic for memory and cognitive function.",
+    "description": "An ancient Ayurvedic herb used to improve memory, concentration, and reduce mental fatigue and stress.",
+    "price": 999,
+    "comparePrice": 1299,
+    "category": "wellness",
+    "subcategory": "cognitive-health",
+    "tags": ["memory", "focus", "stress"],
+    "badge": "New",
+    "images": ["/images/Shankhpushpi.jpeg"],
+    "rating": 4.8,
+    "reviewCount": 198,
+    "benefits": ["Improves memory and concentration", "Reduces mental fatigue", "Calms the mind"],
+    "ingredients": "Pure Shankhpushpi Powder",
+    "howToUse": "Take 1 tsp with water or milk twice a day.",
+    "variants": [{"id": "v1", "name": "100g Pack", "price": 999, "comparePrice": 1299}],
+    "inStock": true,
+    "sku": "NN-SHP-100",
+    "weight": "100g"
   }
 ]

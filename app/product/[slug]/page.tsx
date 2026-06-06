@@ -63,7 +63,7 @@ export default function ProductDetailPage() {
           {/* Product Image */}
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
             <div className="aspect-square bg-gradient-to-br from-brand-50 to-cream rounded-3xl flex items-center justify-center sticky top-24 p-6">
-              {product.images && product.images.length > 0 && !product.images[0].includes('products/') && !imgError ? (
+              {product.images && product.images.length > 0 && !imgError ? (
                 <div className="w-full h-full relative flex items-center justify-center">
                   <img
                     src={product.images[0]}
