@@ -14,6 +14,7 @@ import {
   ArrowRight, 
   Check, 
   PackageCheck, 
+  Star,
   Play
 } from 'lucide-react';
 import DoctorsSection from '@/components/home/DoctorsSection';
@@ -93,18 +94,19 @@ const PACKAGES: PackageOption[] = [
   },
 ];
 
+// FRONT IMAGE FIRST AS REQUESTED BY USER
 const PRODUCT_IMAGES = [
-  {
-    id: 'hero',
-    label: 'सम्पूर्ण पैक',
-    sub: 'Full View',
-    src: '/images/naag-chattri-hero.png',
-  },
   {
     id: 'front',
     label: 'सामने (Front)',
     sub: 'Bottle View',
     src: '/images/naag-chattri-front.png',
+  },
+  {
+    id: 'hero',
+    label: 'सम्पूर्ण पैक',
+    sub: 'Full View',
+    src: '/images/naag-chattri-hero.png',
   },
   {
     id: 'back',
@@ -155,7 +157,7 @@ export default function SingleProductPage() {
   // Default to Cash on Delivery (COD) for maximum simplicity & conversion
   const [paymentOption, setPaymentOption] = useState<'cod' | 'full'>('cod');
   const [selectedPackage, setSelectedPackage] = useState<PackageOption>(PACKAGES[1]); // 2-pack default best value
-  const [selectedImage, setSelectedImage] = useState<string>('/images/naag-chattri-hero.png');
+  const [selectedImage, setSelectedImage] = useState<string>('/images/naag-chattri-front.png'); // Front image first!
   
   const [formData, setFormData] = useState({
     fullName: '', mobile: '', address: '', city: '', state: '', pincode: ''
@@ -467,18 +469,18 @@ export default function SingleProductPage() {
   }
 
   return (
-    <div className="w-full bg-stone-50 font-sans text-stone-900 pb-16 sm:pb-0">
+    <div className="w-full bg-stone-50 font-sans text-stone-900 pb-20 sm:pb-0">
       
       {/* 0. AUTHENTIC TOP BANNER */}
-      <div className="bg-emerald-950 text-emerald-100 text-xs font-semibold py-2.5 px-4 text-center border-b border-emerald-900/40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap sm:flex-nowrap">
-          <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <Award className="w-4 h-4 text-amber-400 shrink-0" />
-            <span>FSSAI स्वीकृत • 100% शाकाहारी आयुर्वेदिक फॉर्मूला (26 Veg Capsules)</span>
+      <div className="bg-emerald-950 text-emerald-100 text-xs font-semibold py-2 px-3 sm:px-4 text-center border-b border-emerald-900/40">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+          <div className="flex items-center gap-1.5 mx-auto sm:mx-0 text-[11px] sm:text-xs">
+            <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+            <span>FSSAI स्वीकृत मानक • 100% शाकाहारी आयुर्वेदिक कैप्सूल्स</span>
           </div>
-          <div className="hidden sm:flex items-center gap-6 text-[11px] text-emerald-300">
+          <div className="hidden sm:flex items-center gap-5 text-[11px] text-emerald-300">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> GMP Certified Lab</span>
-            <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-400" /> 100% गुप्त (Secret) पैकिंग</span>
+            <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-400" /> 100% गुप्त पैकिंग</span>
             <button onClick={openConsultation} className="hover:underline text-amber-300 font-bold flex items-center gap-1">
               <PhoneCall className="w-3 h-3" /> डॉ. मुफ़्त परामर्श
             </button>
@@ -486,81 +488,195 @@ export default function SingleProductPage() {
         </div>
       </div>
 
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-stone-950 via-emerald-950 to-emerald-900 text-white pt-10 sm:pt-14 pb-16 sm:pb-20 px-4">
+      {/* 1. HERO SECTION - MOBILE FIRST DESIGN */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-stone-950 via-emerald-950 to-emerald-900 text-white pt-6 sm:pt-12 pb-12 sm:pb-20 px-3 sm:px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* MOBILE ONLY TOP HEADLINE (Shows before image on mobile phones so customer knows what it is) */}
+          <div className="lg:hidden text-center mb-4">
+            <div className="inline-flex items-center gap-1.5 bg-emerald-900/90 border border-emerald-600/60 text-emerald-200 text-[11px] font-bold px-3 py-1 rounded-full mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              100% शुद्ध आयुर्वेदिक • 0% साइड इफ़ेक्ट
+            </div>
             
-            {/* Hero Text Content */}
-            <div className="lg:col-span-7 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-emerald-900/80 border border-emerald-700/60 text-emerald-200 text-xs font-bold px-4 py-1.5 rounded-full mb-5 shadow-sm backdrop-blur-md">
-                <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-                प्रमाणिक एवं शुद्ध आयुर्वेदिक उपचार
+            <h1 className="text-2xl sm:text-3xl font-black font-heading leading-tight text-stone-100">
+              निरोग नेचर <span className="text-amber-400">नाग छत्री</span>
+            </h1>
+            <p className="text-xs text-stone-300 mt-1 font-medium">
+              प्राकृतिक ताकत, पौरुष ऊर्जा एवं अंदरूनी स्टैमिना (26 Veg Capsules)
+            </p>
+
+            <div className="flex items-center justify-center gap-1.5 mt-2 text-xs">
+              <div className="flex text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                ))}
               </div>
+              <span className="font-bold text-amber-300">4.9 / 5</span>
+              <span className="text-stone-400">(32,400+ संतुष्ट पुरुष)</span>
+            </div>
+          </div>
 
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black font-heading leading-tight mb-4 text-stone-100">
-                प्राकृतिक शक्ति एवं ऊर्जा <br />
-                <span className="text-amber-400 font-bold">निरोग नेचर नाग छत्री</span>
-              </h1>
-
-              <p className="text-stone-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0 font-medium">
-                कौंच बीज, शुद्ध शिलाजीत, अश्वगंधा, सफ़ेद मूसली और 9 शक्तिशाली औषधियों का सिद्ध फॉर्मूला। कमजोरी, थकान और स्ट्रेस को मिटाकर अंदरूनी ताकत व नया जोश पाएँ।
-              </p>
-
-              {/* 3 Highlights */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6 bg-stone-900/70 border border-emerald-800/40 p-3.5 rounded-2xl backdrop-blur-sm max-w-lg mx-auto lg:mx-0">
-                <div className="text-center">
-                  <p className="text-amber-400 font-black text-lg sm:text-xl font-heading">100%</p>
-                  <p className="text-[11px] sm:text-xs text-stone-300 font-medium">शुद्ध आयुर्वेदिक</p>
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-center">
+            
+            {/* PRODUCT CARD SHOWCASE (Renders first on mobile via order-1 / desktop right order-2) */}
+            <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+              <div className="bg-white rounded-3xl p-3.5 sm:p-5 shadow-2xl border border-emerald-900/30 text-stone-900 w-full max-w-sm">
+                
+                {/* Top Card Badges - Clean header without any overlapping or clipping */}
+                <div className="flex items-center justify-between gap-2 mb-2 px-0.5">
+                  <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    FSSAI: 1332399900000
+                  </span>
+                  <span className="bg-amber-500 text-stone-950 font-black text-xs px-3 py-1 rounded-full shadow-sm">
+                    बचत ₹{selectedPackage.savings}
+                  </span>
                 </div>
-                <div className="text-center border-x border-emerald-800/40">
-                  <p className="text-amber-400 font-black text-lg sm:text-xl font-heading">30,000+</p>
-                  <p className="text-[11px] sm:text-xs text-stone-300 font-medium">संतुष्ट ग्राहक</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-amber-400 font-black text-lg sm:text-xl font-heading">0%</p>
-                  <p className="text-[11px] sm:text-xs text-stone-300 font-medium">साइड इफ़ेक्ट</p>
-                </div>
-              </div>
 
-              {/* Quick Package Selector in Hero */}
-              <div className="mb-6 max-w-lg mx-auto lg:mx-0 text-left">
-                <p className="text-xs font-bold text-amber-300 mb-2 uppercase tracking-wide">पैक चुनें (Select Pack):</p>
-                <div className="grid grid-cols-3 gap-2">
-                  {PACKAGES.map((pkg) => {
-                    const isSelected = selectedPackage.id === pkg.id;
+                {/* Main Product Showcase - Crisp White Background so bottle blends seamlessly */}
+                <div className="aspect-square w-full rounded-2xl bg-white p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-stone-200 relative shadow-sm">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={selectedImage} 
+                    alt="निरोग नेचर नाग छत्री (Nirog Nature Naag Chattri)" 
+                    className="w-full h-full object-contain transition-all duration-300" 
+                  />
+                  <div className="absolute bottom-2 left-2 bg-stone-900/85 backdrop-blur-sm text-[10px] text-amber-300 font-bold px-2.5 py-1 rounded-md border border-amber-500/30">
+                    {selectedImage === '/images/naag-chattri-front.png' 
+                      ? 'सामने (Front View)' 
+                      : selectedImage === '/images/naag-chattri-hero.png' 
+                        ? 'सम्पूर्ण पैक (Full View)' 
+                        : 'पीछे (Back & Label)'}
+                  </div>
+                </div>
+
+                {/* View Switcher: FRONT IMAGE FIRST */}
+                <div className="grid grid-cols-3 gap-2 mt-3">
+                  {PRODUCT_IMAGES.map((img) => {
+                    const isSelected = selectedImage === img.src;
                     return (
                       <button
-                        key={pkg.id}
+                        key={img.id}
                         type="button"
-                        onClick={() => setSelectedPackage(pkg)}
-                        className={`relative p-2.5 rounded-xl border text-left transition-all ${
+                        onClick={() => setSelectedImage(img.src)}
+                        className={`flex flex-col items-center p-1.5 sm:p-2 rounded-xl border-2 transition-all ${
                           isSelected
-                            ? 'border-amber-400 bg-amber-400/20 text-white shadow-md ring-1 ring-amber-400'
-                            : 'border-emerald-800/50 bg-stone-950/40 text-stone-300 hover:border-emerald-600'
+                            ? 'border-emerald-700 bg-emerald-50 text-emerald-950 shadow-sm ring-1 ring-emerald-600'
+                            : 'border-stone-200 bg-stone-50 text-stone-600 hover:border-emerald-300'
                         }`}
                       >
-                        {pkg.isPopular && (
-                          <span className="absolute -top-2 left-2 bg-amber-500 text-stone-950 font-black text-[9px] px-1.5 py-0.5 rounded shadow">
-                            बेस्ट सेलर
-                          </span>
-                        )}
-                        <p className="text-xs font-black leading-tight">{pkg.duration}</p>
-                        <p className="text-[10px] text-stone-400">{pkg.capsules} कैप्सूल</p>
-                        <p className="text-sm font-black text-amber-400 mt-1">₹{pkg.price}</p>
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg overflow-hidden bg-white p-0.5 mb-1 shrink-0 border border-stone-200">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={img.src} alt={img.label} className="w-full h-full object-contain" />
+                        </div>
+                        <span className="text-[11px] font-bold truncate leading-tight">{img.label}</span>
                       </button>
                     );
                   })}
                 </div>
+
+                {/* Price Display */}
+                <div className="text-center mt-3 pt-3 border-t border-stone-100">
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="text-stone-400 text-xs sm:text-sm line-through">MRP: ₹{selectedPackage.mrp}</span>
+                    <span className="text-3xl sm:text-4xl font-black text-emerald-900">₹{selectedPackage.price}</span>
+                    <span className="text-[11px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">फ्री डिलीवरी</span>
+                  </div>
+                  <p className="text-[11px] text-amber-700 font-bold mt-1">
+                    ⚡ आज ऑर्डर करने पर ₹{selectedPackage.savings} की सीधी छूट
+                  </p>
+                </div>
+
+                {/* Mobile Pack Selection Buttons inside Card */}
+                <div className="mt-3 text-left">
+                  <p className="text-xs font-bold text-stone-800 mb-1.5 uppercase tracking-wide">
+                    पैक चुनें (Select Pack):
+                  </p>
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+                    {PACKAGES.map((pkg) => {
+                      const isSelected = selectedPackage.id === pkg.id;
+                      return (
+                        <button
+                          key={pkg.id}
+                          type="button"
+                          onClick={() => setSelectedPackage(pkg)}
+                          className={`relative p-2 rounded-xl border-2 text-left transition-all ${
+                            isSelected
+                              ? 'border-emerald-700 bg-emerald-50 text-emerald-950 ring-1 ring-emerald-600 shadow-sm'
+                              : 'border-stone-200 bg-stone-50 text-stone-700 hover:border-stone-300'
+                          }`}
+                        >
+                          {pkg.isPopular && (
+                            <span className="absolute -top-2 left-1.5 bg-amber-500 text-stone-950 font-black text-[8px] px-1 py-0.2 rounded shadow">
+                              बेस्ट
+                            </span>
+                          )}
+                          <p className="text-[11px] font-black leading-tight text-stone-900">{pkg.duration}</p>
+                          <p className="text-[9px] text-stone-500">{pkg.capsules} कैप्सूल</p>
+                          <p className="text-xs font-black text-emerald-800 mt-0.5">₹{pkg.price}</p>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Instant Order Button */}
+                <button 
+                  onClick={scrollToOrderForm}
+                  className="w-full mt-3.5 py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 text-base font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-1.5 transform active:scale-95"
+                >
+                  👉 अभी ऑर्डर करें (₹{selectedPackage.price} COD)
+                </button>
+                <p className="text-[10px] text-stone-500 text-center mt-1.5 font-medium">
+                  🔒 कोई एडवांस नहीं • पार्सल घर पहुँचने पर पैसे दें
+                </p>
+              </div>
+            </div>
+
+            {/* HERO TEXT & DETAILS (Desktop Left / Mobile Below Card) */}
+            <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
+              
+              {/* Desktop Headline */}
+              <div className="hidden lg:block">
+                <div className="inline-flex items-center gap-2 bg-emerald-900/80 border border-emerald-700/60 text-emerald-200 text-xs font-bold px-4 py-1.5 rounded-full mb-4 shadow-sm backdrop-blur-md">
+                  <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+                  प्रमाणिक एवं शुद्ध आयुर्वेदिक उपचार
+                </div>
+
+                <h1 className="text-3xl lg:text-5xl font-black font-heading leading-tight mb-4 text-stone-100">
+                  प्राकृतिक शक्ति एवं ऊर्जा <br />
+                  <span className="text-amber-400 font-bold">निरोग नेचर नाग छत्री</span>
+                </h1>
+
+                <p className="text-stone-300 text-base lg:text-lg leading-relaxed mb-6 max-w-xl font-medium">
+                  कौंच बीज (200mg), शुद्ध शिलाजीत (100mg), अश्वगंधा (100mg) और सफ़ेद मूसली (100mg) समेत 9 शक्तिशाली औषधियों का संगम। कमजोरी, थकान और स्ट्रेस मिटाकर अंदरूनी ताकत व नया जोश पाएँ।
+                </p>
+              </div>
+
+              {/* 3 Highlights */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 my-4 sm:mb-6 bg-stone-900/70 border border-emerald-800/40 p-3 rounded-2xl backdrop-blur-sm max-w-lg mx-auto lg:mx-0">
+                <div className="text-center">
+                  <p className="text-amber-400 font-black text-base sm:text-xl font-heading">100%</p>
+                  <p className="text-[10px] sm:text-xs text-stone-300 font-medium">शुद्ध आयुर्वेदिक</p>
+                </div>
+                <div className="text-center border-x border-emerald-800/40">
+                  <p className="text-amber-400 font-black text-base sm:text-xl font-heading">30,000+</p>
+                  <p className="text-[10px] sm:text-xs text-stone-300 font-medium">संतुष्ट ग्राहक</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-amber-400 font-black text-base sm:text-xl font-heading">0%</p>
+                  <p className="text-[10px] sm:text-xs text-stone-300 font-medium">साइड इफ़ेक्ट</p>
+                </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <button 
                   onClick={scrollToOrderForm}
-                  className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
+                  className="px-8 py-3.5 sm:py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
                 >
-                  📦 अभी ऑर्डर करें (₹{selectedPackage.price} COD) <ArrowRight className="w-5 h-5" />
+                  📦 अभी ऑर्डर फॉर्म भरें <ArrowRight className="w-5 h-5" />
                 </button>
                 <a 
                   href="#product-video"
@@ -571,92 +687,11 @@ export default function SingleProductPage() {
                 </a>
               </div>
 
-              <p className="text-xs text-emerald-300 mt-4 font-semibold flex items-center justify-center lg:justify-start gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-amber-400" /> कोई एडवांस नहीं • पार्सल घर मिलने पर पैसे दें
-              </p>
-            </div>
-
-            {/* Product Card Showcase */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative bg-gradient-to-b from-emerald-900/60 to-stone-900/90 border border-emerald-700/50 p-5 sm:p-6 rounded-3xl shadow-2xl backdrop-blur-md max-w-sm w-full">
-                <div className="absolute top-4 right-4 z-10 bg-amber-500 text-stone-950 text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
-                  बचत ₹{selectedPackage.savings}
-                </div>
-
-                <div className="aspect-square w-full rounded-2xl bg-stone-950/40 p-4 mb-3 flex items-center justify-center overflow-hidden border border-emerald-800/30 relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src={selectedImage} 
-                    alt="निरोग नेचर नाग छत्री (Nirog Nature Naag Chattri)" 
-                    className="w-full h-full object-contain transition-all duration-300" 
-                  />
-                  <div className="absolute bottom-2 left-2 bg-black/75 backdrop-blur-sm text-[10px] text-amber-300 font-bold px-2 py-0.5 rounded border border-amber-500/30">
-                    {selectedImage === '/images/naag-chattri-hero.png' 
-                      ? 'सम्पूर्ण पैक (Full View)' 
-                      : selectedImage === '/images/naag-chattri-front.png' 
-                        ? 'सामने (Front View)' 
-                        : 'पीछे (Back & Label)'}
-                  </div>
-                </div>
-
-                {/* View Switcher (3 Real Views) */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  {PRODUCT_IMAGES.map((img) => {
-                    const isSelected = selectedImage === img.src;
-                    return (
-                      <button
-                        key={img.id}
-                        type="button"
-                        onClick={() => setSelectedImage(img.src)}
-                        className={`flex flex-col items-center p-1.5 rounded-xl border transition-all text-[11px] font-bold ${
-                          isSelected
-                            ? 'border-amber-400 bg-amber-400/20 text-amber-300'
-                            : 'border-emerald-800/40 bg-stone-950/40 text-stone-400 hover:border-emerald-700'
-                        }`}
-                      >
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-stone-950 p-0.5 mb-1 shrink-0">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={img.src} alt={img.label} className="w-full h-full object-contain" />
-                        </div>
-                        <span className="truncate">{img.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <div className="text-center">
-                  <p className="text-stone-400 text-xs font-semibold line-through">MRP: ₹{selectedPackage.mrp}</p>
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <span className="text-3xl sm:text-4xl font-black text-amber-400">₹{selectedPackage.price}</span>
-                    <span className="text-xs bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded font-bold">फ्री डिलीवरी</span>
-                  </div>
-
-                  <div className="space-y-1.5 text-stone-300 text-xs font-medium text-left border-t border-emerald-800/40 pt-3 mb-4">
-                    <p className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span><strong>26 शाकाहारी कैप्सूल</strong> प्रति डिब्बी</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span><strong>FSSAI Lic No:</strong> 1332399900000</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span><strong>कैश ऑन डिलीवरी (COD)</strong> उपलब्ध</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span><strong>गुपचुप (गोपनीय) पार्सल</strong> - किसी को पता नहीं चलेगा</span>
-                    </p>
-                  </div>
-
-                  <button 
-                    onClick={scrollToOrderForm}
-                    className="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 text-base font-black rounded-xl shadow-lg transition-all"
-                  >
-                    👉 अभी ऑर्डर फॉर्म भरें
-                  </button>
-                </div>
+              <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] sm:text-xs text-emerald-200 max-w-lg mx-auto lg:mx-0">
+                <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-amber-400 shrink-0" /> 100% गुप्त पैकिंग</span>
+                <span className="flex items-center gap-1.5"><Truck className="w-3.5 h-3.5 text-amber-400 shrink-0" /> फ्री होम डिलीवरी</span>
+                <span className="flex items-center gap-1.5"><PackageCheck className="w-3.5 h-3.5 text-amber-400 shrink-0" /> 24 घंटे में डिस्पैच</span>
+                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-amber-400 shrink-0" /> FSSAI प्रमाणित</span>
               </div>
             </div>
 
@@ -664,26 +699,26 @@ export default function SingleProductPage() {
         </div>
       </section>
 
-      {/* 2. REAL VIDEO SHOWCASE SECTION */}
-      <section id="product-video" className="py-14 sm:py-18 px-4 bg-stone-900 text-white border-b border-stone-800">
+      {/* 2. REAL VIDEO SHOWCASE SECTION - MOBILE OPTIMIZED */}
+      <section id="product-video" className="py-12 sm:py-16 px-3 sm:px-4 bg-stone-900 text-white border-b border-stone-800">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-emerald-900/80 border border-emerald-600/50 text-emerald-200 text-xs font-bold px-4 py-1.5 rounded-full mb-4">
-            <Sparkles className="w-4 h-4 text-amber-400" />
+          <div className="inline-flex items-center gap-1.5 bg-emerald-900/80 border border-emerald-600/50 text-emerald-200 text-xs font-bold px-3.5 py-1 rounded-full mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             100% असली व प्रमाणिक उत्पाद
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-stone-100 mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-stone-100 mb-2">
             🎬 असली वीडियो देखें • निरोग नेचर नाग छत्री
           </h2>
-          <p className="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 font-medium">
-            देखें कि असली नाग छत्री कैसी दिखती है, पैकेजिंग कैसी है और सीलबंद पैक में क्या-क्या मिलता है। कोई दिखावा नहीं — सिर्फ शुद्ध प्राकृतिक शक्ति।
+          <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto mb-6 font-medium">
+            देखें कि असली नाग छत्री कैसी दिखती है, पैकेजिंग कैसी है और सीलबंद डिब्बी में क्या मिलता है।
           </p>
 
-          <div className="relative mx-auto max-w-3xl rounded-3xl overflow-hidden shadow-2xl border-2 border-emerald-700/60 bg-black aspect-video sm:aspect-[16/9] flex items-center justify-center">
+          <div className="relative mx-auto max-w-2xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-emerald-700/60 bg-black aspect-video flex items-center justify-center">
             <video
               controls
               playsInline
               preload="metadata"
-              poster="/images/naag-chattri-hero.png"
+              poster="/images/naag-chattri-front.png"
               className="w-full h-full object-contain bg-black"
             >
               <source src="/images/main video.mov" type="video/mp4" />
@@ -692,135 +727,107 @@ export default function SingleProductPage() {
             </video>
           </div>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
               onClick={scrollToOrderForm}
-              className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
+              className="w-full sm:w-auto px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
             >
               📦 मुझे यह मंगवाना है (Order COD) <ArrowRight className="w-5 h-5" />
             </button>
             <a
               href="tel:+919899756597"
-              className="w-full sm:w-auto px-6 py-4 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-sm rounded-2xl border border-stone-700 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-sm rounded-2xl border border-stone-700 transition-all flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-emerald-400" />
               डॉक्टर से बात करें: 98997 56597
             </a>
           </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 pt-6 border-t border-stone-800/80 text-xs text-stone-300">
-            <div className="flex items-center justify-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>FSSAI स्वीकृत</span>
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>100% शाकाहारी</span>
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <Truck className="w-4 h-4 text-emerald-400" />
-              <span>फ्री होम डिलीवरी</span>
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <Lock className="w-4 h-4 text-emerald-400" />
-              <span>सीलबंद डिब्बी</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* 3. AUTHENTIC HERBAL INGREDIENTS (Exact from bottle label) */}
-      <section id="ingredients" className="py-14 sm:py-16 px-4 bg-white border-b border-stone-200">
+      {/* 3. AUTHENTIC HERBAL INGREDIENTS */}
+      <section id="ingredients" className="py-12 sm:py-16 px-3 sm:px-4 bg-white border-b border-stone-200">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="text-emerald-800 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-              🌿 100% प्राकृतिक घटक (Label Composition)
+              🌿 100% प्राकृतिक घटक (Label Formula)
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black font-heading text-stone-900 mt-3 mb-2">
+            <h2 className="text-2xl sm:text-3xl font-black font-heading text-stone-900 mt-2 mb-1.5">
               किन 9 शक्तिशाली जड़ी-बूटियों से बना है?
             </h2>
-            <p className="text-stone-600 text-sm">
+            <p className="text-stone-600 text-xs sm:text-sm">
               बोतल के पीछे छपी प्रामाणिक सामग्री — हर कैप्सूल में शुद्ध जड़ी-बूटियों का सटीक अनुपात:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {INGREDIENTS.map((item, i) => (
-              <div key={i} className="bg-stone-50 p-5 rounded-2xl border border-stone-200 hover:border-emerald-400 transition-colors">
+              <div key={i} className="bg-stone-50 p-4 rounded-2xl border border-stone-200 hover:border-emerald-400 transition-colors">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-9 h-9 bg-emerald-100 rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">
                     <Leaf className="w-4 h-4 text-emerald-800" />
                   </div>
-                  <span className="text-xs font-black text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-full">
+                  <span className="text-xs font-black text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-full">
                     {item.dose}
                   </span>
                 </div>
-                <h3 className="font-bold text-stone-900 text-sm mb-1.5 font-heading">{item.name}</h3>
+                <h3 className="font-bold text-stone-900 text-sm mb-1 font-heading">{item.name}</h3>
                 <p className="text-stone-600 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 bg-amber-50 border border-amber-200 p-4 rounded-2xl text-center text-xs text-amber-950 font-medium max-w-2xl mx-auto">
+          <div className="mt-6 bg-amber-50 border border-amber-200 p-3.5 rounded-2xl text-center text-xs text-amber-950 font-medium max-w-2xl mx-auto">
             ⚡ <strong>नोट:</strong> इसमें कोई हानिकारक रसायन, स्टेरॉयड या प्रिजर्वेटिव नहीं है। यह 100% शाकाहारी (Veg Capsules) और सुरक्षित है।
           </div>
         </div>
       </section>
 
       {/* 4. HOW TO USE / कैसे इस्तेमाल करें */}
-      <section id="how-to-use" className="py-14 sm:py-16 px-4 bg-emerald-50/50 border-b border-stone-200">
+      <section id="how-to-use" className="py-12 sm:py-16 px-3 sm:px-4 bg-emerald-50/50 border-b border-stone-200">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="text-emerald-800 font-bold text-xs uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
               आसान इस्तेमाल का तरीका
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black font-heading text-stone-900 mt-3 mb-2">
+            <h2 className="text-2xl sm:text-3xl font-black font-heading text-stone-900 mt-2 mb-1.5">
               कैप्सूल कैसे और कब खानी है?
             </h2>
-            <p className="text-stone-600 text-sm">
+            <p className="text-stone-600 text-xs sm:text-sm">
               बोतल पर दिए निर्देश के अनुसार — कोई कठिन नियम नहीं, बस नियम से लें।
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm text-center">
-              <div className="w-12 h-12 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-sm text-center">
+              <div className="w-11 h-11 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mx-auto mb-3 font-black text-base">
                 1
               </div>
-              <h3 className="font-bold text-stone-900 text-base mb-2">दिन में 2 बार (1-1 कैप्सूल)</h3>
+              <h3 className="font-bold text-stone-900 text-sm sm:text-base mb-1.5">दिन में 2 बार (1-1 कैप्सूल)</h3>
               <p className="text-stone-600 text-xs leading-relaxed">
                 सुबह नाश्ते के बाद 1 कैप्सूल और रात को सोने से पहले 1 कैप्सूल लें।
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm text-center">
-              <div className="w-12 h-12 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-sm text-center">
+              <div className="w-11 h-11 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mx-auto mb-3 font-black text-base">
                 2
               </div>
-              <h3 className="font-bold text-stone-900 text-base mb-2">दूध या गुनगुने पानी के साथ</h3>
+              <h3 className="font-bold text-stone-900 text-sm sm:text-base mb-1.5">दूध या गुनगुने पानी के साथ</h3>
               <p className="text-stone-600 text-xs leading-relaxed">
                 ताजे पानी या हल्के गुनगुने दूध के साथ लें। दूध के साथ लेने पर और बेहतर पोषण मिलता है।
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm text-center">
-              <div className="w-12 h-12 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-sm text-center">
+              <div className="w-11 h-11 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mx-auto mb-3 font-black text-base">
                 3
               </div>
-              <h3 className="font-bold text-stone-900 text-base mb-2">नियमित पूरा कोर्स करें</h3>
+              <h3 className="font-bold text-stone-900 text-sm sm:text-base mb-1.5">नियमित पूरा कोर्स करें</h3>
               <p className="text-stone-600 text-xs leading-relaxed">
                 उत्तम और स्थायी लाभ के लिए कम से कम 2 से 3 महीने का संपूर्ण कोर्स नियमित पूरा करें।
               </p>
             </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <button
-              onClick={scrollToOrderForm}
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-sm rounded-xl shadow transition-all"
-            >
-              📦 मुझे यह कोर्स चाहिए (Order COD) <ArrowRight className="w-4 h-4" />
-            </button>
           </div>
         </div>
       </section>
@@ -837,22 +844,22 @@ export default function SingleProductPage() {
       <TestimonialsSection testimonials={testimonials} />
 
       {/* 8. TRANSPARENT & SUPER SIMPLE ORDER FORM */}
-      <section id="order-form" className="py-16 sm:py-20 px-4 bg-gradient-to-b from-stone-50 to-emerald-50">
+      <section id="order-form" className="py-14 sm:py-20 px-3 sm:px-4 bg-gradient-to-b from-stone-50 to-emerald-50">
         <div className="max-w-xl mx-auto">
           
-          <div className="text-center mb-8">
+          <div className="text-center mb-6 sm:mb-8">
             <span className="bg-emerald-800 text-white font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
               📦 100% सुरक्षित ऑर्डर फॉर्म
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black font-heading text-stone-900 mt-3 mb-2">
+            <h2 className="text-2xl sm:text-3xl font-black font-heading text-stone-900 mt-2.5 mb-1.5">
               अपना डिलीवरी पता भरें
             </h2>
-            <p className="text-stone-600 text-sm">
+            <p className="text-stone-600 text-xs sm:text-sm">
               सामान घर पहुँचने पर पैसे दें (कैश ऑन डिलीवरी)। डिलीवरी बॉय आपके घर पार्सल लेकर आएगा।
             </p>
           </div>
           
-          <div className="bg-white p-5 sm:p-8 rounded-3xl shadow-xl border border-stone-200">
+          <div className="bg-white p-4 sm:p-8 rounded-3xl shadow-xl border border-stone-200">
             
             {/* STEP 1: SELECT PACKAGE */}
             <div className="mb-6">
@@ -860,44 +867,44 @@ export default function SingleProductPage() {
                 1. अपना पैक चुनें (Select Course Pack) <span className="text-red-500">*</span>
               </label>
               
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 {PACKAGES.map((pkg) => {
                   const isSelected = selectedPackage.id === pkg.id;
                   return (
                     <div
                       key={pkg.id}
                       onClick={() => setSelectedPackage(pkg)}
-                      className={`p-3.5 sm:p-4 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between gap-3 ${
+                      className={`p-3 sm:p-4 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between gap-2.5 ${
                         isSelected 
                           ? 'border-emerald-700 bg-emerald-50/80 shadow-sm' 
                           : 'border-stone-200 bg-white hover:border-stone-300'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           isSelected ? 'border-emerald-700 bg-emerald-700' : 'border-stone-400'
                         }`}>
                           {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
                         </div>
                         <div>
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-black text-sm text-stone-900">{pkg.name}</span>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="font-black text-xs sm:text-sm text-stone-900">{pkg.name}</span>
                             {pkg.badge && (
-                              <span className={`text-[10px] font-black px-2 py-0.5 rounded ${
+                              <span className={`text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded ${
                                 pkg.isPopular ? 'bg-amber-400 text-stone-950' : 'bg-emerald-200 text-emerald-900'
                               }`}>
                                 {pkg.badge}
                               </span>
                             )}
                           </div>
-                          <p className="text-[11px] text-stone-500">
+                          <p className="text-[10px] sm:text-[11px] text-stone-500">
                             {pkg.duration} • फ्री होम डिलीवरी
                           </p>
                         </div>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <span className="text-stone-400 text-xs line-through block">₹{pkg.mrp}</span>
+                        <span className="text-stone-400 text-[11px] line-through block">₹{pkg.mrp}</span>
                         <span className="text-base sm:text-lg font-black text-emerald-800">₹{pkg.price}</span>
                       </div>
                     </div>
@@ -907,32 +914,32 @@ export default function SingleProductPage() {
             </div>
 
             {/* PRODUCT SUMMARY BANNER */}
-            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl mb-6 flex items-center justify-between gap-3">
+            <div className="bg-emerald-50 border border-emerald-200 p-3.5 sm:p-4 rounded-2xl mb-6 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-xl bg-white p-1 border border-emerald-200 shadow-sm shrink-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white p-1 border border-emerald-200 shadow-sm shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/naag-chattri-hero.png" alt="Product" className="w-full h-full object-contain" />
+                  <img src="/images/naag-chattri-front.png" alt="Product" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <p className="text-[11px] text-emerald-800 font-bold uppercase">आयुर्वेदिक फॉर्मूला</p>
-                  <p className="font-black text-stone-900 text-sm sm:text-base">निरोग नेचर नाग छत्री</p>
-                  <p className="text-xs text-stone-600">{selectedPackage.name}</p>
+                  <p className="text-[10px] text-emerald-800 font-bold uppercase">आयुर्वेदिक फॉर्मूला</p>
+                  <p className="font-black text-stone-900 text-xs sm:text-sm">निरोग नेचर नाग छत्री</p>
+                  <p className="text-[11px] text-stone-600">{selectedPackage.name}</p>
                 </div>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-stone-400 text-xs line-through block">₹{selectedPackage.mrp}</span>
-                <span className="text-lg font-black text-emerald-800">₹{selectedPackage.price}</span>
+                <span className="text-stone-400 text-[11px] line-through block">₹{selectedPackage.mrp}</span>
+                <span className="text-base sm:text-lg font-black text-emerald-800">₹{selectedPackage.price}</span>
                 <span className="text-[10px] text-emerald-700 font-bold block">फ्री डिलीवरी</span>
               </div>
             </div>
             
-            <form onSubmit={handleOrderSubmit} onFocus={handleFormInteraction} className="space-y-6">
+            <form onSubmit={handleOrderSubmit} onFocus={handleFormInteraction} className="space-y-5">
               
               {/* STEP 2: ADDRESS */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 border-b border-stone-200 pb-2.5">
-                  <div className="w-7 h-7 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">2</div>
-                  <h3 className="text-base font-bold text-stone-900 font-heading">आपका नाम और डिलीवरी पता</h3>
+              <div className="space-y-3.5">
+                <div className="flex items-center gap-2 border-b border-stone-200 pb-2">
+                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">2</div>
+                  <h3 className="text-sm sm:text-base font-bold text-stone-900 font-heading">आपका नाम और डिलीवरी पता</h3>
                 </div>
                 
                 <div>
@@ -944,7 +951,7 @@ export default function SingleProductPage() {
                     type="text" 
                     required 
                     placeholder="जैसे: राहुल शर्मा" 
-                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
+                    className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
                     value={formData.fullName} 
                     onChange={e => setFormData({...formData, fullName: e.target.value})} 
                   />
@@ -960,7 +967,7 @@ export default function SingleProductPage() {
                     minLength={10} 
                     maxLength={10} 
                     placeholder="10 अंकों का मोबाइल नंबर (उदा: 98XXXXXXXX)" 
-                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
+                    className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
                     value={formData.mobile} 
                     onChange={e => setFormData({...formData, mobile: e.target.value.replace(/[^0-9]/g, '')})} 
                   />
@@ -975,13 +982,13 @@ export default function SingleProductPage() {
                     required 
                     placeholder="मकान नंबर, गली नंबर, गाँव या कॉलोनी का नाम, पास की प्रसिद्ध जगह (लैंडमार्क)" 
                     rows={3} 
-                    className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all resize-none" 
+                    className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all resize-none" 
                     value={formData.address} 
                     onChange={e => setFormData({...formData, address: e.target.value})} 
                   />
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                   <div>
                     <label className="block text-xs font-bold text-stone-700 mb-1">
                       शहर / गाँव (City) <span className="text-red-500">*</span>
@@ -990,7 +997,7 @@ export default function SingleProductPage() {
                       type="text" 
                       required 
                       placeholder="उदा: लखनऊ"
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
+                      className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
                       value={formData.city} 
                       onChange={e => setFormData({...formData, city: e.target.value})} 
                     />
@@ -1004,7 +1011,7 @@ export default function SingleProductPage() {
                       list="indian-states" 
                       required 
                       placeholder="राज्य चुनें"
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
+                      className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
                       value={formData.state} 
                       onChange={e => setFormData({...formData, state: e.target.value})} 
                     />
@@ -1025,7 +1032,7 @@ export default function SingleProductPage() {
                       minLength={6} 
                       maxLength={6} 
                       placeholder="6 अंक (226001)"
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
+                      className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
                       value={formData.pincode} 
                       onChange={e => setFormData({...formData, pincode: e.target.value.replace(/[^0-9]/g, '')})} 
                     />
@@ -1034,34 +1041,34 @@ export default function SingleProductPage() {
               </div>
 
               {/* STEP 3: PAYMENT METHOD */}
-              <div className="space-y-3 pt-3 border-t border-stone-200">
-                <div className="flex items-center gap-2 border-b border-stone-200 pb-2.5">
-                  <div className="w-7 h-7 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">3</div>
-                  <h3 className="text-base font-bold text-stone-900 font-heading">पैसे देने का तरीका चुनें</h3>
+              <div className="space-y-2.5 pt-2 border-t border-stone-200">
+                <div className="flex items-center gap-2 border-b border-stone-200 pb-2">
+                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">3</div>
+                  <h3 className="text-sm sm:text-base font-bold text-stone-900 font-heading">पैसे देने का तरीका चुनें</h3>
                 </div>
                 
                 {/* OPTION 1: CASH ON DELIVERY (Default) */}
                 <div 
-                  className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                  className={`p-3.5 sm:p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                     paymentOption === 'cod' 
                       ? 'border-emerald-700 bg-emerald-50/70 shadow-sm' 
                       : 'border-stone-200 bg-white hover:border-stone-300'
                   }`} 
                   onClick={() => setPaymentOption('cod')}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2.5">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 ${
                       paymentOption === 'cod' ? 'border-emerald-700 bg-emerald-700' : 'border-stone-400'
                     }`}>
                       {paymentOption === 'cod' && <div className="w-2 h-2 bg-white rounded-full" />}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-black text-sm text-stone-900">📦 कैश ऑन डिलीवरी (Cash on Delivery)</span>
-                        <span className="bg-amber-400 text-stone-950 text-[10px] font-black px-2 py-0.5 rounded">सबसे आसान</span>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="font-black text-xs sm:text-sm text-stone-900">📦 कैश ऑन डिलीवरी (Cash on Delivery)</span>
+                        <span className="bg-amber-400 text-stone-950 text-[10px] font-black px-1.5 py-0.2 rounded">सबसे आसान</span>
                       </div>
                       <p className="text-xs text-stone-600 mt-1">
-                        कोई एडवांस नहीं देना। जब डिलीवरी बॉय घर पर पार्सल लेकर आए, तभी ₹{selectedPackage.price} नकद दें।
+                        कोई एडवांस नहीं। जब डिलीवरी बॉय घर पर पार्सल लेकर आए, तभी ₹{selectedPackage.price} नकद दें।
                       </p>
                     </div>
                   </div>
@@ -1069,22 +1076,22 @@ export default function SingleProductPage() {
 
                 {/* OPTION 2: FULL PREPAID */}
                 <div 
-                  className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                  className={`p-3.5 sm:p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                     paymentOption === 'full' 
                       ? 'border-emerald-700 bg-emerald-50/70 shadow-sm' 
                       : 'border-stone-200 bg-white hover:border-stone-300'
                   }`} 
                   onClick={() => setPaymentOption('full')}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2.5">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 ${
                       paymentOption === 'full' ? 'border-emerald-700 bg-emerald-700' : 'border-stone-400'
                     }`}>
                       {paymentOption === 'full' && <div className="w-2 h-2 bg-white rounded-full" />}
                     </div>
                     <div>
-                      <span className="font-bold text-sm text-stone-900">💳 ऑनलाइन पेमेंट (UPI / GPay / PhonePe / Card)</span>
-                      <p className="text-xs text-stone-600 mt-1">
+                      <span className="font-bold text-xs sm:text-sm text-stone-900">💳 ऑनलाइन पेमेंट (UPI / GPay / PhonePe / Card)</span>
+                      <p className="text-xs text-stone-600 mt-0.5">
                         तुरंत ऑनलाइन पेमेंट करें। 100% सुरक्षित Razorpay गेटवे।
                       </p>
                     </div>
@@ -1093,7 +1100,7 @@ export default function SingleProductPage() {
               </div>
 
               {/* BILL SUMMARY */}
-              <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200 text-xs space-y-2">
+              <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-200 text-xs space-y-1.5">
                 <div className="flex justify-between text-stone-600">
                   <span>उत्पाद मूल्य ({selectedPackage.name}):</span>
                   <span>₹{selectedPackage.price}</span>
@@ -1102,7 +1109,7 @@ export default function SingleProductPage() {
                   <span>होम डिलीवरी:</span>
                   <span>मुफ़्त (Free Delivery)</span>
                 </div>
-                <div className="border-t border-stone-200 pt-2 flex justify-between font-black text-sm text-stone-900">
+                <div className="border-t border-stone-200 pt-1.5 flex justify-between font-black text-sm text-stone-900">
                   <span>{paymentOption === 'cod' ? 'घर पर देय राशि:' : 'ऑनलाइन भुगतान राशि:'}</span>
                   <span className="text-emerald-800 text-base">₹{selectedPackage.price}</span>
                 </div>
@@ -1123,7 +1130,7 @@ export default function SingleProductPage() {
                 )}
               </button>
               
-              <div className="text-center space-y-2 pt-1">
+              <div className="text-center space-y-1.5 pt-1">
                 <div className="flex items-center justify-center gap-3 text-stone-500 text-xs font-semibold">
                   <span className="flex items-center gap-1"><Lock className="w-3.5 h-3.5 text-emerald-700" /> 100% गुप्त पैकिंग</span>
                   <span className="flex items-center gap-1"><PackageCheck className="w-3.5 h-3.5 text-emerald-700" /> 24 घंटे में डिस्पैच</span>
@@ -1147,8 +1154,8 @@ export default function SingleProductPage() {
       <WhatsAppButton />
       <ConsultationModal />
 
-      {/* 11. STICKY MOBILE BOTTOM BAR (High conversion for Meta Ads on mobile) */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200 px-4 py-2.5 flex items-center justify-between shadow-2xl">
+      {/* 11. STICKY MOBILE BOTTOM BAR (High conversion for Meta Ads on mobile phones) */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200 px-3.5 py-2.5 flex items-center justify-between shadow-2xl">
         <div>
           <span className="text-[10px] text-stone-500 line-through block">₹{selectedPackage.mrp}</span>
           <div className="flex items-baseline gap-1">

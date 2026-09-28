@@ -12,8 +12,8 @@
     "tags": ["bestseller", "premium", "power", "ayurvedic"],
     "badge": "Top Seller",
     "images": [
-      "/images/naag-chattri-hero.png",
       "/images/naag-chattri-front.png",
+      "/images/naag-chattri-hero.png",
       "/images/naag-chattri-back.png"
     ],
     "rating": 5,
@@ -47,8 +47,8 @@
     "tags": ["bestseller", "premium", "power"],
     "badge": "Top Seller",
     "images": [
-      "/images/naag-chattri-hero.png",
       "/images/naag-chattri-front.png",
+      "/images/naag-chattri-hero.png",
       "/images/naag-chattri-back.png"
     ],
     "rating": 5,
