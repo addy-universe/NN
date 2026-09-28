@@ -5,8 +5,8 @@
     "slug": "naag-chattri",
     "shortDesc": "शुद्ध हिमालयन शिलाजीत, कौंच बीज, और अश्वगंधा से निर्मित 100% शुद्ध आयुर्वेदिक कैप्सूल्स।",
     "description": "Nirog Nature Naag Chattri is a premium Ayurvedic herbal formulation crafted to enhance energy, strength, stamina, and male vitality naturally with zero side effects.",
-    "price": 999,
-    "comparePrice": 1499,
+    "price": 1800,
+    "comparePrice": 3000,
     "category": "fitness",
     "subcategory": "energy",
     "tags": ["bestseller", "premium", "power", "ayurvedic"],
@@ -26,9 +26,7 @@
     "ingredients": "Kaunch Beej 200mg, Shuddh Shilajit 100mg, Ashwagandha 100mg, Safed Musli 100mg, Gokshura 80mg, Shatavari 80mg, Vidarikand 80mg, Kali Musli 60mg, Jaiphal 40mg",
     "howToUse": "दिन में 2 बार 1-1 कैप्सूल भोजन के बाद गुनगुने दूध या पानी के साथ लें।",
     "variants": [
-      { "id": "v1", "name": "1 डिब्बी (26 कैप्सूल - 1 माह पैक)", "price": 999, "comparePrice": 1499 },
-      { "id": "v2", "name": "2 डिब्बी (52 कैप्सूल - 2 माह कोर्स)", "price": 1799, "comparePrice": 2999 },
-      { "id": "v3", "name": "3 डिब्बी (78 कैप्सूल - 3 माह सम्पूर्ण कोर्स)", "price": 2499, "comparePrice": 4499 }
+      { "id": "v1", "name": "संपूर्ण आयुर्वेदिक कोर्स (Veg Capsules)", "price": 1800, "comparePrice": 3000 }
     ],
     "inStock": true,
     "sku": "NN-NC-26",

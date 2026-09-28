@@ -27,6 +27,12 @@ import { getDoctors, getTestimonials, getFaqs } from '@/lib/data';
 import { useConsultationStore } from '@/lib/store';
 import { event } from '@/lib/fpixel';
 
+// FIXED PRICE SET TO EXACTLY ₹1,800 AS REQUESTED BY USER
+const PRODUCT_PRICE = 1800;
+const PRODUCT_MRP = 3000;
+const PRODUCT_SAVINGS = 1200;
+const PRODUCT_NAME = 'निरोग नेचर नाग छत्री (Nirog Nature Naag Chattri)';
+
 interface RazorpaySuccessResponse {
   razorpay_payment_id: string;
   razorpay_order_id: string;
@@ -48,53 +54,7 @@ interface RazorpayConstructor {
   new (options: Record<string, unknown>): RazorpayInstance;
 }
 
-interface PackageOption {
-  id: string;
-  name: string;
-  capsules: number;
-  duration: string;
-  price: number;
-  mrp: number;
-  savings: number;
-  badge?: string;
-  isPopular?: boolean;
-}
-
-const PACKAGES: PackageOption[] = [
-  {
-    id: 'pack-1',
-    name: '1 डिब्बी (26 कैप्सूल - 1 माह पैक)',
-    capsules: 26,
-    duration: '1 माह कोर्स',
-    price: 999,
-    mrp: 1499,
-    savings: 500,
-    badge: 'ट्रायल पैक',
-  },
-  {
-    id: 'pack-2',
-    name: '2 डिब्बी (52 कैप्सूल - 2 माह कोर्स)',
-    capsules: 52,
-    duration: '2 माह कोर्स',
-    price: 1799,
-    mrp: 2999,
-    savings: 1200,
-    badge: 'सबसे लोकप्रिय',
-    isPopular: true,
-  },
-  {
-    id: 'pack-3',
-    name: '3 डिब्बी (78 कैप्सूल - 3 माह संपूर्ण कोर्स)',
-    capsules: 78,
-    duration: '3 माह संपूर्ण कोर्स',
-    price: 2499,
-    mrp: 4499,
-    savings: 2000,
-    badge: 'अधिकतम बचत',
-  },
-];
-
-// FRONT IMAGE FIRST AS REQUESTED BY USER
+// FRONT IMAGE FIRST
 const PRODUCT_IMAGES = [
   {
     id: 'front',
@@ -156,7 +116,6 @@ const INDIAN_STATES = [
 export default function SingleProductPage() {
   // Default to Cash on Delivery (COD) for maximum simplicity & conversion
   const [paymentOption, setPaymentOption] = useState<'cod' | 'full'>('cod');
-  const [selectedPackage, setSelectedPackage] = useState<PackageOption>(PACKAGES[1]); // 2-pack default best value
   const [selectedImage, setSelectedImage] = useState<string>('/images/naag-chattri-front.png'); // Front image first!
   
   const [formData, setFormData] = useState({
@@ -179,9 +138,9 @@ export default function SingleProductPage() {
   // 1. Meta Pixel: Fire ViewContent on mount + Page Visit notification
   useEffect(() => {
     event('ViewContent', {
-      content_name: 'निरोग नेचर नाग छत्री (Nirog Nature Naag Chattri)',
+      content_name: PRODUCT_NAME,
       content_category: 'Ayurvedic Vitality',
-      value: selectedPackage.price,
+      value: PRODUCT_PRICE,
       currency: 'INR'
     });
 
@@ -190,15 +149,15 @@ export default function SingleProductPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ page: '/' })
     }).catch(() => {});
-  }, [selectedPackage]);
+  }, []);
 
   // 2. Track when user starts interacting with the order form
   const handleFormInteraction = () => {
     if (!hasInitiatedCheckoutRef.current) {
       hasInitiatedCheckoutRef.current = true;
       event('InitiateCheckout', {
-        content_name: `निरोग नेचर नाग छत्री - ${selectedPackage.name}`,
-        value: selectedPackage.price,
+        content_name: PRODUCT_NAME,
+        value: PRODUCT_PRICE,
         currency: 'INR'
       });
     }
@@ -209,7 +168,7 @@ export default function SingleProductPage() {
     if (orderSubmittedRef.current) return;
     if (!dataToSend.fullName && !dataToSend.mobile && !dataToSend.address) return;
 
-    const serialized = JSON.stringify({ ...dataToSend, packageId: selectedPackage.id, paymentOption });
+    const serialized = JSON.stringify({ ...dataToSend, paymentOption });
     if (lastCapturedDataRef.current === serialized) return;
     lastCapturedDataRef.current = serialized;
 
@@ -217,9 +176,9 @@ export default function SingleProductPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        productName: `निरोग नेचर नाग छत्री (${selectedPackage.name})`,
+        productName: PRODUCT_NAME,
         paymentOption,
-        amount: selectedPackage.price,
+        amount: PRODUCT_PRICE,
         ...dataToSend
       })
     }).catch(() => {});
@@ -235,7 +194,7 @@ export default function SingleProductPage() {
     }, 2500);
 
     return () => clearTimeout(timer);
-  }, [formData, paymentOption, selectedPackage]);
+  }, [formData, paymentOption]);
 
   // 5. Capture lead on page exit / navigate back
   useEffect(() => {
@@ -243,9 +202,9 @@ export default function SingleProductPage() {
       if (orderSubmittedRef.current) return;
       if (formData.fullName || formData.mobile || formData.address) {
         const payload = JSON.stringify({
-          productName: `निरोग नेचर नाग छत्री (${selectedPackage.name})`,
+          productName: PRODUCT_NAME,
           paymentOption,
-          amount: selectedPackage.price,
+          amount: PRODUCT_PRICE,
           ...formData
         });
         navigator.sendBeacon('/api/abandoned-lead', payload);
@@ -254,7 +213,7 @@ export default function SingleProductPage() {
 
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [formData, paymentOption, selectedPackage]);
+  }, [formData, paymentOption]);
 
   const scrollToOrderForm = () => {
     handleFormInteraction();
@@ -286,11 +245,11 @@ export default function SingleProductPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             orderId: orderNum,
-            productName: `निरोग नेचर नाग छत्री (${selectedPackage.name})`,
-            product: `निरोग नेचर नाग छत्री (${selectedPackage.name})`,
+            productName: PRODUCT_NAME,
+            product: PRODUCT_NAME,
             ...formData,
             paymentOption,
-            amount: selectedPackage.price,
+            amount: PRODUCT_PRICE,
             paymentDetails,
             date: new Date().toISOString()
           })
@@ -298,9 +257,9 @@ export default function SingleProductPage() {
 
         // Fire Meta Pixel Purchase event on order completion
         event('Purchase', {
-          content_name: `निरोग नेचर नाग छत्री (${selectedPackage.name})`,
+          content_name: PRODUCT_NAME,
           content_type: 'product',
-          value: selectedPackage.price,
+          value: PRODUCT_PRICE,
           currency: 'INR'
         });
 
@@ -319,7 +278,7 @@ export default function SingleProductPage() {
         const res = await fetch('/api/razorpay', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount: selectedPackage.price })
+          body: JSON.stringify({ amount: PRODUCT_PRICE })
         });
         
         const data = await res.json();
@@ -334,7 +293,7 @@ export default function SingleProductPage() {
           currency: data.order.currency,
           order_id: data.order.id,
           name: 'निरोग नेचर - नाग छत्री',
-          description: `पूरा पेमेंट - निरोग नेचर नाग छत्री (${selectedPackage.name})`,
+          description: `पूरा पेमेंट - निरोग नेचर नाग छत्री (₹${PRODUCT_PRICE})`,
           handler: function (response: RazorpaySuccessResponse) {
             submitOrderToBackend({
               paymentId: response.razorpay_payment_id,
@@ -404,10 +363,6 @@ export default function SingleProductPage() {
               <span className="font-bold text-stone-900">निरोग नेचर नाग छत्री</span>
             </div>
             <div className="flex justify-between border-b border-stone-200/80 pb-2">
-              <span className="text-stone-500 font-medium">पैक:</span>
-              <span className="font-bold text-emerald-900">{selectedPackage.name}</span>
-            </div>
-            <div className="flex justify-between border-b border-stone-200/80 pb-2">
               <span className="text-stone-500 font-medium">ग्राहक:</span>
               <span className="font-bold text-stone-900">{formData.fullName || 'ग्राहक'}</span>
             </div>
@@ -425,7 +380,7 @@ export default function SingleProductPage() {
             {paymentOption === 'cod' ? (
               <div className="bg-amber-50 border border-amber-200 p-3 rounded-xl text-amber-950 font-bold text-xs mt-3 flex items-center gap-2">
                 <Truck className="w-5 h-5 text-amber-700 shrink-0" />
-                <span>डिलीवरी के समय पार्सल मिलने पर डिलीवरी बॉय को <strong>₹{selectedPackage.price.toLocaleString('en-IN')}</strong> नकद दें।</span>
+                <span>डिलीवरी के समय पार्सल मिलने पर डिलीवरी बॉय को <strong>₹{PRODUCT_PRICE.toLocaleString('en-IN')}</strong> नकद दें।</span>
               </div>
             ) : (
               <div className="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-emerald-950 font-bold text-xs mt-3 flex items-center gap-2">
@@ -448,7 +403,7 @@ export default function SingleProductPage() {
 
           <div className="space-y-3">
             <a
-              href={`https://api.whatsapp.com/send/?phone=919899756597&text=Namaste%2C%20maine%20Naag%20Chattri%20(${encodeURIComponent(selectedPackage.name)})%20ka%20order%20place%20kiya%20hai%2C%20Order%20ID%3A%20${generatedOrderId}%2C%20kripya%20status%20bataiye`}
+              href={`https://api.whatsapp.com/send/?phone=919899756597&text=Namaste%2C%20maine%20Naag%20Chattri%20ka%20order%20place%20kiya%20hai%2C%20Order%20ID%3A%20${generatedOrderId}%2C%20kripya%20status%20bataiye`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl shadow transition-all flex items-center justify-center gap-2"
@@ -488,11 +443,11 @@ export default function SingleProductPage() {
         </div>
       </div>
 
-      {/* 1. HERO SECTION - MOBILE FIRST DESIGN */}
+      {/* 1. HERO SECTION - MOBILE FIRST & FIXED PRICE ₹1,800 */}
       <section className="relative overflow-hidden bg-gradient-to-b from-stone-950 via-emerald-950 to-emerald-900 text-white pt-6 sm:pt-12 pb-12 sm:pb-20 px-3 sm:px-4">
         <div className="max-w-6xl mx-auto">
           
-          {/* MOBILE ONLY TOP HEADLINE (Shows before image on mobile phones so customer knows what it is) */}
+          {/* MOBILE ONLY TOP HEADLINE */}
           <div className="lg:hidden text-center mb-4">
             <div className="inline-flex items-center gap-1.5 bg-emerald-900/90 border border-emerald-600/60 text-emerald-200 text-[11px] font-bold px-3 py-1 rounded-full mb-2">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -503,7 +458,7 @@ export default function SingleProductPage() {
               निरोग नेचर <span className="text-amber-400">नाग छत्री</span>
             </h1>
             <p className="text-xs text-stone-300 mt-1 font-medium">
-              प्राकृतिक ताकत, पौरुष ऊर्जा एवं अंदरूनी स्टैमिना (26 Veg Capsules)
+              प्राकृतिक ताकत, पौरुष ऊर्जा एवं अंदरूनी स्टैमिना (Veg Capsules)
             </p>
 
             <div className="flex items-center justify-center gap-1.5 mt-2 text-xs">
@@ -519,22 +474,22 @@ export default function SingleProductPage() {
 
           <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-center">
             
-            {/* PRODUCT CARD SHOWCASE (Renders first on mobile via order-1 / desktop right order-2) */}
+            {/* PRODUCT CARD SHOWCASE (Mobile first: order-1 / desktop right: order-2) */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="bg-white rounded-3xl p-3.5 sm:p-5 shadow-2xl border border-emerald-900/30 text-stone-900 w-full max-w-sm">
                 
-                {/* Top Card Badges - Clean header without any overlapping or clipping */}
+                {/* Top Card Badges */}
                 <div className="flex items-center justify-between gap-2 mb-2 px-0.5">
                   <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     FSSAI: 1332399900000
                   </span>
                   <span className="bg-amber-500 text-stone-950 font-black text-xs px-3 py-1 rounded-full shadow-sm">
-                    बचत ₹{selectedPackage.savings}
+                    बचत ₹{PRODUCT_SAVINGS}
                   </span>
                 </div>
 
-                {/* Main Product Showcase - Crisp White Background so bottle blends seamlessly */}
+                {/* Main Product Showcase - Pure White background */}
                 <div className="aspect-square w-full rounded-2xl bg-white p-2 sm:p-3 flex items-center justify-center overflow-hidden border border-stone-200 relative shadow-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
@@ -551,7 +506,7 @@ export default function SingleProductPage() {
                   </div>
                 </div>
 
-                {/* View Switcher: FRONT IMAGE FIRST */}
+                {/* View Switcher: FRONT FIRST */}
                 <div className="grid grid-cols-3 gap-2 mt-3">
                   {PRODUCT_IMAGES.map((img) => {
                     const isSelected = selectedImage === img.src;
@@ -576,60 +531,29 @@ export default function SingleProductPage() {
                   })}
                 </div>
 
-                {/* Price Display */}
+                {/* FIXED PRICE DISPLAY (₹1,800) */}
                 <div className="text-center mt-3 pt-3 border-t border-stone-100">
                   <div className="flex items-center justify-center gap-2">
-                    <span className="text-stone-400 text-xs sm:text-sm line-through">MRP: ₹{selectedPackage.mrp}</span>
-                    <span className="text-3xl sm:text-4xl font-black text-emerald-900">₹{selectedPackage.price}</span>
-                    <span className="text-[11px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">फ्री डिलीवरी</span>
+                    <span className="text-stone-400 text-sm line-through">MRP: ₹{PRODUCT_MRP}</span>
+                    <span className="text-3xl sm:text-4xl font-black text-emerald-900">₹{PRODUCT_PRICE}</span>
+                    <span className="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-bold">फ्री डिलीवरी</span>
                   </div>
-                  <p className="text-[11px] text-amber-700 font-bold mt-1">
-                    ⚡ आज ऑर्डर करने पर ₹{selectedPackage.savings} की सीधी छूट
-                  </p>
-                </div>
-
-                {/* Mobile Pack Selection Buttons inside Card */}
-                <div className="mt-3 text-left">
-                  <p className="text-xs font-bold text-stone-800 mb-1.5 uppercase tracking-wide">
-                    पैक चुनें (Select Pack):
-                  </p>
-                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-                    {PACKAGES.map((pkg) => {
-                      const isSelected = selectedPackage.id === pkg.id;
-                      return (
-                        <button
-                          key={pkg.id}
-                          type="button"
-                          onClick={() => setSelectedPackage(pkg)}
-                          className={`relative p-2 rounded-xl border-2 text-left transition-all ${
-                            isSelected
-                              ? 'border-emerald-700 bg-emerald-50 text-emerald-950 ring-1 ring-emerald-600 shadow-sm'
-                              : 'border-stone-200 bg-stone-50 text-stone-700 hover:border-stone-300'
-                          }`}
-                        >
-                          {pkg.isPopular && (
-                            <span className="absolute -top-2 left-1.5 bg-amber-500 text-stone-950 font-black text-[8px] px-1 py-0.2 rounded shadow">
-                              बेस्ट
-                            </span>
-                          )}
-                          <p className="text-[11px] font-black leading-tight text-stone-900">{pkg.duration}</p>
-                          <p className="text-[9px] text-stone-500">{pkg.capsules} कैप्सूल</p>
-                          <p className="text-xs font-black text-emerald-800 mt-0.5">₹{pkg.price}</p>
-                        </button>
-                      );
-                    })}
+                  <div className="mt-1 flex items-center justify-center gap-2 text-xs font-bold text-amber-700">
+                    <span>⚡ स्पेशल ऑफर बचत: ₹{PRODUCT_SAVINGS}</span>
+                    <span>•</span>
+                    <span className="text-emerald-800">कैश ऑन डिलीवरी उपलब्ध</span>
                   </div>
                 </div>
 
                 {/* Instant Order Button */}
                 <button 
                   onClick={scrollToOrderForm}
-                  className="w-full mt-3.5 py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 text-base font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-1.5 transform active:scale-95"
+                  className="w-full mt-3.5 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 text-base font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-95"
                 >
-                  👉 अभी ऑर्डर करें (₹{selectedPackage.price} COD)
+                  👉 अभी ऑर्डर करें (सामान मिलने पर ₹{PRODUCT_PRICE} दें)
                 </button>
-                <p className="text-[10px] text-stone-500 text-center mt-1.5 font-medium">
-                  🔒 कोई एडवांस नहीं • पार्सल घर पहुँचने पर पैसे दें
+                <p className="text-[11px] text-stone-500 text-center mt-1.5 font-medium">
+                  🔒 कोई एडवांस नहीं • पार्सल घर पहुँचने पर ₹{PRODUCT_PRICE} नकद दें
                 </p>
               </div>
             </div>
@@ -655,17 +579,17 @@ export default function SingleProductPage() {
               </div>
 
               {/* 3 Highlights */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 my-4 sm:mb-6 bg-stone-900/70 border border-emerald-800/40 p-3 rounded-2xl backdrop-blur-sm max-w-lg mx-auto lg:mx-0">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 my-4 sm:mb-6 bg-stone-900/70 border border-emerald-800/40 p-3.5 rounded-2xl backdrop-blur-sm max-w-lg mx-auto lg:mx-0">
                 <div className="text-center">
-                  <p className="text-amber-400 font-black text-base sm:text-xl font-heading">100%</p>
+                  <p className="text-amber-400 font-black text-lg sm:text-xl font-heading">100%</p>
                   <p className="text-[10px] sm:text-xs text-stone-300 font-medium">शुद्ध आयुर्वेदिक</p>
                 </div>
                 <div className="text-center border-x border-emerald-800/40">
-                  <p className="text-amber-400 font-black text-base sm:text-xl font-heading">30,000+</p>
+                  <p className="text-amber-400 font-black text-lg sm:text-xl font-heading">30,000+</p>
                   <p className="text-[10px] sm:text-xs text-stone-300 font-medium">संतुष्ट ग्राहक</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-amber-400 font-black text-base sm:text-xl font-heading">0%</p>
+                  <p className="text-amber-400 font-black text-lg sm:text-xl font-heading">0%</p>
                   <p className="text-[10px] sm:text-xs text-stone-300 font-medium">साइड इफ़ेक्ट</p>
                 </div>
               </div>
@@ -674,13 +598,13 @@ export default function SingleProductPage() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <button 
                   onClick={scrollToOrderForm}
-                  className="px-8 py-3.5 sm:py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
+                  className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
                 >
-                  📦 अभी ऑर्डर फॉर्म भरें <ArrowRight className="w-5 h-5" />
+                  📦 अभी ऑर्डर फॉर्म भरें (₹{PRODUCT_PRICE}) <ArrowRight className="w-5 h-5" />
                 </button>
                 <a 
                   href="#product-video"
-                  className="px-6 py-3.5 bg-emerald-900/90 hover:bg-emerald-800 text-emerald-100 font-bold text-sm rounded-2xl border border-emerald-700/60 transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-4 bg-emerald-900/90 hover:bg-emerald-800 text-emerald-100 font-bold text-sm rounded-2xl border border-emerald-700/60 transition-all flex items-center justify-center gap-2"
                 >
                   <Play className="w-4 h-4 text-amber-400 fill-amber-400" />
                   असली वीडियो देखें
@@ -699,7 +623,7 @@ export default function SingleProductPage() {
         </div>
       </section>
 
-      {/* 2. REAL VIDEO SHOWCASE SECTION - MOBILE OPTIMIZED */}
+      {/* 2. REAL VIDEO SHOWCASE SECTION */}
       <section id="product-video" className="py-12 sm:py-16 px-3 sm:px-4 bg-stone-900 text-white border-b border-stone-800">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-1.5 bg-emerald-900/80 border border-emerald-600/50 text-emerald-200 text-xs font-bold px-3.5 py-1 rounded-full mb-3">
@@ -730,13 +654,13 @@ export default function SingleProductPage() {
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
               onClick={scrollToOrderForm}
-              className="w-full sm:w-auto px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
+              className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-base rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
             >
-              📦 मुझे यह मंगवाना है (Order COD) <ArrowRight className="w-5 h-5" />
+              📦 मुझे यह मंगवाना है (Order COD ₹{PRODUCT_PRICE}) <ArrowRight className="w-5 h-5" />
             </button>
             <a
               href="tel:+919899756597"
-              className="w-full sm:w-auto px-6 py-3.5 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-sm rounded-2xl border border-stone-700 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-4 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-sm rounded-2xl border border-stone-700 transition-all flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-emerald-400" />
               डॉक्टर से बात करें: 98997 56597
@@ -825,7 +749,7 @@ export default function SingleProductPage() {
               </div>
               <h3 className="font-bold text-stone-900 text-sm sm:text-base mb-1.5">नियमित पूरा कोर्स करें</h3>
               <p className="text-stone-600 text-xs leading-relaxed">
-                उत्तम और स्थायी लाभ के लिए कम से कम 2 से 3 महीने का संपूर्ण कोर्स नियमित पूरा करें।
+                उत्तम और स्थायी लाभ के लिए दवा नियमित रूप से इस्तेमाल करें।
               </p>
             </div>
           </div>
@@ -843,7 +767,7 @@ export default function SingleProductPage() {
       {/* 7. VERIFIED CUSTOMER REVIEWS */}
       <TestimonialsSection testimonials={testimonials} />
 
-      {/* 8. TRANSPARENT & SUPER SIMPLE ORDER FORM */}
+      {/* 8. SUPER SIMPLE ORDER FORM - FIXED ₹1,800 */}
       <section id="order-form" className="py-14 sm:py-20 px-3 sm:px-4 bg-gradient-to-b from-stone-50 to-emerald-50">
         <div className="max-w-xl mx-auto">
           
@@ -861,58 +785,6 @@ export default function SingleProductPage() {
           
           <div className="bg-white p-4 sm:p-8 rounded-3xl shadow-xl border border-stone-200">
             
-            {/* STEP 1: SELECT PACKAGE */}
-            <div className="mb-6">
-              <label className="block text-xs font-bold text-stone-700 mb-2 uppercase tracking-wide">
-                1. अपना पैक चुनें (Select Course Pack) <span className="text-red-500">*</span>
-              </label>
-              
-              <div className="space-y-2">
-                {PACKAGES.map((pkg) => {
-                  const isSelected = selectedPackage.id === pkg.id;
-                  return (
-                    <div
-                      key={pkg.id}
-                      onClick={() => setSelectedPackage(pkg)}
-                      className={`p-3 sm:p-4 rounded-2xl border-2 cursor-pointer transition-all flex items-center justify-between gap-2.5 ${
-                        isSelected 
-                          ? 'border-emerald-700 bg-emerald-50/80 shadow-sm' 
-                          : 'border-stone-200 bg-white hover:border-stone-300'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          isSelected ? 'border-emerald-700 bg-emerald-700' : 'border-stone-400'
-                        }`}>
-                          {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="font-black text-xs sm:text-sm text-stone-900">{pkg.name}</span>
-                            {pkg.badge && (
-                              <span className={`text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded ${
-                                pkg.isPopular ? 'bg-amber-400 text-stone-950' : 'bg-emerald-200 text-emerald-900'
-                              }`}>
-                                {pkg.badge}
-                              </span>
-                            )}
-                          </div>
-                          <p className="text-[10px] sm:text-[11px] text-stone-500">
-                            {pkg.duration} • फ्री होम डिलीवरी
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="text-right shrink-0">
-                        <span className="text-stone-400 text-[11px] line-through block">₹{pkg.mrp}</span>
-                        <span className="text-base sm:text-lg font-black text-emerald-800">₹{pkg.price}</span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
             {/* PRODUCT SUMMARY BANNER */}
             <div className="bg-emerald-50 border border-emerald-200 p-3.5 sm:p-4 rounded-2xl mb-6 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
@@ -923,22 +795,22 @@ export default function SingleProductPage() {
                 <div>
                   <p className="text-[10px] text-emerald-800 font-bold uppercase">आयुर्वेदिक फॉर्मूला</p>
                   <p className="font-black text-stone-900 text-xs sm:text-sm">निरोग नेचर नाग छत्री</p>
-                  <p className="text-[11px] text-stone-600">{selectedPackage.name}</p>
+                  <p className="text-[11px] text-stone-600">संपूर्ण आयुर्वेदिक कोर्स (Veg Capsules)</p>
                 </div>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-stone-400 text-[11px] line-through block">₹{selectedPackage.mrp}</span>
-                <span className="text-base sm:text-lg font-black text-emerald-800">₹{selectedPackage.price}</span>
+                <span className="text-stone-400 text-[11px] line-through block">MRP: ₹{PRODUCT_MRP}</span>
+                <span className="text-base sm:text-lg font-black text-emerald-800">₹{PRODUCT_PRICE}</span>
                 <span className="text-[10px] text-emerald-700 font-bold block">फ्री डिलीवरी</span>
               </div>
             </div>
             
             <form onSubmit={handleOrderSubmit} onFocus={handleFormInteraction} className="space-y-5">
               
-              {/* STEP 2: ADDRESS */}
+              {/* STEP 1: ADDRESS */}
               <div className="space-y-3.5">
                 <div className="flex items-center gap-2 border-b border-stone-200 pb-2">
-                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">2</div>
+                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">1</div>
                   <h3 className="text-sm sm:text-base font-bold text-stone-900 font-heading">आपका नाम और डिलीवरी पता</h3>
                 </div>
                 
@@ -1040,10 +912,10 @@ export default function SingleProductPage() {
                 </div>
               </div>
 
-              {/* STEP 3: PAYMENT METHOD */}
+              {/* STEP 2: PAYMENT METHOD */}
               <div className="space-y-2.5 pt-2 border-t border-stone-200">
                 <div className="flex items-center gap-2 border-b border-stone-200 pb-2">
-                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">3</div>
+                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">2</div>
                   <h3 className="text-sm sm:text-base font-bold text-stone-900 font-heading">पैसे देने का तरीका चुनें</h3>
                 </div>
                 
@@ -1068,7 +940,7 @@ export default function SingleProductPage() {
                         <span className="bg-amber-400 text-stone-950 text-[10px] font-black px-1.5 py-0.2 rounded">सबसे आसान</span>
                       </div>
                       <p className="text-xs text-stone-600 mt-1">
-                        कोई एडवांस नहीं। जब डिलीवरी बॉय घर पर पार्सल लेकर आए, तभी ₹{selectedPackage.price} नकद दें।
+                        कोई एडवांस नहीं। जब डिलीवरी बॉय घर पर पार्सल लेकर आए, तभी <strong>₹{PRODUCT_PRICE}</strong> नकद दें।
                       </p>
                     </div>
                   </div>
@@ -1092,7 +964,7 @@ export default function SingleProductPage() {
                     <div>
                       <span className="font-bold text-xs sm:text-sm text-stone-900">💳 ऑनलाइन पेमेंट (UPI / GPay / PhonePe / Card)</span>
                       <p className="text-xs text-stone-600 mt-0.5">
-                        तुरंत ऑनलाइन पेमेंट करें। 100% सुरक्षित Razorpay गेटवे।
+                        तुरंत ऑनलाइन ₹{PRODUCT_PRICE} पेमेंट करें। 100% सुरक्षित Razorpay गेटवे।
                       </p>
                     </div>
                   </div>
@@ -1102,8 +974,8 @@ export default function SingleProductPage() {
               {/* BILL SUMMARY */}
               <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-200 text-xs space-y-1.5">
                 <div className="flex justify-between text-stone-600">
-                  <span>उत्पाद मूल्य ({selectedPackage.name}):</span>
-                  <span>₹{selectedPackage.price}</span>
+                  <span>उत्पाद मूल्य:</span>
+                  <span>₹{PRODUCT_PRICE}</span>
                 </div>
                 <div className="flex justify-between text-emerald-700 font-bold">
                   <span>होम डिलीवरी:</span>
@@ -1111,7 +983,7 @@ export default function SingleProductPage() {
                 </div>
                 <div className="border-t border-stone-200 pt-1.5 flex justify-between font-black text-sm text-stone-900">
                   <span>{paymentOption === 'cod' ? 'घर पर देय राशि:' : 'ऑनलाइन भुगतान राशि:'}</span>
-                  <span className="text-emerald-800 text-base">₹{selectedPackage.price}</span>
+                  <span className="text-emerald-800 text-base">₹{PRODUCT_PRICE}</span>
                 </div>
               </div>
 
@@ -1124,9 +996,9 @@ export default function SingleProductPage() {
                 {orderStatus === 'processing' ? (
                   <span>ऑर्डर प्रोसेस हो रहा है...</span>
                 ) : paymentOption === 'cod' ? (
-                  <span>📦 ऑर्डर कन्फर्म करें (सामान मिलने पर ₹{selectedPackage.price} दें)</span>
+                  <span>📦 ऑर्डर कन्फर्म करें (सामान मिलने पर ₹{PRODUCT_PRICE} दें)</span>
                 ) : (
-                  <span>💳 अभी ₹{selectedPackage.price} ऑनलाइन भरें</span>
+                  <span>💳 अभी ₹{PRODUCT_PRICE} ऑनलाइन भरें</span>
                 )}
               </button>
               
@@ -1154,12 +1026,12 @@ export default function SingleProductPage() {
       <WhatsAppButton />
       <ConsultationModal />
 
-      {/* 11. STICKY MOBILE BOTTOM BAR (High conversion for Meta Ads on mobile phones) */}
+      {/* 11. STICKY MOBILE BOTTOM BAR */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200 px-3.5 py-2.5 flex items-center justify-between shadow-2xl">
         <div>
-          <span className="text-[10px] text-stone-500 line-through block">₹{selectedPackage.mrp}</span>
+          <span className="text-[10px] text-stone-500 line-through block">MRP: ₹{PRODUCT_MRP}</span>
           <div className="flex items-baseline gap-1">
-            <span className="text-base font-black text-emerald-900">₹{selectedPackage.price}</span>
+            <span className="text-base font-black text-emerald-900">₹{PRODUCT_PRICE}</span>
             <span className="text-[10px] text-emerald-700 font-bold">COD • फ्री डिलीवरी</span>
           </div>
         </div>
