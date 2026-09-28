@@ -9,7 +9,6 @@ const navLinks = [
   { name: 'असली वीडियो', href: '#product-video' },
   { name: 'जड़ी-बूटियाँ', href: '#ingredients' },
   { name: 'कैसे इस्तेमाल करें', href: '#how-to-use' },
-  { name: 'सवाल-जवाब', href: '#faq' },
 ];
 
 export default function Header() {

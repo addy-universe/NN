@@ -18,9 +18,8 @@ import {
   Play
 } from 'lucide-react';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
-import FAQSection from '@/components/home/FAQSection';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
-import { getTestimonials, getFaqs } from '@/lib/data';
+import { getTestimonials } from '@/lib/data';
 import { event } from '@/lib/fpixel';
 
 // FIXED PRICE SET TO EXACTLY ₹1,800
@@ -122,7 +121,6 @@ export default function SingleProductPage() {
   const [generatedOrderId, setGeneratedOrderId] = useState<string>('');
 
   const testimonials = getTestimonials();
-  const faqs = getFaqs();
 
   const orderSubmittedRef = useRef(false);
   const lastCapturedDataRef = useRef('');
@@ -1002,10 +1000,6 @@ export default function SingleProductPage() {
         </div>
       </section>
 
-      {/* 7. FREQUENTLY ASKED QUESTIONS */}
-      <div id="faq">
-        <FAQSection faqs={faqs} />
-      </div>
 
       {/* 8. FLOATING WHATSAPP BUTTON */}
       <WhatsAppButton />
