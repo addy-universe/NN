@@ -3,26 +3,28 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShoppingBag, Truck, Calendar, PhoneCall, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Truck, Calendar, PhoneCall, ArrowRight } from 'lucide-react';
 import { useCartStore } from '@/lib/store';
-import { formatPrice } from '@/lib/data';
+import { event } from '@/lib/fpixel';
 
 export default function CheckoutSuccessPage() {
   const clearCart = useCartStore((s) => s.clearCart);
-  const [orderNumber, setOrderNumber] = useState('');
-  const [orderDate, setOrderDate] = useState('');
-
-  useEffect(() => {
-    // Generate a random order number and date on mount
-    const num = `NN-${Math.floor(100000 + Math.random() * 900000)}`;
-    setOrderNumber(num);
-
-    const date = new Date().toLocaleDateString('en-IN', {
+  const [orderNumber] = useState(() => `NN-${Math.floor(100000 + Math.random() * 900000)}`);
+  const [orderDate] = useState(() => 
+    new Date().toLocaleDateString('en-IN', {
       day: 'numeric',
       month: 'short',
       year: 'numeric',
+    })
+  );
+
+  useEffect(() => {
+    // Fire Meta Pixel Purchase event
+    event('Purchase', {
+      value: 11300,
+      currency: 'INR',
+      content_name: 'Nirog Nature Products',
     });
-    setOrderDate(date);
 
     // Clear cart after loading the checkout page details
     clearCart();

@@ -3,9 +3,8 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import CartDrawer from "@/components/layout/CartDrawer";
-import ConsultationModal from "@/components/shared/ConsultationModal";
-import WhatsAppButton from "@/components/shared/WhatsAppButton";
+import MetaPixel from "@/components/shared/MetaPixel";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-body",
@@ -19,23 +18,12 @@ const outfit = Outfit({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nirognature.com';
+
 export const metadata: Metadata = {
-  title: "NirogNature — Premium Ayurvedic Wellness | Sahi Sehat, Sahi Ayurved",
-  description:
-    "India ka most trusted premium Ayurvedic wellness brand. Stamina, immunity, skin aur hair health ke liye science-backed natural supplements. 100% pure, GMP certified aur lab tested products. Aaj hi apni health journey behtar banayein. ₹499 se upar ke orders par free shipping.",
-  keywords: "ayurvedic supplements, wellness, health supplements, ashwagandha, shilajit, natural supplements, men's health, immunity booster, ayurvedic dawa, NirogNature",
-  openGraph: {
-    title: "NirogNature — Premium Ayurvedic Wellness",
-    description: "Modern life ke liye science-backed Ayurvedic supplements. 100% natural aur GMP certified products jo aapko svasth rakhein.",
-    type: "website",
-    locale: "hi_IN",
-    siteName: "NirogNature",
-  },
-  icons: {
-    icon: "/images/favicon.jpeg",
-    shortcut: "/images/favicon.jpeg",
-    apple: "/images/favicon.jpeg",
-  },
+  metadataBase: new URL(siteUrl),
+  title: "निरोग नेचर | पुरुषों के लिए असली आयुर्वेदिक ताकत",
+  description: "आयुर्वेद के पुराने ज्ञान और प्राकृतिक जड़ी-बूटियों से बनी, पुरुषों की सेहत के लिए खास दवा। 100% सुरक्षित और असरदार।",
 };
 
 export default function RootLayout({
@@ -44,12 +32,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`} data-scroll-behavior="smooth">
-      <body className="font-body antialiased">
+    <html lang="hi" className={`${inter.variable} ${outfit.variable}`}>
+      <head>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+      </head>
+      <body className="antialiased selection:bg-green-900 selection:text-white">
+        <MetaPixel />
         <Header />
-        <CartDrawer />
-        <ConsultationModal />
-        <WhatsAppButton />
         <main className="min-h-screen">
           {children}
         </main>

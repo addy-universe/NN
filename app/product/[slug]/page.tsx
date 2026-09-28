@@ -1,18 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Star, ShoppingCart, Heart, Shield, Truck, RotateCcw, CheckCircle, ChevronRight, Minus, Plus } from 'lucide-react';
+import { Star, ShoppingBag, Shield, Truck, RotateCcw, CheckCircle, ChevronRight, Minus, Plus } from 'lucide-react';
 import productsData from '@/data/products.json';
 import { Product } from '@/lib/types';
 import { useCartStore } from '@/lib/store';
 import { formatPrice, getDiscount } from '@/lib/data';
 import ProductCard from '@/components/shared/ProductCard';
+import { event } from '@/lib/fpixel';
 
 export default function ProductDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params.slug as string;
   const products = productsData as Product[];
   const product = products.find(p => p.slug === slug);
@@ -21,6 +23,17 @@ export default function ProductDetailPage() {
   const [activeTab, setActiveTab] = useState('description');
   const [imgError, setImgError] = useState(false);
   const addItem = useCartStore(s => s.addItem);
+
+  useEffect(() => {
+    if (product) {
+      const v = product.variants[selectedVariant] || product.variants[0];
+      event('ViewContent', {
+        content_name: product.name,
+        value: v ? v.price : product.price,
+        currency: 'INR',
+      });
+    }
+  }, [product, selectedVariant]);
 
   if (!product) {
     return (
@@ -41,6 +54,16 @@ export default function ProductDetailPage() {
     for (let i = 0; i < quantity; i++) {
       addItem(product, variant);
     }
+  };
+
+  const handleBuyNow = () => {
+    handleAddToCart();
+    event('InitiateCheckout', {
+      content_name: product.name,
+      value: variant.price * quantity,
+      currency: 'INR',
+    });
+    router.push('/checkout');
   };
 
   return (
@@ -145,24 +168,44 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Quantity + WhatsApp Order */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="flex items-center gap-2 border border-gray-200 rounded-xl bg-white shrink-0">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3.5 hover:bg-gray-50 rounded-l-xl border-r border-gray-100 transition-colors"><Minus className="w-4 h-4" /></button>
-                <span className="w-10 text-center font-bold text-gray-900">{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)} className="p-3.5 hover:bg-gray-50 rounded-r-xl border-l border-gray-100 transition-colors"><Plus className="w-4 h-4" /></button>
+            {/* Quantity + Actions */}
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 border border-gray-200 rounded-xl bg-white shrink-0">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3.5 hover:bg-gray-50 rounded-l-xl border-r border-gray-100 transition-colors"><Minus className="w-4 h-4" /></button>
+                  <span className="w-10 text-center font-bold text-gray-900">{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)} className="p-3.5 hover:bg-gray-50 rounded-r-xl border-l border-gray-100 transition-colors"><Plus className="w-4 h-4" /></button>
+                </div>
+                
+                <button
+                  onClick={handleBuyNow}
+                  className="flex-1 flex items-center justify-center gap-2 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black rounded-xl transition-all shadow-lg text-sm sm:text-base transform active:scale-95"
+                >
+                  <ShoppingBag className="w-5 h-5" />
+                  अभी ऑर्डर करें (COD)
+                </button>
               </div>
-              <a
-                href={`https://api.whatsapp.com/send/?phone=919899756597&text=${encodeURIComponent(`Hi NirogNature, I want to order the product *${product.name}* (Quantity: ${quantity}, Pack: ${variant.name}, Price: ${formatPrice(variant.price * quantity)}).`)}&type=phone_number&app_absent=0`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-3 py-4 bg-[#25D366] hover:bg-[#20ba56] text-white font-bold rounded-xl transition-all shadow-lg shadow-green-500/20 text-sm sm:text-base hover:shadow-green-500/35 hover:-translate-y-0.5 duration-300"
-              >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437 0 9.862-4.416 9.866-9.852.002-2.633-1.018-5.109-2.873-6.968C16.395 1.94 13.929.92 11.302.92c-5.436 0-9.86 4.417-9.865 9.853-.002 1.834.488 3.626 1.416 5.207L1.87 21.2l5.077-1.346L6.647 19.15z"/>
-                </svg>
-                WhatsApp Par Order Karein
-              </a>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={handleAddToCart}
+                  className="flex-1 py-3 px-4 border-2 border-emerald-800 text-emerald-800 font-bold rounded-xl hover:bg-emerald-50 transition-colors text-sm text-center"
+                >
+                  🛒 कार्ट में जोड़ें (Add to Cart)
+                </button>
+
+                <a
+                  href={`https://api.whatsapp.com/send/?phone=919899756597&text=${encodeURIComponent(`Hi NirogNature, I want to order the product *${product.name}* (Quantity: ${quantity}, Pack: ${variant.name}, Price: ${formatPrice(variant.price * quantity)}).`)}&type=phone_number&app_absent=0`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-[#25D366] hover:bg-[#20ba56] text-white font-bold rounded-xl transition-all text-sm shadow-sm"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437 0 9.862-4.416 9.866-9.852.002-2.633-1.018-5.109-2.873-6.968C16.395 1.94 13.929.92 11.302.92c-5.436 0-9.86 4.417-9.865 9.853-.002 1.834.488 3.626 1.416 5.207L1.87 21.2l5.077-1.346L6.647 19.15z"/>
+                  </svg>
+                  WhatsApp पर ऑर्डर करें
+                </a>
+              </div>
             </div>
 
             {/* Trust badges */}

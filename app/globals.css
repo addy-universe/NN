@@ -1,28 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #f0fdf4;
-  --color-brand-100: #dcfce7;
-  --color-brand-200: #bbf7d0;
-  --color-brand-300: #86efac;
-  --color-brand-400: #4ade80;
-  --color-brand-500: #22c55e;
-  --color-brand-600: #16a34a;
-  --color-brand-700: #15803d;
-  --color-brand-800: #166534;
-  --color-brand-900: #14532d;
-  --color-brand-950: #052e16;
-
-  --color-gold-50: #fffbeb;
-  --color-gold-100: #fef3c7;
-  --color-gold-200: #fde68a;
-  --color-gold-300: #fcd34d;
-  --color-gold-400: #fbbf24;
-  --color-gold-500: #f59e0b;
-  --color-gold-600: #d97706;
-
-  --color-cream: #fefcf3;
-  --color-cream-dark: #faf6eb;
+  --color-brand-forest: #19301D;
+  --color-brand-herbal: #43653B;
+  
+  --color-accent-antique: #996E30;
+  --color-accent-warm: #C39A4F;
+  
+  --color-natural-root: #744B1A;
+  
+  --color-navy: #132355;
+  
+  --color-bg-ivory: #F4F0E3;
+  --color-bg-cream: #FAF8F1;
+  
+  --color-charcoal: #1B241D;
 
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -43,8 +35,8 @@
 
   body {
     font-family: var(--font-body);
-    color: #1a1a2e;
-    background-color: #ffffff;
+    color: var(--color-charcoal);
+    background-color: var(--color-bg-ivory);
     line-height: 1.6;
   }
 
@@ -52,12 +44,12 @@
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
-    color: #0f172a;
+    color: var(--color-brand-forest);
   }
 
   ::selection {
-    background-color: #dcfce7;
-    color: #14532d;
+    background-color: var(--color-brand-forest);
+    color: var(--color-bg-ivory);
   }
 }
 
