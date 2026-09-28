@@ -17,9 +17,7 @@ import {
   Star,
   Play
 } from 'lucide-react';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
-import { getTestimonials } from '@/lib/data';
 import { event } from '@/lib/fpixel';
 
 // FIXED PRICE SET TO EXACTLY ₹1,800
@@ -120,7 +118,6 @@ export default function SingleProductPage() {
   const [orderStatus, setOrderStatus] = useState<'idle' | 'processing' | 'success'>('idle');
   const [generatedOrderId, setGeneratedOrderId] = useState<string>('');
 
-  const testimonials = getTestimonials();
 
   const orderSubmittedRef = useRef(false);
   const lastCapturedDataRef = useRef('');
@@ -747,8 +744,6 @@ export default function SingleProductPage() {
         </div>
       </section>
 
-      {/* 5. VERIFIED CUSTOMER REVIEWS */}
-      <TestimonialsSection testimonials={testimonials} />
 
       {/* 6. SUPER SIMPLE ORDER FORM - FIXED ₹1,800 */}
       <section id="order-form" className="py-14 sm:py-20 px-3 sm:px-4 bg-gradient-to-b from-stone-50 to-emerald-50">

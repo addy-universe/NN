@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 export default function WhatsAppButton() {
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=919899756597&text=Hi%20NirogNature,%20mujhe%20free%20doctor%20consultation%20ke%20liye%20baat%20karni%20hai.&type=phone_number&app_absent=0";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=919899756597&text=Namaste%2C%20mujhe%20Nirog%20Nature%20Naag%20Chattri%20ke%20bare%20me%20jankari%20chahiye.&type=phone_number&app_absent=0";
 
   return (
     <div className="fixed bottom-6 right-6 z-[60] flex items-center gap-3">
@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
         className="hidden md:flex items-center gap-2 bg-white text-gray-800 text-xs font-bold px-4 py-2.5 rounded-full shadow-lg border border-gray-100 hover:text-green-600 transition-colors"
       >
         <span className="w-2 h-2 rounded-full bg-green-500 animate-ping shrink-0" />
-        Doctor se WhatsApp par baat karein!
+        WhatsApp सहायता उपलब्ध है
       </motion.a>
 
       {/* Floating Button */}
