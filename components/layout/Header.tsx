@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { name: 'हमारे बारे में', href: '#why-us' },
+  { name: 'असली वीडियो', href: '#product-video' },
   { name: 'जड़ी-बूटियाँ', href: '#ingredients' },
   { name: 'कैसे इस्तेमाल करें', href: '#how-to-use' },
   { name: 'सवाल-जवाब', href: '#faq' },

@@ -17,17 +17,13 @@ import {
   Star,
   Play
 } from 'lucide-react';
-import DoctorsSection from '@/components/home/DoctorsSection';
-import ClinicSection from '@/components/home/ClinicSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FAQSection from '@/components/home/FAQSection';
-import ConsultationModal from '@/components/shared/ConsultationModal';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
-import { getDoctors, getTestimonials, getFaqs } from '@/lib/data';
-import { useConsultationStore } from '@/lib/store';
+import { getTestimonials, getFaqs } from '@/lib/data';
 import { event } from '@/lib/fpixel';
 
-// FIXED PRICE SET TO EXACTLY ₹1,800 AS REQUESTED BY USER
+// FIXED PRICE SET TO EXACTLY ₹1,800
 const PRODUCT_PRICE = 1800;
 const PRODUCT_MRP = 3000;
 const PRODUCT_SAVINGS = 1200;
@@ -116,7 +112,7 @@ const INDIAN_STATES = [
 export default function SingleProductPage() {
   // Default to Cash on Delivery (COD) for maximum simplicity & conversion
   const [paymentOption, setPaymentOption] = useState<'cod' | 'full'>('cod');
-  const [selectedImage, setSelectedImage] = useState<string>('/images/naag-chattri-front.png'); // Front image first!
+  const [selectedImage, setSelectedImage] = useState<string>('/images/naag-chattri-front.png');
   
   const [formData, setFormData] = useState({
     fullName: '', mobile: '', address: '', city: '', state: '', pincode: ''
@@ -124,9 +120,7 @@ export default function SingleProductPage() {
 
   const [orderStatus, setOrderStatus] = useState<'idle' | 'processing' | 'success'>('idle');
   const [generatedOrderId, setGeneratedOrderId] = useState<string>('');
-  const openConsultation = useConsultationStore((s) => s.openModal);
 
-  const doctors = getDoctors();
   const testimonials = getTestimonials();
   const faqs = getFaqs();
 
@@ -354,7 +348,7 @@ export default function SingleProductPage() {
             बधाई हो! आपका ऑर्डर दर्ज हो गया है
           </h2>
           <p className="text-stone-600 text-sm mb-6">
-            निरोग नेचर पर भरोसा करने के लिए धन्यवाद। हमारा प्रतिनिधि आपसे फ़ोन पर संपर्क करके पार्सल डिस्पैच की पुष्टि करेगा।
+            निरोग नेचर पर भरोसा करने के लिए धन्यवाद। हमारा प्रतिनिधि आपसे संपर्क करके पार्सल डिस्पैच की पुष्टि करेगा।
           </p>
           
           <div className="bg-stone-50 p-5 rounded-2xl text-left mb-6 space-y-3 text-sm border border-stone-200">
@@ -431,14 +425,12 @@ export default function SingleProductPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
           <div className="flex items-center gap-1.5 mx-auto sm:mx-0 text-[11px] sm:text-xs">
             <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span>FSSAI स्वीकृत मानक • 100% शाकाहारी आयुर्वेदिक कैप्सूल्स</span>
+            <span>FSSAI स्वीकृत मानक • 100% शाकाहारी आयुर्वेदिक फॉर्मूला</span>
           </div>
           <div className="hidden sm:flex items-center gap-5 text-[11px] text-emerald-300">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> GMP Certified Lab</span>
             <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-400" /> 100% गुप्त पैकिंग</span>
-            <button onClick={openConsultation} className="hover:underline text-amber-300 font-bold flex items-center gap-1">
-              <PhoneCall className="w-3 h-3" /> डॉ. मुफ़्त परामर्श
-            </button>
+            <span className="flex items-center gap-1.5"><Truck className="w-3.5 h-3.5 text-emerald-400" /> फ्री होम डिलीवरी</span>
           </div>
         </div>
       </div>
@@ -659,11 +651,12 @@ export default function SingleProductPage() {
               📦 मुझे यह मंगवाना है (Order COD ₹{PRODUCT_PRICE}) <ArrowRight className="w-5 h-5" />
             </button>
             <a
-              href="tel:+919899756597"
-              className="w-full sm:w-auto px-6 py-4 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-sm rounded-2xl border border-stone-700 transition-all flex items-center justify-center gap-2"
+              href="https://api.whatsapp.com/send/?phone=919899756597&text=Namaste%2C%20mujhe%20Nirog%20Nature%20Naag%20Chattri%20ke%20bare%20me%20jankari%20chahiye"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-6 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-sm rounded-2xl transition-all flex items-center justify-center gap-2"
             >
-              <PhoneCall className="w-4 h-4 text-emerald-400" />
-              डॉक्टर से बात करें: 98997 56597
+              💬 WhatsApp पर जानकारी लें
             </a>
           </div>
         </div>
@@ -756,18 +749,10 @@ export default function SingleProductPage() {
         </div>
       </section>
 
-      {/* 5. VERIFIED DOCTORS */}
-      <div id="why-us">
-        <DoctorsSection doctors={doctors} />
-      </div>
-
-      {/* 6. PHYSICAL CLINIC VERIFICATION */}
-      <ClinicSection />
-
-      {/* 7. VERIFIED CUSTOMER REVIEWS */}
+      {/* 5. VERIFIED CUSTOMER REVIEWS */}
       <TestimonialsSection testimonials={testimonials} />
 
-      {/* 8. SUPER SIMPLE ORDER FORM - FIXED ₹1,800 */}
+      {/* 6. SUPER SIMPLE ORDER FORM - FIXED ₹1,800 */}
       <section id="order-form" className="py-14 sm:py-20 px-3 sm:px-4 bg-gradient-to-b from-stone-50 to-emerald-50">
         <div className="max-w-xl mx-auto">
           
@@ -1008,7 +993,7 @@ export default function SingleProductPage() {
                   <span className="flex items-center gap-1"><PackageCheck className="w-3.5 h-3.5 text-emerald-700" /> 24 घंटे में डिस्पैच</span>
                 </div>
                 <p className="text-[11px] text-stone-500">
-                  पार्सल मिलने तक या कोई भी सवाल पूछने के लिए कॉल करें: <a href="tel:+919899756597" className="font-bold text-emerald-800 underline">98997 56597</a>
+                  पार्सल मिलने तक या कोई भी सवाल पूछने के लिए संपर्क करें: <a href="tel:+919899756597" className="font-bold text-emerald-800 underline">98997 56597</a>
                 </p>
               </div>
               
@@ -1017,16 +1002,15 @@ export default function SingleProductPage() {
         </div>
       </section>
 
-      {/* 9. FREQUENTLY ASKED QUESTIONS */}
+      {/* 7. FREQUENTLY ASKED QUESTIONS */}
       <div id="faq">
         <FAQSection faqs={faqs} />
       </div>
 
-      {/* 10. FLOATING WHATSAPP & CONSULTATION MODAL */}
+      {/* 8. FLOATING WHATSAPP BUTTON */}
       <WhatsAppButton />
-      <ConsultationModal />
 
-      {/* 11. STICKY MOBILE BOTTOM BAR */}
+      {/* 9. STICKY MOBILE BOTTOM BAR */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200 px-3.5 py-2.5 flex items-center justify-between shadow-2xl">
         <div>
           <span className="text-[10px] text-stone-500 line-through block">MRP: ₹{PRODUCT_MRP}</span>
