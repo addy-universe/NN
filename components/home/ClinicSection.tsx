@@ -30,14 +30,14 @@ export default function ClinicSection() {
               className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-black/10 group"
             >
               <img 
-                src="/images/day.png" 
-                alt="NirogNature Clinic Day View" 
+                src="/images/poster1.png" 
+                alt="NirogNature Clinic View" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <p className="text-white font-semibold flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
-                  Day Time View
+                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  NirogNature Clinic
                 </p>
               </div>
             </motion.div>

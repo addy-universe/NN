@@ -27,7 +27,7 @@ export async function POST(req: Request) {
           <hr style="border: 0; border-top: 1px solid #dcfce7; margin: 15px 0;" />
           
           <table style="width: 100%; font-size: 14px; color: #1f2937; border-collapse: collapse;">
-            <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">उत्पाद:</td><td style="padding: 8px; font-weight: bold; color: #15803d;">${productName || 'निरोग नेचर ऊर्जा मैक्स गोल्ड'}</td></tr>
+            <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">उत्पाद:</td><td style="padding: 8px; font-weight: bold; color: #15803d;">${productName || 'निरोग नेचर नाग छत्री'}</td></tr>
             <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">ग्राहक का नाम:</td><td style="padding: 8px; font-weight: bold;">${fullName}</td></tr>
             <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">मोबाइल:</td><td style="padding: 8px; font-weight: bold; color: #047857;"><a href="tel:${mobile}" style="color: #047857;">${mobile}</a></td></tr>
             <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">पूरा पता:</td><td style="padding: 8px;">${address}</td></tr>

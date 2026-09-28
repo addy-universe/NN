@@ -19,6 +19,7 @@ export default function ProductDetailPage() {
   const products = productsData as Product[];
   const product = products.find(p => p.slug === slug);
   const [selectedVariant, setSelectedVariant] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
   const [imgError, setImgError] = useState(false);
@@ -84,18 +85,18 @@ export default function ProductDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Product Image */}
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-            <div className="aspect-square bg-gradient-to-br from-brand-50 to-cream rounded-3xl flex items-center justify-center sticky top-24 p-6">
+          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="sticky top-24 space-y-4">
+            <div className="aspect-square bg-gradient-to-br from-brand-50 to-cream rounded-3xl flex items-center justify-center p-6 border border-brand-100 shadow-sm">
               {product.images && product.images.length > 0 && !imgError ? (
                 <div className="w-full h-full relative flex items-center justify-center">
                   <img
-                    src={product.images[0]}
+                    src={product.images[selectedImageIndex] || product.images[0]}
                     alt={product.name}
                     onError={() => setImgError(true)}
-                    className="max-w-full max-h-full object-contain rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500"
+                    className="max-w-full max-h-full object-contain rounded-2xl shadow-md transition-all duration-300"
                   />
                   {product.badge && (
-                    <span className="absolute top-4 left-4 px-4 py-1.5 bg-brand-700 text-white text-xs font-bold rounded-full uppercase shadow-md">
+                    <span className="absolute top-2 left-2 px-3 py-1 bg-brand-700 text-white text-xs font-bold rounded-full uppercase shadow">
                       {product.badge}
                     </span>
                   )}
@@ -113,6 +114,29 @@ export default function ProductDetailPage() {
                 </div>
               )}
             </div>
+
+            {/* Thumbnail Navigation */}
+            {product.images && product.images.length > 1 && (
+              <div className="flex items-center justify-center gap-3">
+                {product.images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setSelectedImageIndex(idx);
+                      setImgError(false);
+                    }}
+                    className={`w-16 h-16 rounded-xl overflow-hidden border-2 p-1 bg-stone-50 transition-all ${
+                      selectedImageIndex === idx
+                        ? 'border-brand-700 ring-2 ring-brand-300 scale-105'
+                        : 'border-stone-200 hover:border-brand-400 opacity-80 hover:opacity-100'
+                    }`}
+                  >
+                    <img src={img} alt={`${product.name} - ${idx + 1}`} className="w-full h-full object-contain" />
+                  </button>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           {/* Product Info */}

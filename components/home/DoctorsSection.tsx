@@ -16,8 +16,8 @@ export default function DoctorsSection({ doctors }: DoctorsSectionProps) {
   const [activeVideo, setActiveVideo] = useState<'tour' | 'consultation'>('tour');
 
   const videoUrls = {
-    tour: '/images/1777914059266933.MP4',
-    consultation: '/images/1778354557137082.mov',
+    tour: '/images/main video.mov',
+    consultation: '/images/main video.mov',
   };
 
   // Take first 3 doctors to leave space for the premium video player card

@@ -1,23 +1,65 @@
 [
   {
+    "id": "naag-chattri",
+    "name": "Nirog Nature Naag Chattri",
+    "slug": "naag-chattri",
+    "shortDesc": "शुद्ध हिमालयन शिलाजीत, कौंच बीज, और अश्वगंधा से निर्मित 100% शुद्ध आयुर्वेदिक कैप्सूल्स।",
+    "description": "Nirog Nature Naag Chattri is a premium Ayurvedic herbal formulation crafted to enhance energy, strength, stamina, and male vitality naturally with zero side effects.",
+    "price": 999,
+    "comparePrice": 1499,
+    "category": "fitness",
+    "subcategory": "energy",
+    "tags": ["bestseller", "premium", "power", "ayurvedic"],
+    "badge": "Top Seller",
+    "images": [
+      "/images/naag-chattri-hero.png",
+      "/images/naag-chattri-front.png",
+      "/images/naag-chattri-back.png"
+    ],
+    "rating": 5,
+    "reviewCount": 428,
+    "benefits": [
+      "प्राकृतिक शक्ति और स्टैमिना बढ़ाता है",
+      "शारीरिक कमजोरी और थकान दूर करता है",
+      "मांसपेशियों को ताकत और अंदरूनी जोश देता है"
+    ],
+    "ingredients": "Kaunch Beej 200mg, Shuddh Shilajit 100mg, Ashwagandha 100mg, Safed Musli 100mg, Gokshura 80mg, Shatavari 80mg, Vidarikand 80mg, Kali Musli 60mg, Jaiphal 40mg",
+    "howToUse": "दिन में 2 बार 1-1 कैप्सूल भोजन के बाद गुनगुने दूध या पानी के साथ लें।",
+    "variants": [
+      { "id": "v1", "name": "1 डिब्बी (26 कैप्सूल - 1 माह पैक)", "price": 999, "comparePrice": 1499 },
+      { "id": "v2", "name": "2 डिब्बी (52 कैप्सूल - 2 माह कोर्स)", "price": 1799, "comparePrice": 2999 },
+      { "id": "v3", "name": "3 डिब्बी (78 कैप्सूल - 3 माह सम्पूर्ण कोर्स)", "price": 2499, "comparePrice": 4499 }
+    ],
+    "inStock": true,
+    "sku": "NN-NC-26",
+    "weight": "120g"
+  },
+  {
     "id": "urja-max-gold",
     "name": "Nirog Nature Urja Max Gold",
     "slug": "urja-max-gold",
     "shortDesc": "Our most advanced clinical formula for peak male sexual power, stamina, and testosterone support.",
     "description": "Nirog Nature Urja Max Gold is our premium clinical formula formulated specifically to elevate power, stamina, and overall vigor.",
-    "price": 11300,
-    "comparePrice": 15000,
+    "price": 999,
+    "comparePrice": 1499,
     "category": "fitness",
     "subcategory": "energy",
     "tags": ["bestseller", "premium", "power"],
     "badge": "Top Seller",
-    "images": ["/1.png"],
+    "images": [
+      "/images/naag-chattri-hero.png",
+      "/images/naag-chattri-front.png",
+      "/images/naag-chattri-back.png"
+    ],
     "rating": 5,
     "reviewCount": 312,
     "benefits": ["Maximizes natural power and stamina", "Boosts vitality", "Reduces fatigue"],
     "ingredients": "Swarna Bhasma, Himalayan Shilajit, KSM-66 Ashwagandha",
     "howToUse": "Take 1 capsule daily at night with warm milk.",
-    "variants": [{"id": "v1", "name": "Urja Max Gold Package", "price": 11300, "comparePrice": 15000}],
+    "variants": [
+      { "id": "v1", "name": "1 डिब्बी (26 कैप्सूल)", "price": 999, "comparePrice": 1499 },
+      { "id": "v2", "name": "2 डिब्बी (52 कैप्सूल - 2 माह कोर्स)", "price": 1799, "comparePrice": 2999 }
+    ],
     "inStock": true,
     "sku": "NN-UMG-01",
     "weight": "150g"

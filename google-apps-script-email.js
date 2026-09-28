@@ -56,7 +56,7 @@ function doPost(e) {
       }
       leadSheet.appendRow([
         data.timestamp || new Date(),
-        data.productName || "निरोग नेचर ऊर्जा मैक्स गोल्ड",
+        data.productName || "निरोग नेचर नाग छत्री",
         data.fullName || "अधूरा",
         data.mobile || "अधूरा",
         data.address || "अधूरा",
@@ -75,7 +75,7 @@ function doPost(e) {
               <h2 style="color: #dc2626;">⚠️ अधूरा एड्रेस भर कर जाने वाला ग्राहक (Abandoned Lead)</h2>
               <p>एक ग्राहक ने एड्रेस भर दिया पर बिना ऑर्डर पक्का किए चला गया!</p>
               <table style="width: 100%; border-collapse: collapse;">
-                <tr><td><b>उत्पाद:</b></td><td>${data.productName || 'निरोग नेचर ऊर्जा मैक्स गोल्ड'}</td></tr>
+                <tr><td><b>उत्पाद:</b></td><td>${data.productName || 'निरोग नेचर नाग छत्री'}</td></tr>
                 <tr><td><b>नाम:</b></td><td>${data.fullName || 'अधूरा'}</td></tr>
                 <tr><td><b>मोबाइल:</b></td><td><a href="tel:${data.mobile}">${data.mobile || 'अधूरा'}</a></td></tr>
                 <tr><td><b>पता:</b></td><td>${data.address || 'अधूरा'}</td></tr>
@@ -102,7 +102,7 @@ function doPost(e) {
     }
     orderSheet.appendRow([
       data.timestamp || new Date(),
-      data.productName || "निरोग नेचर ऊर्जा मैक्स गोल्ड",
+      data.productName || "निरोग नेचर नाग छत्री",
       data.fullName,
       data.mobile,
       data.address,
@@ -119,7 +119,7 @@ function doPost(e) {
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f0fdf4;">
           <div style="max-width: 550px; background: #ffffff; padding: 20px; border-top: 4px solid #166534; border-radius: 8px;">
             <h2 style="color: #166534;">🎉 नया ऑर्डर पक्का हुआ! (Confirmed Order)</h2>
-            <p><b>उत्पाद:</b> ${data.productName || 'निरोग नेचर ऊर्जा मैक्स गोल्ड'}</p>
+            <p><b>उत्पाद:</b> ${data.productName || 'निरोग नेचर नाग छत्री'}</p>
             <p><b>नाम:</b> ${data.fullName}</p>
             <p><b>मोबाइल:</b> <a href="tel:${data.mobile}">${data.mobile}</a></p>
             <p><b>पता:</b> ${data.address}, ${data.city} - ${data.pincode}</p>

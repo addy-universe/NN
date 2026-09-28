@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'abandoned_lead',
-          productName: productName || 'निरोग नेचर ऊर्जा मैक्स गोल्ड',
+          productName: productName || 'निरोग नेचर नाग छत्री',
           fullName: fullName || 'N/A',
           mobile: mobile || 'N/A',
           address: address || 'N/A',
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
           <hr style="border: 0; border-top: 1px solid #fee2e2; margin: 15px 0;" />
           
           <table style="width: 100%; font-size: 14px; color: #1f2937; border-collapse: collapse;">
-            <tr style="background-color: #fcfcfc;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">उत्पाद:</td><td style="padding: 8px; font-weight: bold; color: #166534;">${productName || 'निरोग नेचर ऊर्जा मैक्स गोल्ड'}</td></tr>
+            <tr style="background-color: #fcfcfc;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">उत्पाद:</td><td style="padding: 8px; font-weight: bold; color: #166534;">${productName || 'निरोग नेचर नाग छत्री'}</td></tr>
             <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">नाम (Name):</td><td style="padding: 8px; font-weight: bold; color: #111827;">${fullName || 'अधूरा'}</td></tr>
             <tr style="background-color: #fcfcfc;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">मोबाइल (Mobile):</td><td style="padding: 8px; font-weight: bold; color: #b91c1c;"><a href="tel:${mobile}" style="color: #b91c1c; text-decoration: underline;">${mobile || 'अधूरा'}</a></td></tr>
             <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">पूरा पता (Address):</td><td style="padding: 8px;">${address || 'अधूरा'}</td></tr>
