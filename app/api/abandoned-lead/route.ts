@@ -12,7 +12,9 @@ export async function POST(req: Request) {
     }
 
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
+    const webhookUrl = 
+      process.env.GOOGLE_SHEETS_WEBHOOK_URL || 
+      'https://script.google.com/macros/s/AKfycbxsrG81WEQtl0af_co03iqu-lXkSBrJJ40loghx0rWnO3O4RlieUgA4gPxRkpxVEINu/exec';
 
     // Forward abandoned lead data to Google Sheets Webhook
     if (webhookUrl) {

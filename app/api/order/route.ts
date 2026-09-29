@@ -6,22 +6,28 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { fullName, mobile, address, city, state, pincode, paymentOption, amount, advanceAmount = 100, remainingAmount, paymentDetails, productName } = body;
 
-    const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
+    const GOOGLE_SHEETS_WEBHOOK_URL = 
+      process.env.GOOGLE_SHEETS_WEBHOOK_URL || 
+      'https://script.google.com/macros/s/AKfycbxsrG81WEQtl0af_co03iqu-lXkSBrJJ40loghx0rWnO3O4RlieUgA4gPxRkpxVEINu/exec';
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
     
     // 1. Forward completed order to Google Sheets Webhook
     if (GOOGLE_SHEETS_WEBHOOK_URL) {
-      await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          type: 'order', 
-          ...body, 
-          advanceAmount: paymentOption === 'advance' ? advanceAmount : (paymentOption === 'full' ? amount : 0),
-          remainingAmount: paymentOption === 'advance' ? (remainingAmount ?? (amount - advanceAmount)) : (paymentOption === 'full' ? 0 : amount),
-          timestamp 
-        }),
-      }).catch(err => console.error('Order Webhook Error:', err));
+      try {
+        await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            type: 'order', 
+            ...body, 
+            advanceAmount: paymentOption === 'advance' ? advanceAmount : (paymentOption === 'full' ? amount : 0),
+            remainingAmount: paymentOption === 'advance' ? (remainingAmount ?? (amount - advanceAmount)) : (paymentOption === 'full' ? 0 : amount),
+            timestamp 
+          }),
+        });
+      } catch (webhookErr) {
+        console.error('Order Webhook Error:', webhookErr);
+      }
     }
 
     // 2. Send instant email notification for completed order
@@ -63,10 +69,14 @@ export async function POST(req: Request) {
       ? '[FULL PAID]' 
       : '[COD]';
 
-    await sendEmail({
-      subject: `🎉 CONFIRMED ORDER: ₹${amount} ${emailTag} - ${fullName} (${mobile})`,
-      html,
-    });
+    try {
+      await sendEmail({
+        subject: `🎉 CONFIRMED ORDER: ₹${amount} ${emailTag} - ${fullName} (${mobile})`,
+        html,
+      });
+    } catch (emailErr) {
+      console.warn('Nodemailer error (Google Apps Script already sent alert):', emailErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

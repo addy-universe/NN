@@ -10,7 +10,9 @@ export async function POST(req: Request) {
     const ip = forwardedFor ? forwardedFor.split(',')[0] : 'Local / Hidden IP';
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
-    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
+    const webhookUrl = 
+      process.env.GOOGLE_SHEETS_WEBHOOK_URL || 
+      'https://script.google.com/macros/s/AKfycbxsrG81WEQtl0af_co03iqu-lXkSBrJJ40loghx0rWnO3O4RlieUgA4gPxRkpxVEINu/exec';
 
     // Send payload to Google Sheets Webhook if configured
     if (webhookUrl) {
