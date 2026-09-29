@@ -153,6 +153,17 @@ export default function SingleProductPage() {
     }
   };
 
+  const selectPaymentOption = (opt: 'advance' | 'full' | 'cod') => {
+    handleFormInteraction();
+    setPaymentOption(opt);
+    event('AddPaymentInfo', {
+      content_name: PRODUCT_NAME,
+      payment_type: opt,
+      value: opt === 'advance' ? 100 : PRODUCT_PRICE,
+      currency: 'INR'
+    });
+  };
+
   // 3. Helper to send Abandoned Lead / Partial Address data
   const sendAbandonedLead = (dataToSend = formData) => {
     if (orderSubmittedRef.current) return;
@@ -823,6 +834,7 @@ export default function SingleProductPage() {
                     ref={nameInputRef}
                     type="text" 
                     required 
+                    autoComplete="name"
                     placeholder="जैसे: राहुल शर्मा" 
                     className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
                     value={formData.fullName} 
@@ -837,6 +849,9 @@ export default function SingleProductPage() {
                   <input 
                     type="tel" 
                     required 
+                    inputMode="numeric"
+                    autoComplete="tel"
+                    pattern="[0-9]{10}"
                     minLength={10} 
                     maxLength={10} 
                     placeholder="10 अंकों का मोबाइल नंबर (उदा: 98XXXXXXXX)" 
@@ -853,6 +868,7 @@ export default function SingleProductPage() {
                   </label>
                   <textarea 
                     required 
+                    autoComplete="street-address"
                     placeholder="मकान नंबर, गली नंबर, गाँव या कॉलोनी का नाम, पास की प्रसिद्ध जगह (लैंडमार्क)" 
                     rows={3} 
                     className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all resize-none" 
@@ -869,7 +885,8 @@ export default function SingleProductPage() {
                     <input 
                       type="text" 
                       required 
-                      placeholder="उदा: लखनऊ"
+                      autoComplete="address-level2"
+                      placeholder="उदा: लखनऊ" 
                       className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
                       value={formData.city} 
                       onChange={e => setFormData({...formData, city: e.target.value})} 
@@ -883,7 +900,8 @@ export default function SingleProductPage() {
                     <input 
                       list="indian-states" 
                       required 
-                      placeholder="राज्य चुनें"
+                      autoComplete="address-level1"
+                      placeholder="राज्य चुनें" 
                       className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
                       value={formData.state} 
                       onChange={e => setFormData({...formData, state: e.target.value})} 
@@ -902,9 +920,12 @@ export default function SingleProductPage() {
                     <input 
                       type="text" 
                       required 
+                      inputMode="numeric"
+                      autoComplete="postal-code"
+                      pattern="[0-9]{6}"
                       minLength={6} 
                       maxLength={6} 
-                      placeholder="6 अंक (226001)"
+                      placeholder="6 अंक (226001)" 
                       className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
                       value={formData.pincode} 
                       onChange={e => setFormData({...formData, pincode: e.target.value.replace(/[^0-9]/g, '')})} 
@@ -932,7 +953,7 @@ export default function SingleProductPage() {
                       ? 'border-emerald-700 bg-emerald-50/70 shadow-sm' 
                       : 'border-stone-200 bg-white hover:border-stone-300'
                   }`} 
-                  onClick={() => setPaymentOption('advance')}
+                  onClick={() => selectPaymentOption('advance')}
                 >
                   <div className="flex items-start gap-3">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 ${
@@ -977,7 +998,7 @@ export default function SingleProductPage() {
                       ? 'border-emerald-700 bg-emerald-50/70 shadow-sm' 
                       : 'border-stone-200 bg-white hover:border-stone-300'
                   }`} 
-                  onClick={() => setPaymentOption('full')}
+                  onClick={() => selectPaymentOption('full')}
                 >
                   <div className="flex items-start gap-3">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 ${
@@ -1011,7 +1032,7 @@ export default function SingleProductPage() {
                       ? 'border-emerald-700 bg-emerald-50/70 shadow-sm' 
                       : 'border-stone-200 bg-white hover:border-stone-300'
                   }`} 
-                  onClick={() => setPaymentOption('cod')}
+                  onClick={() => selectPaymentOption('cod')}
                 >
                   <div className="flex items-start gap-3">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 shrink-0 ${
@@ -1083,6 +1104,15 @@ export default function SingleProductPage() {
                   <span>📦 ऑर्डर कन्फर्म करें (सामान मिलने पर ₹{PRODUCT_PRICE} दें)</span>
                 )}
               </button>
+
+              {/* DIRECT 1-TAP PHONE CALL ORDER (FOR HESITANT / RURAL USERS) */}
+              <a
+                href="tel:+919899756597"
+                onClick={() => event('Contact', { method: 'Phone Call', source: 'order_form_help' })}
+                className="w-full py-3 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 transition-all border border-stone-200"
+              >
+                <span>📞 फॉर्म भरने में परेशानी? सीधे कॉल पर ऑर्डर दर्ज कराएं: <strong className="text-emerald-800">98997 56597</strong></span>
+              </a>
               
               <div className="text-center space-y-1.5 pt-1">
                 <div className="flex items-center justify-center gap-3 text-stone-500 text-xs font-semibold">
