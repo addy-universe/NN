@@ -4,7 +4,7 @@ import { sendEmail } from '@/lib/email';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { fullName, mobile, address, city, state, pincode, paymentOption, amount, paymentDetails, productName } = body;
+    const { fullName, mobile, address, city, state, pincode, paymentOption, amount, advanceAmount = 100, remainingAmount, paymentDetails, productName } = body;
 
     const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
@@ -14,11 +14,23 @@ export async function POST(req: Request) {
       await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'order', ...body, timestamp }),
+        body: JSON.stringify({ 
+          type: 'order', 
+          ...body, 
+          advanceAmount: paymentOption === 'advance' ? advanceAmount : (paymentOption === 'full' ? amount : 0),
+          remainingAmount: paymentOption === 'advance' ? (remainingAmount ?? (amount - advanceAmount)) : (paymentOption === 'full' ? 0 : amount),
+          timestamp 
+        }),
       }).catch(err => console.error('Order Webhook Error:', err));
     }
 
     // 2. Send instant email notification for completed order
+    const paymentLabel = paymentOption === 'advance'
+      ? `एडवांस ऑनलाइन भुगतान (₹${advanceAmount} अग्रिम प्राप्त)`
+      : paymentOption === 'full'
+      ? 'पूरा ऑनलाइन भुगतान (Full Payment)'
+      : 'कैश ऑन डिलीवरी (Cash on Delivery)';
+
     const html = `
       <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f0fdf4;">
         <div style="max-width: 550px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 12px; border-top: 4px solid #15803d; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
@@ -32,8 +44,12 @@ export async function POST(req: Request) {
             <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">मोबाइल:</td><td style="padding: 8px; font-weight: bold; color: #047857;"><a href="tel:${mobile}" style="color: #047857;">${mobile}</a></td></tr>
             <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">पूरा पता:</td><td style="padding: 8px;">${address}</td></tr>
             <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">शहर / राज्य / पिन:</td><td style="padding: 8px;">${city}, ${state || ''} - ${pincode}</td></tr>
-            <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">पेमेंट विधि:</td><td style="padding: 8px; font-weight: bold;">${paymentOption === 'full' ? 'पूरा ऑनलाइन भुगतान' : paymentOption === 'advance' ? 'एडवांस ऑनलाइन भुगतान' : 'कैश ऑन डिलीवरी (COD)'}</td></tr>
-            <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">राशि (Amount):</td><td style="padding: 8px; font-weight: bold; color: #d97706; font-size: 16px;">₹${amount}</td></tr>
+            <tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">पेमेंट विधि:</td><td style="padding: 8px; font-weight: bold;">${paymentLabel}</td></tr>
+            <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">कुल आर्डर राशि:</td><td style="padding: 8px; font-weight: bold; color: #d97706; font-size: 16px;">₹${amount}</td></tr>
+            ${paymentOption === 'advance' ? `
+            <tr><td style="padding: 8px; color: #15803d; font-weight: bold;">प्राप्त एडवांस:</td><td style="padding: 8px; font-weight: bold; color: #15803d; font-size: 15px;">₹${advanceAmount} (Online Paid)</td></tr>
+            <tr style="background-color: #fef3c7;"><td style="padding: 8px; color: #92400e; font-weight: bold;">डिलीवरी पर देय शेष राशि:</td><td style="padding: 8px; font-weight: bold; color: #92400e; font-size: 15px;">₹${remainingAmount ?? (amount - advanceAmount)} (COD)</td></tr>
+            ` : ''}
             ${paymentDetails ? `<tr><td style="padding: 8px; color: #6b7280; font-weight: bold;">Razorpay Payment ID:</td><td style="padding: 8px; font-size: 12px; font-family: monospace;">${paymentDetails.paymentId || 'N/A'}</td></tr>` : ''}
             <tr style="background-color: #f9fafb;"><td style="padding: 8px; color: #6b7280; font-weight: bold;">समय (Timestamp):</td><td style="padding: 8px;">${timestamp}</td></tr>
           </table>
@@ -41,8 +57,14 @@ export async function POST(req: Request) {
       </div>
     `;
 
+    const emailTag = paymentOption === 'advance' 
+      ? `[ADVANCE ₹${advanceAmount}]` 
+      : paymentOption === 'full' 
+      ? '[FULL PAID]' 
+      : '[COD]';
+
     await sendEmail({
-      subject: `🎉 CONFIRMED ORDER: ₹${amount} - ${fullName} (${mobile})`,
+      subject: `🎉 CONFIRMED ORDER: ₹${amount} ${emailTag} - ${fullName} (${mobile})`,
       html,
     });
 

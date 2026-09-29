@@ -10,6 +10,13 @@ import { event } from '@/lib/fpixel';
 export default function CheckoutSuccessPage() {
   const clearCart = useCartStore((s) => s.clearCart);
   const [orderNumber] = useState(() => `NN-${Math.floor(100000 + Math.random() * 900000)}`);
+  const [paymentInfo, setPaymentInfo] = useState<{
+    method?: string;
+    advance?: string;
+    remaining?: string;
+    total?: string;
+    orderId?: string;
+  }>({});
   const [orderDate] = useState(() => 
     new Date().toLocaleDateString('en-IN', {
       day: 'numeric',
@@ -19,6 +26,17 @@ export default function CheckoutSuccessPage() {
   );
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      setPaymentInfo({
+        method: params.get('method') || '',
+        advance: params.get('advance') || '',
+        remaining: params.get('remaining') || '',
+        total: params.get('total') || '',
+        orderId: params.get('orderId') || '',
+      });
+    }
+
     // Fire Meta Pixel Purchase event
     event('Purchase', {
       value: 11300,
@@ -63,11 +81,24 @@ export default function CheckoutSuccessPage() {
             <div className="grid grid-cols-2 gap-y-4 gap-x-6 text-sm">
               <div>
                 <p className="text-gray-400 font-medium">Order Number</p>
-                <p className="font-mono font-bold text-gray-900 mt-0.5">{orderNumber || 'NN-XXXXXX'}</p>
+                <p className="font-mono font-bold text-gray-900 mt-0.5">{paymentInfo.orderId || orderNumber}</p>
               </div>
               <div>
                 <p className="text-gray-400 font-medium">Payment Status</p>
-                <p className="font-semibold text-green-600 mt-0.5">Paid / Approved</p>
+                <p className="font-semibold text-green-700 mt-0.5">
+                  {paymentInfo.method === 'advance'
+                    ? `₹${paymentInfo.advance} Paid Online (Advance)`
+                    : paymentInfo.method === 'full'
+                    ? 'Fully Paid Online'
+                    : paymentInfo.method === 'cod'
+                    ? 'Pay on Delivery (COD)'
+                    : 'Paid / Approved'}
+                </p>
+                {paymentInfo.method === 'advance' && (
+                  <p className="text-xs text-amber-800 font-bold mt-0.5">
+                    ₹{paymentInfo.remaining} to pay on delivery
+                  </p>
+                )}
               </div>
               <div>
                 <p className="text-gray-400 font-medium">Estimated Delivery</p>

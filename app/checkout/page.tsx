@@ -9,6 +9,27 @@ import { useCartStore } from '@/lib/store';
 import { formatPrice } from '@/lib/data';
 import { event } from '@/lib/fpixel';
 
+interface RazorpaySuccessResponse {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+}
+
+interface RazorpayFailureResponse {
+  error: {
+    description: string;
+  };
+}
+
+interface RazorpayInstance {
+  open: () => void;
+  on: (event: string, callback: (response: RazorpayFailureResponse) => void) => void;
+}
+
+interface RazorpayConstructor {
+  new (options: Record<string, unknown>): RazorpayInstance;
+}
+
 export default function CheckoutPage() {
   const { items, totalPrice, totalSavings, clearCart } = useCartStore();
   const router = useRouter();
@@ -22,7 +43,9 @@ export default function CheckoutPage() {
     pincode: '',
   });
 
-  const [paymentMethod, setPaymentMethod] = useState<'cod' | 'online'>('cod');
+  // Payment options in order: 'advance' (min ₹100), 'full', 'cod'
+  const [paymentMethod, setPaymentMethod] = useState<'advance' | 'full' | 'cod'>('advance');
+  const [advanceAmount, setAdvanceAmount] = useState<number>(100);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [couponCode, setCouponCode] = useState('');
@@ -85,36 +108,104 @@ export default function CheckoutPage() {
 
     setIsSubmitting(true);
     const orderNum = `NN-${Math.floor(100000 + Math.random() * 900000)}`;
+    const productNames = items.map(i => `${i.product.name} (${i.variant.name} × ${i.quantity})`).join(', ');
+    const validAdvance = Math.max(100, Math.min(finalTotal, Number(advanceAmount) || 100));
+    const amountToPay = paymentMethod === 'advance' ? validAdvance : finalTotal;
 
-    try {
-      const productNames = items.map(i => `${i.product.name} (${i.variant.name} × ${i.quantity})`).join(', ');
+    const submitOrderToBackend = async (paymentDetails: Record<string, unknown> | null = null) => {
+      try {
+        await fetch('/api/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: orderNum,
+            productName: productNames || 'Nirog Nature Products',
+            ...formData,
+            paymentOption: paymentMethod,
+            amount: finalTotal,
+            advanceAmount: paymentMethod === 'advance' ? validAdvance : (paymentMethod === 'full' ? finalTotal : 0),
+            remainingAmount: paymentMethod === 'advance' ? (finalTotal - validAdvance) : (paymentMethod === 'full' ? 0 : finalTotal),
+            paymentDetails,
+            date: new Date().toISOString(),
+          }),
+        });
 
-      await fetch('/api/order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          orderId: orderNum,
-          productName: productNames || 'Nirog Nature Products',
-          ...formData,
-          paymentOption: paymentMethod,
-          amount: finalTotal,
-          date: new Date().toISOString(),
-        }),
-      });
+        // Fire Meta Pixel Purchase event
+        event('Purchase', {
+          value: paymentMethod === 'advance' ? validAdvance : finalTotal,
+          currency: 'INR',
+          content_name: productNames,
+        });
 
-      // Fire Meta Pixel Purchase event
-      event('Purchase', {
-        value: finalTotal,
-        currency: 'INR',
-        content_name: productNames,
-      });
+        clearCart();
+        router.push(`/checkout/success?orderId=${orderNum}&method=${paymentMethod}&advance=${validAdvance}&remaining=${finalTotal - validAdvance}&total=${finalTotal}`);
+      } catch (err) {
+        console.error(err);
+        alert('ऑर्डर दर्ज करने में कोई त्रुटि आई। कृपया दोबारा प्रयास करें।');
+        setIsSubmitting(false);
+      }
+    };
 
-      clearCart();
-      router.push('/checkout/success');
-    } catch (err) {
-      console.error(err);
-      alert('ऑर्डर दर्ज करने में कोई त्रुटि आई। कृपया दोबारा प्रयास करें।');
-      setIsSubmitting(false);
+    if (paymentMethod === 'advance' || paymentMethod === 'full') {
+      try {
+        const res = await fetch('/api/razorpay', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: amountToPay })
+        });
+        
+        const data = await res.json();
+        if (!data.success) {
+          throw new Error('Payment initialization failed');
+        }
+
+        const options = {
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_live_TOn6Gjuzof9k8E',
+          amount: data.order.amount,
+          currency: data.order.currency,
+          order_id: data.order.id,
+          name: 'निरोग नेचर (Nirog Nature)',
+          description: paymentMethod === 'advance'
+            ? `एडवांस पेमेंट (₹${amountToPay}) - बाकी ₹${finalTotal - amountToPay} डिलीवरी पर नकद`
+            : `पूरा पेमेंट - निरोग नेचर (₹${finalTotal})`,
+          handler: function (response: RazorpaySuccessResponse) {
+            submitOrderToBackend({
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+              signature: response.razorpay_signature,
+            });
+          },
+          prefill: {
+            name: formData.fullName,
+            contact: formData.mobile
+          },
+          theme: {
+            color: '#166534'
+          },
+          modal: {
+            ondismiss: function() {
+              setIsSubmitting(false);
+            }
+          }
+        };
+
+        const RazorpayGlobal = (window as unknown as { Razorpay: RazorpayConstructor }).Razorpay;
+        if (!RazorpayGlobal) {
+          throw new Error('Razorpay SDK not loaded');
+        }
+        const rzp = new RazorpayGlobal(options);
+        rzp.on('payment.failed', function (response: RazorpayFailureResponse) {
+          alert('पेमेंट पूरा नहीं हो सका: ' + response.error.description);
+          setIsSubmitting(false);
+        });
+        rzp.open();
+      } catch (err) {
+        console.error(err);
+        alert('ऑनलाइन पेमेंट शुरू नहीं हो पाया। आप "कैश ऑन डिलीवरी (COD)" चुनकर भी ऑर्डर कर सकते हैं।');
+        setIsSubmitting(false);
+      }
+    } else {
+      submitOrderToBackend(null);
     }
   };
 
@@ -261,47 +352,157 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-3">
-                  {/* COD */}
-                  <label 
+                  {/* 1. PAY ADVANCE (First Option: min ₹100) */}
+                  <div 
+                    onClick={() => setPaymentMethod('advance')}
+                    className={`p-4 border-2 rounded-2xl cursor-pointer transition-all ${
+                      paymentMethod === 'advance' ? 'border-emerald-700 bg-emerald-50/60 shadow-sm' : 'border-stone-200 hover:border-stone-300'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="radio"
+                        name="payment"
+                        checked={paymentMethod === 'advance'}
+                        onChange={() => setPaymentMethod('advance')}
+                        className="w-4 h-4 text-emerald-800 mt-1"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <p className="font-bold text-sm text-stone-900">⚡ Pay Advance (कम से कम ₹100 एडवांस)</p>
+                          <span className="bg-emerald-700 text-white text-[10px] font-black px-2 py-0.5 rounded-full">
+                            सबसे लोकप्रिय
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-0.5">
+                          मात्र <strong>₹100</strong> (या अपनी पसंद अनुसार) एडवांस देकर ऑर्डर पक्का करें। बाकी राशि सामान मिलने पर घर पर नकद (COD) दें।
+                        </p>
+
+                        {/* Interactive selector if selected */}
+                        {paymentMethod === 'advance' && (
+                          <div 
+                            className="mt-3 pt-3 border-t border-emerald-200/80 space-y-2.5"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <div className="flex items-center justify-between">
+                              <label className="text-xs font-bold text-stone-800">
+                                एडवांस राशि चुनें:
+                              </label>
+                              <span className="text-[11px] font-bold text-emerald-800">
+                                न्यूनतम राशि ₹100
+                              </span>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2">
+                              {[100, 200, 500, 1000].filter(amt => amt <= finalTotal).map((amt) => (
+                                <button
+                                  key={amt}
+                                  type="button"
+                                  onClick={() => setAdvanceAmount(amt)}
+                                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                                    advanceAmount === amt
+                                      ? 'bg-emerald-800 text-white shadow-sm'
+                                      : 'bg-white border border-stone-300 text-stone-700 hover:bg-stone-100'
+                                  }`}
+                                >
+                                  {amt === 100 ? '₹100 (सुझावित)' : `₹${amt}`}
+                                </button>
+                              ))}
+                            </div>
+
+                            <div className="flex items-center gap-2 pt-1">
+                              <span className="text-xs font-bold text-stone-600">या अन्य राशि:</span>
+                              <div className="relative flex-1 max-w-[140px]">
+                                <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 font-bold text-xs">₹</span>
+                                <input
+                                  type="number"
+                                  min={100}
+                                  max={finalTotal}
+                                  value={advanceAmount || ''}
+                                  onChange={(e) => {
+                                    const val = parseInt(e.target.value, 10);
+                                    setAdvanceAmount(isNaN(val) ? 0 : val);
+                                  }}
+                                  onBlur={() => {
+                                    if (!advanceAmount || advanceAmount < 100) setAdvanceAmount(100);
+                                    else if (advanceAmount > finalTotal) setAdvanceAmount(finalTotal);
+                                  }}
+                                  className="w-full pl-6 pr-2 py-1.5 text-xs font-black bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700"
+                                  placeholder="100"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="bg-white/90 p-2.5 rounded-xl border border-emerald-200 text-xs space-y-1">
+                              <div className="flex justify-between text-stone-700 font-medium">
+                                <span>💳 अभी ऑनलाइन भरें:</span>
+                                <span className="font-bold text-emerald-800">
+                                  ₹{Math.max(100, Math.min(finalTotal, advanceAmount || 100))}
+                                </span>
+                              </div>
+                              <div className="flex justify-between text-stone-700 font-medium">
+                                <span>📦 डिलीवरी के समय घर पर नकद दें:</span>
+                                <span className="font-bold text-stone-900">
+                                  ₹{Math.max(0, finalTotal - Math.max(100, Math.min(finalTotal, advanceAmount || 100)))}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2. FULL PAYMENT (Second Option: pay full upfront) */}
+                  <div 
+                    onClick={() => setPaymentMethod('full')}
+                    className={`p-4 border-2 rounded-2xl cursor-pointer transition-all ${
+                      paymentMethod === 'full' ? 'border-emerald-700 bg-emerald-50/60 shadow-sm' : 'border-stone-200 hover:border-stone-300'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="radio"
+                        name="payment"
+                        checked={paymentMethod === 'full'}
+                        onChange={() => setPaymentMethod('full')}
+                        className="w-4 h-4 text-emerald-800 mt-1"
+                      />
+                      <CreditCard className="w-5 h-5 text-emerald-800 mt-0.5 shrink-0" />
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="font-bold text-sm text-stone-900">💳 Full Payment (पूरा ऑनलाइन भुगतान)</p>
+                          <span className="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full border border-amber-300">फास्ट डिलीवरी</span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-0.5">
+                          पूरा {formatPrice(finalTotal)} तुरंत ऑनलाइन सुरक्षित भुगतान करें। डिलीवरी पर कुछ नहीं देना होगा।
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3. CASH ON DELIVERY (Third Option: pay upon receipt) */}
+                  <div 
                     onClick={() => setPaymentMethod('cod')}
-                    className={`flex items-start gap-4 p-4 border-2 rounded-2xl cursor-pointer transition-all ${
+                    className={`p-4 border-2 rounded-2xl cursor-pointer transition-all ${
                       paymentMethod === 'cod' ? 'border-emerald-700 bg-emerald-50/60 shadow-sm' : 'border-stone-200 hover:border-stone-300'
                     }`}
                   >
-                    <input
-                      type="radio"
-                      name="payment"
-                      checked={paymentMethod === 'cod'}
-                      onChange={() => setPaymentMethod('cod')}
-                      className="w-4 h-4 text-emerald-800 mt-1"
-                    />
-                    <Truck className="w-5 h-5 text-emerald-800 mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-bold text-sm text-stone-900">📦 कैश ऑन डिलीवरी (Cash on Delivery)</p>
-                      <p className="text-xs text-stone-600 mt-0.5">सामान घर पहुँचने पर पैसे दें। कोई एडवांस नहीं।</p>
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="radio"
+                        name="payment"
+                        checked={paymentMethod === 'cod'}
+                        onChange={() => setPaymentMethod('cod')}
+                        className="w-4 h-4 text-emerald-800 mt-1"
+                      />
+                      <Truck className="w-5 h-5 text-emerald-800 mt-0.5 shrink-0" />
+                      <div>
+                        <p className="font-bold text-sm text-stone-900">📦 Cash on Delivery (COD - कैश ऑन डिलीवरी)</p>
+                        <p className="text-xs text-stone-600 mt-0.5">सामान घर पहुँचने पर {formatPrice(finalTotal)} नकद दें। अभी कोई एडवांस नहीं।</p>
+                      </div>
                     </div>
-                  </label>
-
-                  {/* Online */}
-                  <label 
-                    onClick={() => setPaymentMethod('online')}
-                    className={`flex items-start gap-4 p-4 border-2 rounded-2xl cursor-pointer transition-all ${
-                      paymentMethod === 'online' ? 'border-emerald-700 bg-emerald-50/60 shadow-sm' : 'border-stone-200 hover:border-stone-300'
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="payment"
-                      checked={paymentMethod === 'online'}
-                      onChange={() => setPaymentMethod('online')}
-                      className="w-4 h-4 text-emerald-800 mt-1"
-                    />
-                    <CreditCard className="w-5 h-5 text-emerald-800 mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-bold text-sm text-stone-900">💳 ऑनलाइन पेमेंट (UPI / Cards / NetBanking)</p>
-                      <p className="text-xs text-stone-600 mt-0.5">तुरंत सुरक्षित ऑनलाइन भुगतान करें।</p>
-                    </div>
-                  </label>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -388,9 +589,22 @@ export default function CheckoutPage() {
                     <span className="text-green-700 font-bold">मुफ़्त (Free)</span>
                   </div>
                   <div className="flex justify-between font-black text-base text-stone-950 pt-2 border-t border-stone-200">
-                    <span>कुल राशि:</span>
+                    <span>कुल ऑर्डर मूल्य:</span>
                     <span className="text-emerald-800">{formatPrice(finalTotal)}</span>
                   </div>
+
+                  {paymentMethod === 'advance' ? (
+                    <div className="bg-emerald-50/80 p-2.5 rounded-xl border border-emerald-200 space-y-1 mt-2">
+                      <div className="flex justify-between font-bold text-emerald-800">
+                        <span>अभी ऑनलाइन भुगतान (Advance):</span>
+                        <span>₹{Math.max(100, Math.min(finalTotal, advanceAmount || 100))}</span>
+                      </div>
+                      <div className="flex justify-between font-bold text-stone-800">
+                        <span>डिलीवरी पर देय (Cash on Delivery):</span>
+                        <span>₹{Math.max(0, finalTotal - Math.max(100, Math.min(finalTotal, advanceAmount || 100)))}</span>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
 
                 {/* Submit button */}
@@ -401,10 +615,12 @@ export default function CheckoutPage() {
                 >
                   {isSubmitting ? (
                     <span>ऑर्डर दर्ज हो रहा है...</span>
-                  ) : paymentMethod === 'cod' ? (
-                    <span>📦 ऑर्डर पक्का करें (Cash on Delivery)</span>
+                  ) : paymentMethod === 'advance' ? (
+                    <span>💳 अभी ₹{Math.max(100, Math.min(finalTotal, advanceAmount || 100))} एडवांस देकर ऑर्डर पक्का करें</span>
+                  ) : paymentMethod === 'full' ? (
+                    <span>💳 अभी {formatPrice(finalTotal)} पूरा ऑनलाइन भरें</span>
                   ) : (
-                    <span>💳 अभी {formatPrice(finalTotal)} ऑनलाइन भरें</span>
+                    <span>📦 ऑर्डर पक्का करें (सामान मिलने पर {formatPrice(finalTotal)} दें)</span>
                   )}
                 </button>
 
