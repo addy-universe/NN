@@ -43,9 +43,8 @@ export default function CheckoutPage() {
     pincode: '',
   });
 
-  // Payment options in order: 'advance' (min ₹100), 'full', 'cod'
+  // Payment options in order: 'advance' (₹100 advance), 'full', 'cod'
   const [paymentMethod, setPaymentMethod] = useState<'advance' | 'full' | 'cod'>('advance');
-  const [advanceAmount, setAdvanceAmount] = useState<number>(100);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [couponCode, setCouponCode] = useState('');
@@ -109,7 +108,7 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
     const orderNum = `NN-${Math.floor(100000 + Math.random() * 900000)}`;
     const productNames = items.map(i => `${i.product.name} (${i.variant.name} × ${i.quantity})`).join(', ');
-    const validAdvance = Math.max(100, Math.min(finalTotal, Number(advanceAmount) || 100));
+    const validAdvance = Math.min(finalTotal, 100);
     const amountToPay = paymentMethod === 'advance' ? validAdvance : finalTotal;
 
     const submitOrderToBackend = async (paymentDetails: Record<string, unknown> | null = null) => {
@@ -352,7 +351,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-3">
-                  {/* 1. PAY ADVANCE (First Option: min ₹100) */}
+                  {/* 1. PAY ADVANCE (First Option: Fixed ₹100 Advance) */}
                   <div 
                     onClick={() => setPaymentMethod('advance')}
                     className={`p-4 border-2 rounded-2xl cursor-pointer transition-all ${
@@ -369,83 +368,25 @@ export default function CheckoutPage() {
                       />
                       <div className="flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <p className="font-bold text-sm text-stone-900">⚡ Pay Advance (कम से कम ₹100 एडवांस)</p>
+                          <p className="font-bold text-sm text-stone-900">⚡ Pay Advance (मात्र ₹100 एडवांस)</p>
                           <span className="bg-emerald-700 text-white text-[10px] font-black px-2 py-0.5 rounded-full">
-                            सबसे लोकप्रिय
+                            सबसे आसान
                           </span>
                         </div>
                         <p className="text-xs text-stone-600 mt-0.5">
-                          मात्र <strong>₹100</strong> (या अपनी पसंद अनुसार) एडवांस देकर ऑर्डर पक्का करें। बाकी राशि सामान मिलने पर घर पर नकद (COD) दें।
+                          मात्र <strong>₹100</strong> एडवांस देकर ऑर्डर पक्का करें। बाकी राशि सामान मिलने पर घर पर नकद (COD) दें।
                         </p>
 
-                        {/* Interactive selector if selected */}
+                        {/* Breakdown Box */}
                         {paymentMethod === 'advance' && (
-                          <div 
-                            className="mt-3 pt-3 border-t border-emerald-200/80 space-y-2.5"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <div className="flex items-center justify-between">
-                              <label className="text-xs font-bold text-stone-800">
-                                एडवांस राशि चुनें:
-                              </label>
-                              <span className="text-[11px] font-bold text-emerald-800">
-                                न्यूनतम राशि ₹100
-                              </span>
+                          <div className="mt-2.5 bg-white/90 p-2.5 rounded-xl border border-emerald-200 text-xs space-y-1">
+                            <div className="flex justify-between text-stone-700 font-medium">
+                              <span>💳 अभी ऑनलाइन भरें:</span>
+                              <span className="font-bold text-emerald-800">₹{Math.min(finalTotal, 100)}</span>
                             </div>
-
-                            <div className="flex flex-wrap gap-2">
-                              {[100, 200, 500, 1000].filter(amt => amt <= finalTotal).map((amt) => (
-                                <button
-                                  key={amt}
-                                  type="button"
-                                  onClick={() => setAdvanceAmount(amt)}
-                                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                                    advanceAmount === amt
-                                      ? 'bg-emerald-800 text-white shadow-sm'
-                                      : 'bg-white border border-stone-300 text-stone-700 hover:bg-stone-100'
-                                  }`}
-                                >
-                                  {amt === 100 ? '₹100 (सुझावित)' : `₹${amt}`}
-                                </button>
-                              ))}
-                            </div>
-
-                            <div className="flex items-center gap-2 pt-1">
-                              <span className="text-xs font-bold text-stone-600">या अन्य राशि:</span>
-                              <div className="relative flex-1 max-w-[140px]">
-                                <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 font-bold text-xs">₹</span>
-                                <input
-                                  type="number"
-                                  min={100}
-                                  max={finalTotal}
-                                  value={advanceAmount || ''}
-                                  onChange={(e) => {
-                                    const val = parseInt(e.target.value, 10);
-                                    setAdvanceAmount(isNaN(val) ? 0 : val);
-                                  }}
-                                  onBlur={() => {
-                                    if (!advanceAmount || advanceAmount < 100) setAdvanceAmount(100);
-                                    else if (advanceAmount > finalTotal) setAdvanceAmount(finalTotal);
-                                  }}
-                                  className="w-full pl-6 pr-2 py-1.5 text-xs font-black bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700"
-                                  placeholder="100"
-                                />
-                              </div>
-                            </div>
-
-                            <div className="bg-white/90 p-2.5 rounded-xl border border-emerald-200 text-xs space-y-1">
-                              <div className="flex justify-between text-stone-700 font-medium">
-                                <span>💳 अभी ऑनलाइन भरें:</span>
-                                <span className="font-bold text-emerald-800">
-                                  ₹{Math.max(100, Math.min(finalTotal, advanceAmount || 100))}
-                                </span>
-                              </div>
-                              <div className="flex justify-between text-stone-700 font-medium">
-                                <span>📦 डिलीवरी के समय घर पर नकद दें:</span>
-                                <span className="font-bold text-stone-900">
-                                  ₹{Math.max(0, finalTotal - Math.max(100, Math.min(finalTotal, advanceAmount || 100)))}
-                                </span>
-                              </div>
+                            <div className="flex justify-between text-stone-700 font-medium">
+                              <span>📦 डिलीवरी के समय घर पर नकद दें:</span>
+                              <span className="font-bold text-stone-900">₹{Math.max(0, finalTotal - 100)}</span>
                             </div>
                           </div>
                         )}
@@ -597,11 +538,11 @@ export default function CheckoutPage() {
                     <div className="bg-emerald-50/80 p-2.5 rounded-xl border border-emerald-200 space-y-1 mt-2">
                       <div className="flex justify-between font-bold text-emerald-800">
                         <span>अभी ऑनलाइन भुगतान (Advance):</span>
-                        <span>₹{Math.max(100, Math.min(finalTotal, advanceAmount || 100))}</span>
+                        <span>₹{Math.min(finalTotal, 100)}</span>
                       </div>
                       <div className="flex justify-between font-bold text-stone-800">
                         <span>डिलीवरी पर देय (Cash on Delivery):</span>
-                        <span>₹{Math.max(0, finalTotal - Math.max(100, Math.min(finalTotal, advanceAmount || 100)))}</span>
+                        <span>₹{Math.max(0, finalTotal - 100)}</span>
                       </div>
                     </div>
                   ) : null}
@@ -616,7 +557,7 @@ export default function CheckoutPage() {
                   {isSubmitting ? (
                     <span>ऑर्डर दर्ज हो रहा है...</span>
                   ) : paymentMethod === 'advance' ? (
-                    <span>💳 अभी ₹{Math.max(100, Math.min(finalTotal, advanceAmount || 100))} एडवांस देकर ऑर्डर पक्का करें</span>
+                    <span>💳 अभी ₹{Math.min(finalTotal, 100)} एडवांस देकर ऑर्डर पक्का करें</span>
                   ) : paymentMethod === 'full' ? (
                     <span>💳 अभी {formatPrice(finalTotal)} पूरा ऑनलाइन भरें</span>
                   ) : (

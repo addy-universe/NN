@@ -107,9 +107,9 @@ const INDIAN_STATES = [
 ];
 
 export default function SingleProductPage() {
-  // Payment options in order: 'advance' (min ₹100), 'full', 'cod'
+  // Payment options in order: 'advance' (₹100 advance), 'full', 'cod'
   const [paymentOption, setPaymentOption] = useState<'advance' | 'full' | 'cod'>('advance');
-  const [advanceAmount, setAdvanceAmount] = useState<number>(100);
+  const advanceAmount = 100;
   const [selectedImage, setSelectedImage] = useState<string>('/images/naag-chattri-front.png');
   
   const [formData, setFormData] = useState({
@@ -228,8 +228,6 @@ export default function SingleProductPage() {
     const orderNum = `NN-${Math.floor(100000 + Math.random() * 900000)}`;
     setGeneratedOrderId(orderNum);
 
-    const validAdvance = Math.max(100, Math.min(PRODUCT_PRICE, Number(advanceAmount) || 100));
-
     const submitOrderToBackend = async (paymentDetails: Record<string, unknown> | null = null) => {
       try {
         await fetch('/api/order', {
@@ -242,8 +240,8 @@ export default function SingleProductPage() {
             ...formData,
             paymentOption,
             amount: PRODUCT_PRICE,
-            advanceAmount: paymentOption === 'advance' ? validAdvance : (paymentOption === 'full' ? PRODUCT_PRICE : 0),
-            remainingAmount: paymentOption === 'advance' ? (PRODUCT_PRICE - validAdvance) : (paymentOption === 'full' ? 0 : PRODUCT_PRICE),
+            advanceAmount: paymentOption === 'advance' ? 100 : (paymentOption === 'full' ? PRODUCT_PRICE : 0),
+            remainingAmount: paymentOption === 'advance' ? (PRODUCT_PRICE - 100) : (paymentOption === 'full' ? 0 : PRODUCT_PRICE),
             paymentDetails,
             date: new Date().toISOString()
           })
@@ -253,7 +251,7 @@ export default function SingleProductPage() {
         event('Purchase', {
           content_name: PRODUCT_NAME,
           content_type: 'product',
-          value: paymentOption === 'advance' ? validAdvance : PRODUCT_PRICE,
+          value: paymentOption === 'advance' ? 100 : PRODUCT_PRICE,
           currency: 'INR'
         });
 
@@ -267,7 +265,7 @@ export default function SingleProductPage() {
     };
 
     if (paymentOption === 'advance' || paymentOption === 'full') {
-      const amountToPay = paymentOption === 'advance' ? validAdvance : PRODUCT_PRICE;
+      const amountToPay = paymentOption === 'advance' ? 100 : PRODUCT_PRICE;
       setOrderStatus('processing');
       try {
         const res = await fetch('/api/razorpay', {
@@ -289,15 +287,15 @@ export default function SingleProductPage() {
           order_id: data.order.id,
           name: 'निरोग नेचर - नाग छत्री',
           description: paymentOption === 'advance'
-            ? `एडवांस पेमेंट (₹${amountToPay}) - बाकी ₹${PRODUCT_PRICE - amountToPay} डिलीवरी पर नकद`
+            ? `एडवांस पेमेंट (₹100) - बाकी ₹${PRODUCT_PRICE - 100} डिलीवरी पर नकद`
             : `पूरा पेमेंट - निरोग नेचर नाग छत्री (₹${PRODUCT_PRICE})`,
           handler: function (response: RazorpaySuccessResponse) {
             submitOrderToBackend({
               paymentId: response.razorpay_payment_id,
               orderId: response.razorpay_order_id,
               signature: response.razorpay_signature,
-              advancePaid: paymentOption === 'advance' ? amountToPay : PRODUCT_PRICE,
-              remainingCod: paymentOption === 'advance' ? PRODUCT_PRICE - amountToPay : 0
+              advancePaid: paymentOption === 'advance' ? 100 : PRODUCT_PRICE,
+              remainingCod: paymentOption === 'advance' ? PRODUCT_PRICE - 100 : 0
             });
           },
           prefill: {
@@ -338,7 +336,6 @@ export default function SingleProductPage() {
 
   // SUCCESS SCREEN
   if (orderStatus === 'success') {
-    const validAdvance = Math.max(100, Math.min(PRODUCT_PRICE, Number(advanceAmount) || 100));
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-50 px-4 py-12">
         <div className="max-w-lg w-full bg-white p-6 sm:p-10 rounded-3xl shadow-2xl border border-emerald-200 text-center">
@@ -374,7 +371,7 @@ export default function SingleProductPage() {
               <span className="text-stone-500 font-medium">भुगतान का तरीका:</span>
               <span className="font-bold text-stone-900">
                 {paymentOption === 'advance' 
-                  ? `Pay Advance (₹${validAdvance} प्राप्त)` 
+                  ? 'Pay Advance (₹100 प्राप्त)' 
                   : paymentOption === 'full' 
                   ? 'Full Payment (पूरा ऑनलाइन भुगतान)' 
                   : 'Cash on Delivery (COD)'}
@@ -385,11 +382,11 @@ export default function SingleProductPage() {
               <div className="bg-amber-50 border border-amber-200 p-3.5 rounded-xl text-amber-950 font-bold text-xs mt-3 space-y-2">
                 <div className="flex items-center gap-2 text-emerald-800">
                   <Check className="w-5 h-5 shrink-0 text-emerald-700" />
-                  <span>आपका अग्रिम भुगतान (₹{validAdvance}) सुरक्षित रूप से प्राप्त हो चुका है।</span>
+                  <span>आपका ₹100 अग्रिम भुगतान सुरक्षित रूप से प्राप्त हो चुका है।</span>
                 </div>
                 <div className="flex items-start gap-2 text-amber-900 pt-1.5 border-t border-amber-200/70">
                   <Truck className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-                  <span>बाकी बची राशि <strong>₹{(PRODUCT_PRICE - validAdvance).toLocaleString('en-IN')}</strong> डिलीवरी के समय पार्सल मिलने पर डिलीवरी बॉय को नकद दें।</span>
+                  <span>बाकी बची राशि <strong>₹{(PRODUCT_PRICE - 100).toLocaleString('en-IN')}</strong> डिलीवरी के समय पार्सल मिलने पर डिलीवरी बॉय को नकद दें।</span>
                 </div>
               </div>
             ) : paymentOption === 'full' ? (
@@ -928,7 +925,7 @@ export default function SingleProductPage() {
                   </span>
                 </div>
                 
-                {/* 1. PAY ADVANCE (First Option: min ₹100 advance) */}
+                {/* 1. PAY ADVANCE (First Option: Fixed ₹100 Advance) */}
                 <div 
                   className={`p-3.5 sm:p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                     paymentOption === 'advance' 
@@ -946,87 +943,26 @@ export default function SingleProductPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-black text-sm text-stone-900">
-                          ⚡ Pay Advance (कम से कम ₹100 एडवांस)
+                          ⚡ Pay Advance (मात्र ₹100 एडवांस)
                         </span>
                         <span className="bg-emerald-700 text-white text-[10px] font-black px-2 py-0.5 rounded-full">
                           सबसे लोकप्रिय
                         </span>
                       </div>
                       <p className="text-xs text-stone-600 mt-1 leading-relaxed">
-                        मात्र <strong>₹100</strong> (या अपनी इच्छा अनुसार) एडवांस ऑनलाइन देकर ऑर्डर पक्का करें। बाकी राशि पार्सल मिलने पर घर पर नकद (COD) दें।
+                        मात्र <strong>₹100</strong> एडवांस देकर ऑर्डर पक्का करें। बाकी राशि <strong>₹{PRODUCT_PRICE - 100}</strong> पार्सल मिलने पर घर पर नकद (COD) दें।
                       </p>
 
-                      {/* Interactive Advance Amount Selector when selected */}
+                      {/* Clear Breakdown Box */}
                       {paymentOption === 'advance' && (
-                        <div 
-                          className="mt-3 pt-3 border-t border-emerald-200/80 space-y-2.5"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <div className="flex items-center justify-between">
-                            <label className="text-xs font-bold text-stone-800">
-                              एडवांस राशि चुनें:
-                            </label>
-                            <span className="text-[11px] font-bold text-emerald-800">
-                              न्यूनतम राशि ₹100
-                            </span>
+                        <div className="mt-2.5 bg-white/90 p-2.5 rounded-xl border border-emerald-200 text-xs space-y-1">
+                          <div className="flex justify-between text-stone-700 font-medium">
+                            <span>💳 अभी ऑनलाइन भरें:</span>
+                            <span className="font-bold text-emerald-800">₹100</span>
                           </div>
-
-                          {/* Quick Chips */}
-                          <div className="flex flex-wrap gap-2">
-                            {[100, 200, 500, 1000].map((amt) => (
-                              <button
-                                key={amt}
-                                type="button"
-                                onClick={() => setAdvanceAmount(amt)}
-                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                                  advanceAmount === amt
-                                    ? 'bg-emerald-800 text-white shadow-sm'
-                                    : 'bg-white border border-stone-300 text-stone-700 hover:bg-stone-100'
-                                }`}
-                              >
-                                {amt === 100 ? '₹100 (सुझावित)' : `₹${amt}`}
-                              </button>
-                            ))}
-                          </div>
-
-                          {/* Custom Amount Input */}
-                          <div className="flex items-center gap-2 pt-1">
-                            <span className="text-xs font-bold text-stone-600">या अन्य राशि:</span>
-                            <div className="relative flex-1 max-w-[140px]">
-                              <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 font-bold text-xs">₹</span>
-                              <input
-                                type="number"
-                                min={100}
-                                max={PRODUCT_PRICE}
-                                value={advanceAmount || ''}
-                                onChange={(e) => {
-                                  const val = parseInt(e.target.value, 10);
-                                  setAdvanceAmount(isNaN(val) ? 0 : val);
-                                }}
-                                onBlur={() => {
-                                  if (!advanceAmount || advanceAmount < 100) setAdvanceAmount(100);
-                                  else if (advanceAmount > PRODUCT_PRICE) setAdvanceAmount(PRODUCT_PRICE);
-                                }}
-                                className="w-full pl-6 pr-2 py-1.5 text-xs font-black bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700"
-                                placeholder="100"
-                              />
-                            </div>
-                          </div>
-
-                          {/* Clear Breakdown Box */}
-                          <div className="bg-white/90 p-2.5 rounded-xl border border-emerald-200 text-xs space-y-1">
-                            <div className="flex justify-between text-stone-700 font-medium">
-                              <span>💳 अभी ऑनलाइन भरें:</span>
-                              <span className="font-bold text-emerald-800">
-                                ₹{Math.max(100, Math.min(PRODUCT_PRICE, advanceAmount || 100))}
-                              </span>
-                            </div>
-                            <div className="flex justify-between text-stone-700 font-medium">
-                              <span>📦 डिलीवरी के समय घर पर नकद दें:</span>
-                              <span className="font-bold text-stone-900">
-                                ₹{Math.max(0, PRODUCT_PRICE - Math.max(100, Math.min(PRODUCT_PRICE, advanceAmount || 100)))}
-                              </span>
-                            </div>
+                          <div className="flex justify-between text-stone-700 font-medium">
+                            <span>📦 डिलीवरी के समय घर पर नकद दें:</span>
+                            <span className="font-bold text-stone-900">₹{PRODUCT_PRICE - 100}</span>
                           </div>
                         </div>
                       )}
@@ -1111,11 +1047,11 @@ export default function SingleProductPage() {
                   <div className="border-t border-stone-200 pt-2 space-y-1">
                     <div className="flex justify-between font-bold text-emerald-800">
                       <span>अभी ऑनलाइन देय (Advance):</span>
-                      <span className="text-sm">₹{Math.max(100, Math.min(PRODUCT_PRICE, advanceAmount || 100))}</span>
+                      <span className="text-sm">₹100</span>
                     </div>
                     <div className="flex justify-between font-bold text-stone-900">
                       <span>घर पर देय राशि (Cash on Delivery):</span>
-                      <span className="text-sm">₹{Math.max(0, PRODUCT_PRICE - Math.max(100, Math.min(PRODUCT_PRICE, advanceAmount || 100)))}</span>
+                      <span className="text-sm">₹{PRODUCT_PRICE - 100}</span>
                     </div>
                   </div>
                 ) : paymentOption === 'full' ? (
@@ -1140,7 +1076,7 @@ export default function SingleProductPage() {
                 {orderStatus === 'processing' ? (
                   <span>ऑर्डर प्रोसेस हो रहा है...</span>
                 ) : paymentOption === 'advance' ? (
-                  <span>💳 अभी ₹{Math.max(100, Math.min(PRODUCT_PRICE, advanceAmount || 100))} एडवांस देकर ऑर्डर करें</span>
+                  <span>💳 अभी ₹100 एडवांस देकर ऑर्डर करें (बाकी ₹{PRODUCT_PRICE - 100} डिलीवरी पर)</span>
                 ) : paymentOption === 'full' ? (
                   <span>💳 अभी ₹{PRODUCT_PRICE} पूरा ऑनलाइन भरें</span>
                 ) : (
@@ -1174,7 +1110,7 @@ export default function SingleProductPage() {
           <div className="flex items-baseline gap-1">
             <span className="text-base font-black text-emerald-900">₹{PRODUCT_PRICE}</span>
             <span className="text-[10px] text-emerald-700 font-bold">
-              {paymentOption === 'advance' ? `₹${Math.max(100, Math.min(PRODUCT_PRICE, advanceAmount || 100))} एडवांस` : paymentOption === 'full' ? 'फुल पेमेंट' : 'COD'} • फ्री डिलीवरी
+              {paymentOption === 'advance' ? '₹100 एडवांस' : paymentOption === 'full' ? 'फुल पेमेंट' : 'COD'} • फ्री डिलीवरी
             </span>
           </div>
         </div>
