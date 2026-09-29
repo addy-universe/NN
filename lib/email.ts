@@ -10,9 +10,9 @@ interface EmailData {
 export async function sendEmail({ to, subject, html, text }: EmailData) {
   const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
   const smtpPort = Number(process.env.SMTP_PORT) || 465;
-  const smtpUser = process.env.SMTP_USER || '';
+  const smtpUser = process.env.SMTP_USER || 'nirognature@gmail.com';
   const smtpPass = process.env.SMTP_PASS || '';
-  const notificationEmail = to || process.env.NOTIFICATION_EMAIL || smtpUser;
+  const notificationEmail = to || process.env.NOTIFICATION_EMAIL || 'nirognature@gmail.com';
 
   // 1. If Webhook is configured, forward payload to Webhook
   const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;

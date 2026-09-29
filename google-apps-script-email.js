@@ -10,7 +10,7 @@
  * 6. Click 'Deploy' and copy the Web App URL into your .env.local as GOOGLE_SHEETS_WEBHOOK_URL.
  */
 
-var NOTIFICATION_EMAIL = "YOUR_EMAIL@gmail.com"; // <-- Enter your email ID here
+var NOTIFICATION_EMAIL = "nirognature@gmail.com"; // Email where you will receive order alerts
 
 function doPost(e) {
   try {
@@ -123,8 +123,9 @@ function doPost(e) {
             <p><b>नाम:</b> ${data.fullName}</p>
             <p><b>मोबाइल:</b> <a href="tel:${data.mobile}">${data.mobile}</a></p>
             <p><b>पता:</b> ${data.address}, ${data.city} - ${data.pincode}</p>
-            <p><b>पेमेंट विधि:</b> ${data.paymentOption}</p>
-            <p><b>कुल राशि:</b> ₹${data.amount}</p>
+            <p><b>पेमेंट विधि:</b> ${data.paymentOption === 'advance' ? 'Pay Advance (₹100 ऑनलाइन प्राप्त)' : data.paymentOption === 'full' ? 'पूरा ऑनलाइन भुगतान (Full Payment)' : 'कैश ऑन डिलीवरी (COD)'}</p>
+            <p><b>कुल आर्डर राशि:</b> ₹${data.amount}</p>
+            ${data.paymentOption === 'advance' ? `<p style="color: #15803d; font-weight: bold;">प्राप्त एडवांस: ₹100</p><p style="color: #b45309; font-weight: bold;">डिलीवरी पर देय शेष राशि (COD): ₹${data.amount - 100}</p>` : ''}
           </div>
         </div>
       `
