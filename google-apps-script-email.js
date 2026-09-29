@@ -98,8 +98,13 @@ function doPost(e) {
     // ----------------------------------------------------
     var orderSheet = sheet.getSheetByName("Orders") || sheet.insertSheet("Orders");
     if (orderSheet.getLastRow() === 0) {
-      orderSheet.appendRow(["Timestamp", "Product", "Full Name", "Mobile", "Address", "City", "Pincode", "Payment Option", "Amount"]);
+      orderSheet.appendRow(["Timestamp", "Product", "Full Name", "Mobile", "Address", "City", "Pincode", "Payment Option", "Advance Paid (₹)", "Remaining COD (₹)", "Total Amount (₹)"]);
     }
+    
+    var advancePaid = data.paymentOption === 'advance' ? 100 : (data.paymentOption === 'full' ? data.amount : 0);
+    var remainingCod = data.paymentOption === 'advance' ? (data.amount - 100) : (data.paymentOption === 'full' ? 0 : data.amount);
+    var paymentLabel = data.paymentOption === 'advance' ? 'Pay Advance (₹100)' : (data.paymentOption === 'full' ? 'Full Online Payment' : 'Cash on Delivery (COD)');
+
     orderSheet.appendRow([
       data.timestamp || new Date(),
       data.productName || "निरोग नेचर नाग छत्री",
@@ -108,13 +113,17 @@ function doPost(e) {
       data.address,
       data.city,
       data.pincode,
-      data.paymentOption,
+      paymentLabel,
+      advancePaid,
+      remainingCod,
       data.amount
     ]);
 
+    var emailTag = data.paymentOption === 'advance' ? '[ADVANCE ₹100]' : (data.paymentOption === 'full' ? '[FULL PAID]' : '[COD]');
+
     MailApp.sendEmail({
       to: NOTIFICATION_EMAIL,
-      subject: "🎉 NEW ORDER: ₹" + data.amount + " - " + data.fullName,
+      subject: "🎉 NEW ORDER: ₹" + data.amount + " " + emailTag + " - " + data.fullName + " (" + data.mobile + ")",
       htmlBody: `
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f0fdf4;">
           <div style="max-width: 550px; background: #ffffff; padding: 20px; border-top: 4px solid #166534; border-radius: 8px;">
@@ -123,9 +132,9 @@ function doPost(e) {
             <p><b>नाम:</b> ${data.fullName}</p>
             <p><b>मोबाइल:</b> <a href="tel:${data.mobile}">${data.mobile}</a></p>
             <p><b>पता:</b> ${data.address}, ${data.city} - ${data.pincode}</p>
-            <p><b>पेमेंट विधि:</b> ${data.paymentOption === 'advance' ? 'Pay Advance (₹100 ऑनलाइन प्राप्त)' : data.paymentOption === 'full' ? 'पूरा ऑनलाइन भुगतान (Full Payment)' : 'कैश ऑन डिलीवरी (COD)'}</p>
+            <p><b>पेमेंट विधि:</b> ${paymentLabel}</p>
             <p><b>कुल आर्डर राशि:</b> ₹${data.amount}</p>
-            ${data.paymentOption === 'advance' ? `<p style="color: #15803d; font-weight: bold;">प्राप्त एडवांस: ₹100</p><p style="color: #b45309; font-weight: bold;">डिलीवरी पर देय शेष राशि (COD): ₹${data.amount - 100}</p>` : ''}
+            ${data.paymentOption === 'advance' ? `<p style="color: #15803d; font-weight: bold;">प्राप्त एडवांस: ₹100 (Online Paid)</p><p style="color: #b45309; font-weight: bold;">डिलीवरी पर देय शेष राशि (COD): ₹${data.amount - 100}</p>` : ''}
           </div>
         </div>
       `
