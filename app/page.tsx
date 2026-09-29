@@ -15,7 +15,11 @@ import {
   Check, 
   PackageCheck, 
   Star,
-  Play
+  Play,
+  User,
+  MapPin,
+  Building2,
+  Navigation
 } from 'lucide-react';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import { event } from '@/lib/fpixel';
@@ -878,89 +882,162 @@ export default function SingleProductPage() {
             <form onSubmit={handleOrderSubmit} onFocus={handleFormInteraction} className="space-y-5">
               
               {/* STEP 1: ADDRESS */}
-              <div className="space-y-3.5">
-                <div className="flex items-center gap-2 border-b border-stone-200 pb-2">
-                  <div className="w-6 h-6 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-xs">1</div>
-                  <h3 className="text-sm sm:text-base font-bold text-stone-900 font-heading">आपका नाम और डिलीवरी पता</h3>
+              <div className="space-y-4 bg-stone-50/60 p-4 sm:p-5 rounded-2xl border border-stone-200/90 shadow-xs">
+                <div className="flex items-center justify-between pb-3 border-b border-stone-200">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-xl bg-emerald-800 text-white font-black flex items-center justify-center text-xs shadow-sm">
+                      1
+                    </span>
+                    <div>
+                      <h3 className="text-sm sm:text-base font-black text-stone-900 font-heading">
+                        डिलीवरी पता (Delivery Address)
+                      </h3>
+                      <p className="text-[11px] text-stone-500 font-medium">पार्सल इसी पते पर भेजा जाएगा</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/70 border border-emerald-300 px-2.5 py-1 rounded-full flex items-center gap-1 shadow-xs">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" /> 100% सुरक्षित
+                  </span>
                 </div>
                 
+                {/* FULL NAME */}
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
-                    आपका पूरा नाम (Full Name) <span className="text-red-500">*</span>
+                  <label className="block text-xs font-bold text-stone-800 mb-1.5 flex items-center justify-between">
+                    <span>पूरा नाम (Full Name) <span className="text-red-500">*</span></span>
                   </label>
-                  <input 
-                    ref={nameInputRef}
-                    type="text" 
-                    required 
-                    autoComplete="name"
-                    placeholder="जैसे: राहुल शर्मा" 
-                    className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
-                    value={formData.fullName} 
-                    onChange={e => setFormData({...formData, fullName: e.target.value})} 
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
-                    मोबाइल नंबर (10 अंकों का फोन नंबर) <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="tel" 
-                    required 
-                    inputMode="numeric"
-                    autoComplete="tel"
-                    pattern="[0-9]{10}"
-                    minLength={10} 
-                    maxLength={10} 
-                    placeholder="10 अंकों का मोबाइल नंबर (उदा: 98XXXXXXXX)" 
-                    className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all" 
-                    value={formData.mobile} 
-                    onChange={e => setFormData({...formData, mobile: e.target.value.replace(/[^0-9]/g, '')})} 
-                  />
-                  <p className="text-[11px] text-stone-500 mt-1">डिलीवरी बॉय इसी नंबर पर कॉल करके पार्सल देगा।</p>
-                </div>
-                
-                <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
-                    घर का पूरा पता (House No, Gali, Area / Landmark) <span className="text-red-500">*</span>
-                  </label>
-                  <textarea 
-                    required 
-                    autoComplete="street-address"
-                    placeholder="मकान नंबर, गली नंबर, गाँव या कॉलोनी का नाम, पास की प्रसिद्ध जगह (लैंडमार्क)" 
-                    rows={3} 
-                    className="w-full px-3.5 py-3 bg-stone-50 border border-stone-300 rounded-xl text-base font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none transition-all resize-none" 
-                    value={formData.address} 
-                    onChange={e => setFormData({...formData, address: e.target.value})} 
-                  />
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
-                      शहर / गाँव (City) <span className="text-red-500">*</span>
-                    </label>
+                  <div className="relative flex items-center">
+                    <div className="absolute left-3.5 text-emerald-700 pointer-events-none">
+                      <User className="w-4 h-4" />
+                    </div>
                     <input 
+                      ref={nameInputRef}
                       type="text" 
                       required 
-                      autoComplete="address-level2"
-                      placeholder="उदा: लखनऊ" 
-                      className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
-                      value={formData.city} 
-                      onChange={e => setFormData({...formData, city: e.target.value})} 
+                      autoComplete="name"
+                      placeholder="अपना पूरा नाम लिखें (उदा: राहुल शर्मा)" 
+                      className="w-full pl-10 pr-3.5 py-3 bg-white border border-stone-300 rounded-xl text-sm sm:text-base font-semibold text-stone-900 placeholder:text-stone-400 placeholder:font-normal focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all shadow-xs" 
+                      value={formData.fullName} 
+                      onChange={e => setFormData({...formData, fullName: e.target.value})} 
                     />
+                  </div>
+                </div>
+                
+                {/* MOBILE NUMBER WITH +91 BADGE */}
+                <div>
+                  <label className="block text-xs font-bold text-stone-800 mb-1.5 flex items-center justify-between">
+                    <span>मोबाइल नंबर (10 अंकों का फोन नंबर) <span className="text-red-500">*</span></span>
+                    <span className="text-[10px] text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      डिलीवरी कॉल हेतु
+                    </span>
+                  </label>
+                  <div className="relative flex items-center">
+                    <div className="absolute left-3 flex items-center gap-1.5 pr-2.5 border-r border-stone-300 text-stone-700 font-bold text-xs sm:text-sm pointer-events-none">
+                      <span>🇮🇳</span>
+                      <span>+91</span>
+                    </div>
+                    <input 
+                      type="tel" 
+                      required 
+                      inputMode="numeric"
+                      autoComplete="tel"
+                      pattern="[0-9]{10}"
+                      minLength={10} 
+                      maxLength={10} 
+                      placeholder="10 अंकों का मोबाइल नंबर" 
+                      className="w-full pl-20 pr-3.5 py-3 bg-white border border-stone-300 rounded-xl text-sm sm:text-base font-semibold text-stone-900 tracking-wider placeholder:tracking-normal placeholder:text-stone-400 placeholder:font-normal focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all shadow-xs" 
+                      value={formData.mobile} 
+                      onChange={e => setFormData({...formData, mobile: e.target.value.replace(/[^0-9]/g, '')})} 
+                    />
+                  </div>
+                  <p className="text-[11px] text-stone-500 mt-1 flex items-center gap-1">
+                    <span>🚚 डिलीवरी बॉय पार्सल लाते समय इसी नंबर पर कॉल करेगा।</span>
+                  </p>
+                </div>
+                
+                {/* FULL ADDRESS */}
+                <div>
+                  <label className="block text-xs font-bold text-stone-800 mb-1.5 flex items-center justify-between">
+                    <span>घर का पूरा पता (House No, Gali, Area) <span className="text-red-500">*</span></span>
+                    <span className="text-[10px] text-stone-500 font-medium">मकान नं. व लैंडमार्क ज़रूर लिखें</span>
+                  </label>
+                  <div className="relative">
+                    <div className="absolute top-3 left-3.5 text-emerald-700 pointer-events-none">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <textarea 
+                      required 
+                      autoComplete="street-address"
+                      placeholder="मकान नंबर, गली/मोहल्ला, गाँव या कॉलोनी का नाम, पास की प्रसिद्ध जगह (Landmark)" 
+                      rows={3} 
+                      className="w-full pl-10 pr-3.5 py-2.5 bg-white border border-stone-300 rounded-xl text-sm font-semibold text-stone-900 placeholder:text-stone-400 placeholder:font-normal focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all resize-none shadow-xs leading-relaxed" 
+                      value={formData.address} 
+                      onChange={e => setFormData({...formData, address: e.target.value})} 
+                    />
+                  </div>
+                </div>
+                
+                {/* PINCODE & CITY (2-COLUMN BALANCED LAYOUT) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
+                      पिन कोड (Pincode) <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative flex items-center">
+                      <div className="absolute left-3 text-emerald-700 pointer-events-none">
+                        <Navigation className="w-3.5 h-3.5" />
+                      </div>
+                      <input 
+                        type="text" 
+                        required 
+                        inputMode="numeric"
+                        autoComplete="postal-code"
+                        pattern="[0-9]{6}"
+                        minLength={6} 
+                        maxLength={6} 
+                        placeholder="6 अंक (उदा: 226001)" 
+                        className="w-full pl-9 pr-3 py-2.5 bg-white border border-stone-300 rounded-xl text-sm font-semibold text-stone-900 tracking-wider placeholder:tracking-normal placeholder:text-stone-400 placeholder:font-normal focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all shadow-xs" 
+                        value={formData.pincode} 
+                        onChange={e => setFormData({...formData, pincode: e.target.value.replace(/[^0-9]/g, '')})} 
+                      />
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
-                      राज्य (State) <span className="text-red-500">*</span>
+                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
+                      शहर / गाँव (City) <span className="text-red-500">*</span>
                     </label>
+                    <div className="relative flex items-center">
+                      <div className="absolute left-3 text-emerald-700 pointer-events-none">
+                        <Building2 className="w-3.5 h-3.5" />
+                      </div>
+                      <input 
+                        type="text" 
+                        required 
+                        autoComplete="address-level2"
+                        placeholder="शहर या जिले का नाम" 
+                        className="w-full pl-9 pr-3 py-2.5 bg-white border border-stone-300 rounded-xl text-sm font-semibold text-stone-900 placeholder:text-stone-400 placeholder:font-normal focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all shadow-xs" 
+                        value={formData.city} 
+                        onChange={e => setFormData({...formData, city: e.target.value})} 
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* STATE FULL WIDTH */}
+                <div>
+                  <label className="block text-xs font-bold text-stone-800 mb-1.5">
+                    राज्य (State) <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative flex items-center">
+                    <div className="absolute left-3 text-emerald-700 pointer-events-none">
+                      <MapPin className="w-3.5 h-3.5" />
+                    </div>
                     <input 
                       list="indian-states" 
                       required 
                       autoComplete="address-level1"
-                      placeholder="राज्य चुनें" 
-                      className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
+                      placeholder="अपना राज्य चुनें (Select State)" 
+                      className="w-full pl-9 pr-3 py-2.5 bg-white border border-stone-300 rounded-xl text-sm font-semibold text-stone-900 placeholder:text-stone-400 placeholder:font-normal focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all shadow-xs" 
                       value={formData.state} 
                       onChange={e => setFormData({...formData, state: e.target.value})} 
                     />
@@ -969,25 +1046,6 @@ export default function SingleProductPage() {
                         <option key={st} value={st} />
                       ))}
                     </datalist>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-stone-700 mb-1">
-                      पिन कोड (Pincode) <span className="text-red-500">*</span>
-                    </label>
-                    <input 
-                      type="text" 
-                      required 
-                      inputMode="numeric"
-                      autoComplete="postal-code"
-                      pattern="[0-9]{6}"
-                      minLength={6} 
-                      maxLength={6} 
-                      placeholder="6 अंक (226001)" 
-                      className="w-full px-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-emerald-700 focus:bg-white outline-none" 
-                      value={formData.pincode} 
-                      onChange={e => setFormData({...formData, pincode: e.target.value.replace(/[^0-9]/g, '')})} 
-                    />
                   </div>
                 </div>
               </div>
