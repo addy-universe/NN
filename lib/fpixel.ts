@@ -1,4 +1,5 @@
 export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || '783663397859865';
+export const FB_SECONDARY_PIXEL_ID = '1927482961507047';
 
 declare global {
   interface Window {

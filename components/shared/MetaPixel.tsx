@@ -3,14 +3,14 @@
 import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
-import { FB_PIXEL_ID, pageview } from '@/lib/fpixel';
+import { FB_PIXEL_ID, FB_SECONDARY_PIXEL_ID, pageview } from '@/lib/fpixel';
 
 function PixelEvents() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (FB_PIXEL_ID) {
+    if (FB_PIXEL_ID || FB_SECONDARY_PIXEL_ID) {
       pageview();
     }
   }, [pathname, searchParams]);
@@ -19,7 +19,7 @@ function PixelEvents() {
 }
 
 export default function MetaPixel() {
-  if (!FB_PIXEL_ID) {
+  if (!FB_PIXEL_ID && !FB_SECONDARY_PIXEL_ID) {
     return null;
   }
 
@@ -38,20 +38,33 @@ export default function MetaPixel() {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${FB_PIXEL_ID}');
+            ${FB_PIXEL_ID ? `fbq('init', '${FB_PIXEL_ID}');` : ''}
+            ${FB_SECONDARY_PIXEL_ID ? `fbq('init', '${FB_SECONDARY_PIXEL_ID}');` : ''}
             fbq('track', 'PageView');
           `,
         }}
       />
       <noscript>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src={`https://www.facebook.com/tr?id=${encodeURIComponent(FB_PIXEL_ID)}&ev=PageView&noscript=1`}
-          alt="Meta Pixel"
-        />
+        {FB_PIXEL_ID && (
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${encodeURIComponent(FB_PIXEL_ID)}&ev=PageView&noscript=1`}
+            alt="Meta Pixel"
+          />
+        )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        {FB_SECONDARY_PIXEL_ID && (
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${encodeURIComponent(FB_SECONDARY_PIXEL_ID)}&ev=PageView&noscript=1`}
+            alt="Meta Pixel Secondary"
+          />
+        )}
       </noscript>
       <Suspense fallback={null}>
         <PixelEvents />
