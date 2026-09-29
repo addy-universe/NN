@@ -78,6 +78,13 @@ export default function Footer() {
         </div>
       </div>
       
+      {/* MANDATORY META AD & AYUSH POLICY DISCLAIMER */}
+      <div className="border-t border-white/10 bg-black/20 py-4 px-4 sm:px-6 lg:px-8 text-center">
+        <p className="max-w-4xl mx-auto text-[11px] text-[var(--color-bg-cream)]/60 leading-relaxed">
+          <strong>अस्वीकरण (Disclaimer):</strong> यह उत्पाद एक प्राकृतिक आयुर्वेदिक हर्बल सप्लीमेंट है। यह किसी भी गंभीर बीमारी के निदान (diagnosis), उपचार (treatment) या रोकथाम (cure) का दावा नहीं करता है। परिणाम व्यक्ति के शारीरिक स्वास्थ्य, आहार और जीवनशैली के अनुसार भिन्न हो सकते हैं। किसी भी स्वास्थ्य स्थिति के लिए अपने योग्य चिकित्सक या वैद्य से परामर्श अवश्य लें।
+        </p>
+      </div>
+
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[var(--color-bg-cream)]/50 text-xs">

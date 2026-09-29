@@ -644,6 +644,64 @@ export default function SingleProductPage() {
         </div>
       </section>
 
+      {/* 1.5 META-COMPLIANT PROBLEM & TRUST SECTION */}
+      <section className="py-8 sm:py-12 px-3 sm:px-4 bg-gradient-to-b from-emerald-950 to-stone-900 text-white border-y border-emerald-800/50">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold text-xs px-3.5 py-1 rounded-full mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" /> पुरुषों के स्वास्थ्य के लिए उत्तम समाधान
+            </span>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black font-heading text-stone-100 mt-1">
+              उम्र के साथ कमजोरी और थकान महसूस हो रही है?
+            </h2>
+            <p className="text-stone-300 text-xs sm:text-sm mt-1.5 max-w-xl mx-auto">
+              व्यस्त दिनचर्या, तनाव और पोषक तत्वों की कमी से शरीर की प्राकृतिक ऊर्जा घटने लगती है। आयुर्वेद में इसका प्राचीन और सुरक्षित समाधान मौजूद है।
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
+            {/* Card 1: Natural Ayurvedic Herbs */}
+            <div className="bg-stone-900/80 p-5 rounded-2xl border border-emerald-700/40 text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-emerald-900/80 text-amber-400 rounded-2xl flex items-center justify-center mb-3 text-2xl border border-emerald-600/40 shadow-inner">
+                🌿
+              </div>
+              <h3 className="font-bold text-sm sm:text-base text-stone-100 mb-1.5 font-heading">
+                प्राकृतिक आयुर्वेदिक जड़ी-बूटियाँ
+              </h3>
+              <p className="text-xs text-stone-300 leading-relaxed">
+                नाग छत्री, शुद्ध शिलाजीत, कौंच बीज और अश्वगंधा की असली ताकत — जो शरीर को बिना किसी साइड इफेक्ट के अंदरूनी ऊर्जा और नई शक्ति प्रदान करती हैं।
+              </p>
+            </div>
+
+            {/* Card 2: 100% Confidential Delivery */}
+            <div className="bg-stone-900/80 p-5 rounded-2xl border border-emerald-700/40 text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-emerald-900/80 text-emerald-400 rounded-2xl flex items-center justify-center mb-3 text-2xl border border-emerald-600/40 shadow-inner">
+                🔒
+              </div>
+              <h3 className="font-bold text-sm sm:text-base text-stone-100 mb-1.5 font-heading">
+                100% गोपनीय डिलीवरी
+              </h3>
+              <p className="text-xs text-stone-300 leading-relaxed">
+                गोपनीय पार्सल (Discreet Packaging): बॉक्स के बाहर दवा या बीमारी का कोई नाम नहीं होता। आपका ऑर्डर और पहचान 100% प्राइवेट रहती है।
+              </p>
+            </div>
+
+            {/* Card 3: COD Home Delivery */}
+            <div className="bg-stone-900/80 p-5 rounded-2xl border border-emerald-700/40 text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-emerald-900/80 text-amber-400 rounded-2xl flex items-center justify-center mb-3 text-2xl border border-emerald-600/40 shadow-inner">
+                📦
+              </div>
+              <h3 className="font-bold text-sm sm:text-base text-stone-100 mb-1.5 font-heading">
+                घर बैठे मंगाएं (COD उपलब्ध)
+              </h3>
+              <p className="text-xs text-stone-300 leading-relaxed">
+                पूरे भारत में सुरक्षित होम डिलीवरी। पार्सल हाथ में मिलने पर ही डिलीवरी बॉय को नकद पैसे दें (कैश ऑन डिलीवरी)।
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. REAL VIDEO SHOWCASE SECTION */}
       <section id="product-video" className="py-12 sm:py-16 px-3 sm:px-4 bg-stone-900 text-white border-b border-stone-800">
         <div className="max-w-4xl mx-auto text-center">
